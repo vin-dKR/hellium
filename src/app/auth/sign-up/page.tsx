@@ -1,6 +1,5 @@
 import React from 'react'
 
-type Props = {}
 
 const Signup = (props: Props) => {
   return (
