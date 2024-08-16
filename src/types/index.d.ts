@@ -9,4 +9,15 @@ declare global {
         currentStep: number
         setCurrentStep: Dispatch<SetStateAction<number>>
     }
+
+    type SpinnerProps = {
+        noPadding?: boolean
+    }
+
+    type LoaderProps = {
+        loading: boolean
+        children: React.ReactNode
+        className?: string
+        noPadding?: boolean
+    }
 }
