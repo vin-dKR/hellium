@@ -17,6 +17,10 @@ const config = {
         '2xl': '1400px',
       },
     },
+    borderRadius: {
+      '4xl': '45px',
+      'full': '9999px',
+    },
     extend: {
       colors: {
         cream: '#F5F5F5',

@@ -9,9 +9,17 @@ const TypeSelectionForm = ({ register, setUserType, userType }: TypeSelectionPro
                 <br />experience so ti best suits you
             </p>
             <UserTypeCard
-                text="setting up my account for my company"
+                text="Setting up my account for my company."
                 value="owner"
                 title="I own a business"
+                userType={userType}
+                register={register}
+                setUserType={setUserType}
+            />
+            <UserTypeCard
+                text="Looking to learn about the tool."
+                value="student"
+                title="I am a student"
                 userType={userType}
                 register={register}
                 setUserType={setUserType}
