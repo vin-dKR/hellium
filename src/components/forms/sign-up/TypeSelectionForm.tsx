@@ -1,15 +1,22 @@
 import React from 'react'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import UserTypeCard from './UserTypeCard'
 
-type Props = {
-    register: UseFormRegister<FieldValues>
-    userType: 'owner' | 'student'
-    setUserType: React.Dispatch<React.SetStateAction<'owner' | 'student'>>
-}
-
-const TypeSelectionForm = ({ register, setUserType, userType }: Props) => {
+const TypeSelectionForm = ({ register, setUserType, userType }: TypeSelectionProps) => {
     return (
-        <div>TypeSelectionForm</div>
+        <>
+            <h2 className='text-gravel md:text-4xl font-bold'>Create an Account</h2>
+            <p className='text-iridium md: text-sm'>Tell us about yourself! What you do? Let' tailor your
+                <br />experience so ti best suits you
+            </p>
+            <UserTypeCard
+                text="setting up my account for my company"
+                value="owner"
+                title="I own a business"
+                userType={userType}
+                register={register}
+                setUserType={setUserType}
+            />
+        </>
     )
 }
 
