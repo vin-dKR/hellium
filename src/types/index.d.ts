@@ -27,7 +27,7 @@ declare global {
         userType: 'owner' | 'student'
         setUserType: React.Dispatch<React.SetStateAction<'owner' | 'student'>>
     }
-    
+
     type UserTypeCardProps = {
         value: string
         title: string
@@ -35,5 +35,34 @@ declare global {
         register: UseFormRegister<FieldValues>
         userType: 'owner' | 'student'
         setUserType: Dispatch<SetStateAction<'owner' | 'student'>>
+    }
+
+    type UserRegistrationProps = {
+        id: string
+        type: 'email' | 'text' | 'password'
+        inputType: 'select' | 'input'
+        options?: { value: string; label: string; id: string }[]
+        label?: string
+        placeholder: string
+        name: string
+    }
+
+    type AccountDetailFormProps = {
+        register: UseFormRegister<FieldValues>
+        errors: FieldErrors<FieldValues>
+    }
+
+    type FormGeneratorProps = {
+        type: 'text' | 'email' | 'password'
+        inputType: 'select' | 'input' | 'textarea'
+        options?: { value: string; label: string; id: string }[]
+        label?: string
+        placeholder: string
+        register: UseFormRegister<any>
+        name: string
+        errors: FieldErrors<FieldValues>
+        lines?: number
+        form?: string
+        defaultValue?: string
     }
 }
