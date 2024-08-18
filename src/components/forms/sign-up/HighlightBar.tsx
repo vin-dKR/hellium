@@ -3,9 +3,8 @@ import { useAuthContextHook } from '@/context/UseAuthContext'
 import { cn } from '@/lib/utils'
 import React from 'react'
 
-type Props = {}
 
-const HighLightBar = (props: Props) => {
+const HighLightBar = () => {
     const { currentStep } = useAuthContextHook()
 
     return (

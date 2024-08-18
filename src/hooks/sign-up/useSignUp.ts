@@ -1,3 +1,5 @@
+'use client'
+
 import { useToast } from "@/components/ui/use-toast"
 import { useSignUp } from "@clerk/nextjs"
 import { useRouter } from "next/navigation"
@@ -12,6 +14,7 @@ export const useSignUpForm = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const { signUp, isLoaded, setActive } = useSignUp()
     const router = useRouter()
+
     const methods = useForm<UserRegistrationProps>({
         resolver: zodResolver(UserRegistrationSchema),
         defaultValues: {
@@ -62,6 +65,8 @@ export const useSignUpForm = () => {
                 if (completeSignUp.status == 'complete') {
                     if (!signUp.createdUserId) return
 
+
+                    // finally go forr the db 
                     const registered = await onCompleteUserRegistration(
                         values.fullname,
                         signUp.createdUserId,

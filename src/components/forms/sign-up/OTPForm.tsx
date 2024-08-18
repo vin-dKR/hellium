@@ -2,12 +2,7 @@
 import OTPInput from '@/components/otp/OTP'
 import React from 'react'
 
-type Props = {
-  setOTP: React.Dispatch<React.SetStateAction<string>>
-  onOTP: string
-}
-
-const OTPForm = ({ onOTP, setOTP }: Props) => {
+const OTPForm = ({ otp, setOtp }: OTPProps) => {
   return (
     <>
       <h2 className="text-gravel md:text-4xl font-bold">Enter OTP</h2>
@@ -16,8 +11,8 @@ const OTPForm = ({ onOTP, setOTP }: Props) => {
       </p>
       <div className="w-full justify-center flex py-5">
         <OTPInput
-          otp={onOTP}
-          setOtp={setOTP}
+          otp={otp}
+          setOtp={setOtp}
         />
       </div>
     </>

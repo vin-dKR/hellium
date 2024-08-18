@@ -52,8 +52,8 @@ const RegistrationFormStep = () => {
         case 3:
             return (
                 <OTPForm
-                    onOTP={onOTP}
-                    setOTP={setOnOTP}
+                    otp={onOTP}
+                    setOtp={setOnOTP}
                 />
             )
     }

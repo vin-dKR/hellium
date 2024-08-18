@@ -65,4 +65,14 @@ declare global {
         form?: string
         defaultValue?: string
     }
+
+    // type OTPFormsProps = {
+    //     setOTP: Dispatch<SetStateAction<string>>
+    //     onOTP: string
+    // }
+
+    type OTPProps = {
+        otp: string
+        setOtp: Dispatch<SetStateAction<string>>
+    }
 }

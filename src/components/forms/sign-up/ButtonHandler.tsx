@@ -7,9 +7,8 @@ import Link from 'next/link'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-type Props = {}
 
-function ButtonHandler({ }: Props) {
+function ButtonHandler() {
   const { currentStep, setCurrentStep } = useAuthContextHook()
   const { formState, getFieldState, getValues } = useFormContext()
   const { onGenerateOTP } = useSignUpForm()
