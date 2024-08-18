@@ -1,5 +1,4 @@
 import { USER_REGISTRATION_FORM } from '@/constants/forms'
-import React from 'react'
 import FormGenerator from '../form-generator/FormGenerator'
 
 function AccountDetailForm({ errors, register }: AccountDetailFormProps) {
