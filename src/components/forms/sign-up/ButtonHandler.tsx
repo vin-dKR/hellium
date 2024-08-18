@@ -27,9 +27,6 @@ function ButtonHandler() {
         <Button
           type="submit"
           className="w-full"
-          onClick={() => {
-            console.log("Create an account button clicked");
-          }}
         >
           Create an account
         </Button>
@@ -75,7 +72,7 @@ function ButtonHandler() {
               }
             }
           })}
-          disabled={!(isName && isEmail && isPassword === isPasswordConfirm)}
+          disabled={!(isName && isEmail && isPassword && isPasswordConfirm)}
         >
           Continue
         </Button>

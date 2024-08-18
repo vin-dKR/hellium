@@ -17,7 +17,6 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
             .string()
             .min(4, { message: 'your full name must be atleast 4 characters long' }),
         email: z.string().email({ message: 'Incorrect email format' }),
-        confirmEmail: z.string().email(),
         password: z
             .string()
             .min(8, { message: 'Your password must be atleast 8 characters long' })
@@ -34,10 +33,6 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
     .refine((schema) => schema.password === schema.confirmPassword, {
         message: 'passwords do not match',
         path: ['confirmPassword'],
-    })
-    .refine((schema) => schema.email === schema.confirmEmail, {
-        message: 'Your emails not match',
-        path: ['confirmEmail'],
     })
 
 
