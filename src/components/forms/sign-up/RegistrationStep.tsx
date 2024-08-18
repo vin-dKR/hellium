@@ -13,12 +13,12 @@ const LoadingSpinner = (props: DynamicOptionsLoadingProps) => {
 }
 const DetailForm = dynamic(() => import('./AccountDetailForm'), {
     ssr: false,
-    loading: LoadingSpinner as (loadingProps: DynamicOptionsLoadingProps) => React.JSX.Element,
+    loading: LoadingSpinner as (loadingProps: DynamicOptionsLoadingProps) => JSX.Element,
 })
 
 const OTPForm = dynamic(() => import('./OTPForm'), {
     ssr: false,
-    loading: LoadingSpinner as (loadingProps: DynamicOptionsLoadingProps) => React.JSX.Element,
+    loading: LoadingSpinner as (loadingProps: DynamicOptionsLoadingProps) => JSX.Element,
 })
 
 const RegistrationFormStep = () => {

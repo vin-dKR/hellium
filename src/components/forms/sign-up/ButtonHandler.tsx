@@ -6,6 +6,7 @@ import { useSignUpForm } from '@/hooks/sign-up/useSignUp'
 import Link from 'next/link'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
+import { useToast } from "@/components/ui/use-toast"
 
 
 function ButtonHandler() {
@@ -16,6 +17,9 @@ function ButtonHandler() {
   const { isDirty: isName } = getFieldState('fullname', formState)
   const { isDirty: isEmail } = getFieldState('email', formState)
   const { isDirty: isPassword } = getFieldState('password', formState)
+  const { isDirty: isPasswordConfirm } = getFieldState('confirmPassword', formState)
+
+  const { toast } = useToast()
 
   if (currentStep === 3) {
     return (
@@ -23,6 +27,9 @@ function ButtonHandler() {
         <Button
           type="submit"
           className="w-full"
+          onClick={() => {
+            console.log("Create an account button clicked");
+          }}
         >
           Create an account
         </Button>
@@ -48,14 +55,27 @@ function ButtonHandler() {
           className="w-full"
           {...(isName &&
             isEmail &&
-            isPassword && {
-            onClick: () =>
-              onGenerateOTP(
-                getValues('email'),
-                getValues('password'),
-                setCurrentStep
-              ),
+            isPassword &&
+            isPasswordConfirm && {
+            onClick: () => {
+              if (getValues('password') === getValues('confirmPassword')) {
+                onGenerateOTP(
+                  getValues('email'),
+                  getValues('password'),
+                  setCurrentStep
+                );
+              } else {
+                toast({
+                  variant: "destructive",
+                  title: 'Error',
+                  description: "Passwords do not match",
+                  className: "bg-red-600 text-white w-full p-4 shadow-lg",
+
+                })
+              }
+            }
           })}
+          disabled={!(isName && isEmail && isPassword === isPasswordConfirm)}
         >
           Continue
         </Button>
