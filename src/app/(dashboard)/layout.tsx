@@ -1,13 +1,22 @@
 import { onLoginUser } from '@/actions/auth'
+import SideBar from '@/components/sidebar/SideBar'
+import { ChatProvider } from '@/context/userChatContext'
 import React from 'react'
 
-const layout = async (props: Props) => {
-    const authenticatedUser = await onLoginUser()
-    if(!authenticatedUser) return null
+const layout = async ({ children }: Props) => {
+
+  const authenticated = await onLoginUser()
+  if (!authenticated) return null
+
   return (
-    <div>
-      ownlayout
-    </div>
+    <ChatProvider>
+      <div className="flex h-screen w-full">
+        <SideBar domains={authenticated.domain} />
+        <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
+          {children}
+        </div>
+      </div>
+    </ChatProvider>
   )
 }
 

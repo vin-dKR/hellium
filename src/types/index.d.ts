@@ -107,4 +107,35 @@ declare global {
         loading: boolean
         setLoading: React.Dispatch<React.SetStateAction<boolean>>
     }
+
+    type SidebarProps = {
+        domains:
+        | {
+            id: string
+            name: string
+            icon: string
+        }[]
+        | null
+        | undefined
+    }
+
+    type MaxMenuProps = {
+        onExpand(): void
+        current: string
+        onSignOut(): void
+        domains:
+        | {
+            id: string
+            name: string
+            icon: string | null
+        }[]
+        | null
+        | undefined
+    }
+
+    type UploadBtnProps = {
+        register: UseFormRegister<any>
+        errors: FieldErrors<FieldValues>
+        label: string
+    }
 }
