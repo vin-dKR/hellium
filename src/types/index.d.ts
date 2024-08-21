@@ -75,4 +75,9 @@ declare global {
         otp: string
         setOtp: Dispatch<SetStateAction<string>>
     }
+
+    type SelectionLabel = {
+        label: String
+        message: String
+    }
 }
