@@ -1,8 +1,8 @@
+import { onLoginUser } from '@/actions/auth'
 import React from 'react'
 
-
-const layout = (props: Props) => {
-    //need an authenticated user
+const layout = async (props: Props) => {
+    const authenticatedUser = await onLoginUser()
   return (
     <div>
 
