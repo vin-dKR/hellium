@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
 import { Plus } from 'lucide-react'
-import { Loader } from '../loader'
+import { Loader } from '../loader/Loader'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import Image from 'next/image'

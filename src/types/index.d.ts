@@ -66,11 +66,6 @@ declare global {
         defaultValue?: string
     }
 
-    // type OTPFormsProps = {
-    //     setOTP: Dispatch<SetStateAction<string>>
-    //     onOTP: string
-    // }
-
     type OTPProps = {
         otp: string
         setOtp: Dispatch<SetStateAction<string>>
@@ -156,5 +151,27 @@ declare global {
         }[]
         | null
         | undefined
+    }
+
+    type ModalProps = {
+        trigger: React.ReactNode
+        children: React.ReactNode
+        title: string
+        description: string
+        type?: 'Integration'
+        logo?: string
+    }
+
+    type SubscriptionFormProps = {
+        plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
+    }
+
+    type SubscriptionCardProps = {
+        title: string
+        description: string
+        price: string
+        onPayment(payment: string): void
+        payment: string
+        id: string
     }
 }

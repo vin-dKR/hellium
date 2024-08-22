@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spinner } from '../spinner'
+import { Spinner } from '../spinner/Spinner'
 import { cn } from '@/lib/utils'
 
 export const Loader = ({
