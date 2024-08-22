@@ -16,6 +16,7 @@ const useSideBar = () => {
     const [realtime, setRealtime] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
 
+    // extracting the state using context
     const { chatRoom } = useChatContext()
 
     const onActivateRealtime = async (e: any) => {

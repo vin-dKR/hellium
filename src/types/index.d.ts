@@ -138,4 +138,23 @@ declare global {
         errors: FieldErrors<FieldValues>
         label: string
     }
+
+    type AppDrawerProps = {
+        onOpen: JSX.Element
+        children: React.ReactNode
+        title: string
+        description: string
+    }
+
+    type DomainMenuProps = {
+        min?: boolean
+        domains:
+        | {
+            id: string
+            name: string
+            icon: string | null
+        }[]
+        | null
+        | undefined
+    }
 }

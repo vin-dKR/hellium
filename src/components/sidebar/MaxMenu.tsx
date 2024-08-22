@@ -5,19 +5,6 @@ import React from 'react'
 import MenuItem from './MenuItems'
 import DomainMenu from './DomainMenu'
 
-// type MaxMenuProps = {
-//   onExpand(): void
-//   current: string
-//   onSignOut(): void
-//   domains:
-//     | {
-//         id: string
-//         name: string
-//         icon: string | null
-//       }[]
-//     | null
-//     | undefined
-// }
 
 const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaxMenuProps) => {
     return (

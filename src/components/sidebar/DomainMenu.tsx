@@ -10,19 +10,8 @@ import AppDrawer from '../drawer/Drawer'
 import UploadButton from '../upload-button/UploadBtn'
 import FormGenerator from '../forms/form-generator/FormGenerator'
 
-type Props = {
-    min?: boolean
-    domains:
-    | {
-        id: string
-        name: string
-        icon: string | null
-    }[]
-    | null
-    | undefined
-}
 
-const DomainMenu = ({ domains, min }: Props) => {
+const DomainMenu = ({ domains, min }: DomainMenuProps) => {
     const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
     return (
