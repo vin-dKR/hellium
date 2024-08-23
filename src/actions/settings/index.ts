@@ -1,7 +1,7 @@
 'use server'
 
 import client from "@/lib/prisma"
-import { currentUser } from "@clerk/nextjs"
+import { clerkClient, currentUser } from "@clerk/nextjs"
 
 export const onGetSubsPlan = async () => {
     try {
@@ -138,5 +138,28 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
         }
     } catch (error) {
         console.log(error)
+    }
+}
+
+
+// password-change
+export const onUpdatePassword = async (password: string) => {
+    try {
+        const user = await currentUser()
+
+        if (!user) return null
+
+        const updateUser = await clerkClient.users.updateUser(user.id, { password })
+        if (updateUser) {
+            return {
+                status: 200,
+                message: "Pasword updated"
+            }
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
     }
 }

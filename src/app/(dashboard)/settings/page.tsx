@@ -1,15 +1,18 @@
 import InfoBar from '@/components/infobar/InfoBar'
 import BillingSettings from '@/components/settings/BillingSettings'
+import ChangePassword from '@/components/settings/ChangePassword'
+import DarkModeToggle from '@/components/settings/DarkModeToggle'
 import React from 'react'
 
-type Props = {}
 
-const Settings = (props: Props) => {
+const Settings = () => {
     return (
         <div>
             <InfoBar />
-            <div className="overflow-y-auto w-full chat-window flex-1 h-0 flex flex-col gap-10">
+            <div className="overflow-y-auto w-full chat-window flex-1 h-full flex flex-col gap-10">
                 <BillingSettings />
+                <DarkModeToggle />
+                <ChangePassword />
             </div>
         </div>
     )

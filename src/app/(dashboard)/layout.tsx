@@ -1,5 +1,4 @@
 import { onLoginUser } from '@/actions/auth'
-import BillingSettings from '@/components/settings/BillingSettings'
 import SideBar from '@/components/sidebar/SideBar'
 import { ChatProvider } from '@/context/userChatContext'
 import React from 'react'
@@ -15,7 +14,6 @@ const layout = async ({ children }: Props) => {
         <SideBar domains={authenticated.domain} />
         <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
           {children}
-          <BillingSettings/>
         </div>
       </div>
     </ChatProvider>
