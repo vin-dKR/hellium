@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdatePassword } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema } from "@/schemas/settings.schema"
@@ -9,6 +9,11 @@ import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { UploadClient } from '@uploadcare/upload-client'
+
+const upload = new UploadClient({
+    publicKey: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY as string,
+})
 
 
 export const useThemeMode = () => {
@@ -62,7 +67,7 @@ export const useChangePassword = () => {
     }
 }
 
-export const useSettings = () => {
+export const useSettings = (id: string) => {
     const {
         register,
         handleSubmit,
@@ -80,7 +85,17 @@ export const useSettings = () => {
     const onUpdateSettings = handleSubmit(async (values) => {
         setLoading(true)
         if (values.domain) {
-            // invoke onupdate-domain server action
+            const domain = await onUpdateDomain(id, values.domain)
+            if (domain) {
+                toast({
+                    title: 'Success',
+                    description: domain.message,
+                })
+            }
+        }
+        if (values.image[0]) {
+            const uploaded = await upload.uploadFile(values.image[0])
+            // server-action for updating the chatbot img
         }
     })
 }
