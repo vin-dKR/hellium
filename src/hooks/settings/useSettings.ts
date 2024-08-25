@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema } from "@/schemas/settings.schema"
@@ -117,4 +117,26 @@ export const useSettings = (id: string) => {
         router.refresh()
         setLoading(false)
     })
+
+    const onDeleteDomain = async () => {
+        setDeleting(true)
+
+        const deleted = await onDeleteUserDomain(id)
+        if (deleted) {
+            toast({
+                title: "Success",
+                description: String(deleted.message)
+            })
+        }
+        setDeleting(false)
+        router.refresh()
+    }
+    return {
+        register,
+        onUpdateSettings,
+        errors,
+        loading,
+        onDeleteDomain,
+        deleting,
+    }
 }

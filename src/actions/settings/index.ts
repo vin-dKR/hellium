@@ -270,3 +270,43 @@ export const onUpdateWelcomeMessage = async (message: string, domainId: string) 
         }
     }
 }
+
+export const onDeleteUserDomain = async (id: string) => {
+    const user = await currentUser()
+    if (!user) return
+
+    try {
+        const validUser = await client.user.findUnique({
+            where: {
+                clerkId: id,
+            },
+            select: {
+                id: true,
+            }
+        })
+
+        if (validUser) {
+            const domainDelete = await client.domain.delete({
+                where: {
+                    userId: validUser.id,
+                    id
+                },
+                select: {
+                    name: true
+                }
+            })
+
+            if (domainDelete) {
+                return {
+                    status: 200,
+                    message: "Domain Delete Successfully!"
+                }
+            }
+        }
+    } catch (error) {
+        return {
+            status: 400,
+            message: error
+        }
+    }
+}
