@@ -1,7 +1,9 @@
+import { onGetCurrentDomainInfo } from '@/actions/auth'
 import React from 'react'
 
-const DomainSetting = ({ params }: DomainSettingProps) => {
-    // invoke current-domain-info from actions
+const DomainSetting = async ({ params }: DomainSettingProps) => {
+    const domain = await onGetCurrentDomainInfo(params.domain)
+    
     return (
         <div>page</div>
     )

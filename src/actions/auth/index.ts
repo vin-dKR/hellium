@@ -1,7 +1,7 @@
 'use server'
 
 import client from '@/lib/prisma'
-import { currentUser, redirectToSignIn } from '@clerk/nextjs'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { onGetAllAccountDomains } from '../settings'
 
 export const onCompleteUserRegistration = async (
@@ -36,7 +36,7 @@ export const onCompleteUserRegistration = async (
 
 export const onLoginUser = async () => {
     const user = await currentUser()
-    if (!user) redirectToSignIn()
+    if (!user) auth().redirectToSignIn()
     else {
         try {
             const authenticated = await client.user.findUnique({
@@ -63,6 +63,57 @@ export const onLoginUser = async () => {
         } catch (error) {
             console.log(error)
             return { status: 500, error: error }
+        }
+    }
+}
+
+export const onGetCurrentDomainInfo = async (domain: string) => {
+    const user = await currentUser()
+    if (!user) return
+
+    try {
+        const userDomain = await client.user.findUnique({
+            where: {
+                clerkId: user.id,
+            },
+            select: {
+                subscription: {
+                    select: {
+                        plan: true,
+                    },
+                },
+                domains: {
+                    where: {
+                        name: {
+                            contains: domain,
+                        },
+                    },
+                    select: {
+                        id: true,
+                        name: true,
+                        icon: true,
+                        userId: true,
+                        products: true,
+                        chatBot: {
+                            select: {
+                                id: true,
+                                welcomeMessage: true,
+                                icon: true,
+                            },
+                        },
+                    },
+                },
+            },
+        })
+
+        if (userDomain) {
+            return userDomain
+        }
+
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
         }
     }
 }

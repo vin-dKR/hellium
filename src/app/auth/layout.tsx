@@ -1,11 +1,13 @@
-import { currentUser } from '@clerk/nextjs'
+'use client'
+
+import { useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
 
 const Layout = async ({ children }: Props) => {
-    const user = await currentUser()
+    const { user } = useUser()
 
     if (user) redirect("/")
     return (
