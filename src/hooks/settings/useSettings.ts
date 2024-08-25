@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema } from "@/schemas/settings.schema"
@@ -104,5 +104,17 @@ export const useSettings = (id: string) => {
                 setLoading(false)
             }
         }
+        if (values.welcomeMessage) {
+            const message = await onUpdateWelcomeMessage(values.welcomeMessage, id)
+            if (message) {
+                toast({
+                    title: 'Success',
+                    description: String(message.message),
+                })
+            }
+        }
+        reset()
+        router.refresh()
+        setLoading(false)
     })
 }

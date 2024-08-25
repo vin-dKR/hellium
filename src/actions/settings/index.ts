@@ -239,3 +239,34 @@ export const onChatBotImageUpdate = async (id: string, icon: string) => {
         }
     }
 }
+
+export const onUpdateWelcomeMessage = async (message: string, domainId: string) => {
+    try {
+        const update = await client.domain.update({
+            where: {
+                id: domainId,
+            },
+            data: {
+                chatBot: {
+                    update: {
+                        data: {
+                            welcomeMessage: message,
+                        }
+                    }
+                }
+            }
+        })
+
+        if (update) {
+            return {
+                status: 200,
+                message: "Welcome Message Updated!"
+            }
+        }
+    } catch (error) {
+        return {
+            status: 400,
+            message: error
+        }
+    }
+}
