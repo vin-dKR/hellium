@@ -176,4 +176,15 @@ declare global {
     }
 
     type DomainSettingProps = { params: { domain: string } }
+
+    type SettingsFormProps = {
+        id: string
+        name: string
+        plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
+        chatBot: {
+            id: string
+            icon: string | null
+            welcomeMessage: string | null
+        } | null
+    }
 }
