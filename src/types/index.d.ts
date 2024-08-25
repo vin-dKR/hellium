@@ -174,4 +174,6 @@ declare global {
         payment: string
         id: string
     }
+
+    type DomainSettingProps = { params: { domain: string } }
 }
