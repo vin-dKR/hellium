@@ -205,3 +205,37 @@ export const onUpdateDomain = async (id: string, name: string) => {
         console.log(error)
     }
 }
+
+export const onChatBotImageUpdate = async (id: string, icon: string) => {
+    const user = await currentUser()
+    if (!user) return
+
+    try {
+        const domain = await client.domain.update({
+            where: {
+                id,
+            },
+            data: {
+                chatBot: {
+                    update: {
+                        data: {
+                            icon,
+                        }
+                    }
+                }
+            }
+        })
+
+        if (domain) {
+            return {
+                status: 400,
+                message: "Domain Updated Successfully!"
+            }
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
+    }
+}

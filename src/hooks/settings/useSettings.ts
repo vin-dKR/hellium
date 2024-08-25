@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema } from "@/schemas/settings.schema"
@@ -95,7 +95,14 @@ export const useSettings = (id: string) => {
         }
         if (values.image[0]) {
             const uploaded = await upload.uploadFile(values.image[0])
-            // server-action for updating the chatbot img
+            const image = await onChatBotImageUpdate(id, uploaded.uuid)
+            if (image) {
+                toast({
+                    title: image.status == 200 ? 'Success' : 'Error',
+                    description: String(image.message),
+                })
+                setLoading(false)
+            }
         }
     })
 }
