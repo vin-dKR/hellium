@@ -1,26 +1,26 @@
 import { z } from 'zod'
 
-export const MAX_UPLOAD_SIZE = 1024 * 1024 * 2 
+export const MAX_UPLOAD_SIZE = 1024 * 1024 * 2
 export const ACCEPTED_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg']
 
-export type DomainSettingsProps = {
+export type DomainSettingsSchemaProps = {
     domain?: string
     image?: any
     welcomeMessage?: string
 }
 
-export type HelpDeskQuestionsProps = {
+export type HelpDeskQuestionsSchemaProps = {
     question: string
     answer: string
 }
 
-export type AddProductProps = {
+export type AddProductSchemaProps = {
     name: string
     image: any
     price: string
 }
 
-export type FilterQuestionsProps = {
+export type FilterQuestionsSchemaProps = {
     question: string
 }
 
