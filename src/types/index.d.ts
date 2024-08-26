@@ -187,4 +187,10 @@ declare global {
             welcomeMessage: string | null
         } | null
     }
+
+    type DomainUpdateProps = {
+        name: string
+        register: UseFormRegister<FieldValues>
+        errors: FieldErrors<FieldValues>
+    }
 }

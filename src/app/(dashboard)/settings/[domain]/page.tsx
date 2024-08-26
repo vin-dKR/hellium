@@ -6,17 +6,16 @@ import React from 'react'
 
 const DomainSetting = async ({ params }: DomainSettingProps) => {
     const domain = await onGetCurrentDomainInfo(params.domain)
-    if (!domain) redirect("/dashboard")
-
+    if (!domain || 'status' in domain) redirect("/dashboard")
     return (
         <>
             <InfoBar />
             <div className="overflow-y-auto w-full chat-window flex-1 h-0">
                 <SettingsForm
-                    plan={domain.subscription?.plan!}
-                    chatBot={domain.domains[0].chatBot}
                     id={domain.domains[0].id}
                     name={domain.domains[0].name}
+                    chatBot={domain.domains[0].chatBot}
+                    plan={domain.subscription?.plan!}
                 />
             </div>
         </>
