@@ -193,4 +193,8 @@ declare global {
         register: UseFormRegister<FieldValues>
         errors: FieldErrors<FieldValues>
     }
+
+    type CodeSnippetProps = {
+        id: string
+    }
 }

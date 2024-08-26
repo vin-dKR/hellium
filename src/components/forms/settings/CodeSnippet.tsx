@@ -3,12 +3,12 @@ import SectionLabel from '@/components/section-label/SectionLabel'
 import { useToast } from '@/components/ui/use-toast'
 import { Copy } from 'lucide-react'
 import React from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+// @ts-ignore
+import { vscDarkPlus, xt256 } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-type Props = {
-    id: string
-}
 
-const CodeSnippet = ({ id }: Props) => {
+const CodeSnippet = ({ id }: CodeSnippetProps) => {
     const { toast } = useToast()
     let snippet = `
     const iframe = document.createElement("iframe");
@@ -58,9 +58,20 @@ const CodeSnippet = ({ id }: Props) => {
                         })
                     }}
                 />
-                <pre>
-                    <code className="text-gray-500">{snippet}</code>
-                </pre>
+                <SyntaxHighlighter
+                    language="javascript"
+                    style={xt256}
+                    customStyle={{
+                        background: 'transparent',
+                        padding: '1.5rem',
+                        fontSize: '0.9rem',
+                        lineHeight: '1.5',
+                    }}
+                    wrapLines={true}
+                    wrapLongLines={true}
+                >
+                    {snippet}
+                </SyntaxHighlighter>
             </div>
         </div>
     )
