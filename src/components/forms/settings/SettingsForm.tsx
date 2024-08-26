@@ -4,6 +4,7 @@ import { useSettings } from '@/hooks/settings/useSettings'
 import { Separator } from '@/components/ui/separator'
 import React from 'react'
 import DomainUpdate from './DomainUpdate'
+import CodeSnippet from './CodeSnippet'
 
 const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
     const {
@@ -25,6 +26,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                     register={register}
                     errors={errors}
                 />
+                <CodeSnippet id={id} />
             </div>
         </form>
     )
