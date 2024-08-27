@@ -7,6 +7,16 @@ import DomainUpdate from './DomainUpdate'
 import CodeSnippet from './CodeSnippet'
 import EditChatBotIcon from './EditChatBotIcon'
 import PremiumBadge from '@/icons/premium-badge'
+import dynamic from 'next/dynamic'
+
+
+const WelcomeMessage = dynamic(
+    () => import('./GreetingMessage').then((props) => props.default),
+    {
+        ssr: false,
+    }
+)
+
 
 const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
     const {
@@ -43,6 +53,13 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                     <div className="col-span-1 flex flex-col gap-5 order-last md:order-first">
                         <EditChatBotIcon
                             chatBot={chatBot}
+                            register={register}
+                            errors={errors}
+                        />
+                    </div>
+                    <div className="col-span-1 relative">
+                        <WelcomeMessage
+                            message={chatBot?.welcomeMessage!}
                             register={register}
                             errors={errors}
                         />

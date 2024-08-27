@@ -207,4 +207,10 @@ declare global {
             welcomeMessage: string | null
         } | null
     }
+
+    type GreetingMessageProps = {
+        message: string
+        register: UseFormRegister<FieldValues>
+        errors: FieldErrors<FieldValues>
+    }
 }
