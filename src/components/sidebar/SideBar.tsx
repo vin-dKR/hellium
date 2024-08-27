@@ -12,7 +12,7 @@ const SideBar = ({ domains }: SidebarProps) => {
 
     return (
         <div className={cn(
-            'bg-cream dark:bg-neutral-950 h-full w-[60px] fill-mode-forwards fixed md:relative',
+            'bg-cream dark:bg-neutral-950 h-full w-[60px] fill-mode-forwards fixed md:relative z-10',
             expand == undefined && '',
             expand == true
                 ? 'animate-open-sidebar'
