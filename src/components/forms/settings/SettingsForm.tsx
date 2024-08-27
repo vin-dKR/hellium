@@ -5,6 +5,7 @@ import { Separator } from '@/components/ui/separator'
 import React from 'react'
 import DomainUpdate from './DomainUpdate'
 import CodeSnippet from './CodeSnippet'
+import EditChatBotIcon from './EditChatBotIcon'
 
 const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
     const {
@@ -27,6 +28,11 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                     errors={errors}
                 />
                 <CodeSnippet id={id} />
+                <EditChatBotIcon
+                    register={register}
+                    errors={errors}
+                    chatBot={chatBot}
+                />
             </div>
         </form>
     )

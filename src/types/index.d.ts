@@ -197,4 +197,14 @@ declare global {
     type CodeSnippetProps = {
         id: string
     }
+
+    type EditChatBotIconProps = {
+        register: UseFormRegister<FieldValues>
+        errors: FieldErrors<FieldValues>
+        chatBot: {
+            id: string
+            icon: string | null
+            welcomeMessage: string | null
+        } | null
+    }
 }

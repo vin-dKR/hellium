@@ -8,7 +8,7 @@ import DomainMenu from './DomainMenu'
 
 const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaxMenuProps) => {
     return (
-        <div className="py-3 px-4 flex flex-col h-full">
+        <div className="py-3 px-4 flex flex-col h-full z-[100]">
             <div className="flex justify-between items-center">
                 <Image
                     src="/images/logo.png"

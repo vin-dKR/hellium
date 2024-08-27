@@ -66,6 +66,7 @@ const CodeSnippet = ({ id }: CodeSnippetProps) => {
                         padding: '1.5rem',
                         fontSize: '0.9rem',
                         lineHeight: '1.5',
+                        zIndex: 0,
                     }}
                     wrapLines={true}
                     wrapLongLines={true}
