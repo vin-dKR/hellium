@@ -380,4 +380,42 @@ export const onGetAllHelpDeskQuestions = async (id: string) => {
             message: error
         }
     }
-} 
+}
+
+export const onCreateFilterQuestions = async (id: string, question: string) => {
+    try {
+        const filterQuestion = await client.domain.update({
+            where: {
+                id,
+            },
+            data: {
+                filterQuestions: {
+                    create: {
+                        question,
+                    }
+                }
+            },
+            include: {
+                filterQuestions: {
+                    select: {
+                        id: true,
+                        question: true,
+                    }
+                }
+            }
+        })
+
+        if (filterQuestion) {
+            return {
+                status: 200,
+                message: 'Filter question added',
+                questions: filterQuestion.filterQuestions,
+            }
+        }
+    } catch (error) {
+        return {
+            status: 400,
+            message: error
+        }
+    }
+}

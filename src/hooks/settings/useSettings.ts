@@ -1,9 +1,9 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
-import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps } from "@/schemas/settings.schema"
+import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps, FilterQuestionsSchemaProps, FilterQuestionsSchema } from "@/schemas/settings.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
@@ -194,5 +194,43 @@ export const useHelpDesk = (id: string) => {
         errors,
         isQuestions,
         loading,
+    }
+}
+
+export const useFilterQuestions = (id: string) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm<FilterQuestionsSchemaProps>({
+        resolver: zodResolver(FilterQuestionsSchema),
+    })
+    const { toast } = useToast()
+    const [loading, setLoading] = useState<boolean>(false)
+    const [isQuestions, setIsQuestions] = useState<
+        { id: string; question: string }[]
+    >([])
+
+    const onAddFilterQuestions = handleSubmit(async (values) => {
+        setLoading(true)
+        const questions = await onCreateFilterQuestions(id, values.question)
+        if (questions) {
+            setIsQuestions(questions.questions!)
+            toast({
+                title: questions.status == 200 ? 'Success' : 'Error',
+                description: String(questions.message),
+            })
+            reset()
+            setLoading(false)
+        }
+    })
+
+    return {
+        loading,
+        onAddFilterQuestions,
+        register,
+        errors,
+        isQuestions,
     }
 }

@@ -1,8 +1,9 @@
 import React from 'react'
-import TabsMenu from '../tabs/TabsMenu'
-import { TabsContent } from '../ui/tabs'
+import TabsMenu from '../../tabs/TabsMenu'
+import { TabsContent } from '../../ui/tabs'
 import { HELP_DESK_TABS_MENU } from '@/constants/menu'
-import HelpDesk from '../forms/settings/HelpDesk'
+import HelpDesk from './HelpDesk'
+import FilterQuestions from './FilterQuesions'
 
 
 const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
@@ -26,7 +27,7 @@ const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
                     value="questions"
                     className="w-full"
                 >
-                    biii
+                    <FilterQuestions id={id} />
                 </TabsContent>
             </TabsMenu>
         </div>

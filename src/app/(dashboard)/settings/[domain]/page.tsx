@@ -1,7 +1,7 @@
 import { onGetCurrentDomainInfo } from '@/actions/auth'
+import BotTrainingForm from '@/components/forms/settings/BotTrainingForm'
 import SettingsForm from '@/components/forms/settings/SettingsForm'
 import InfoBar from '@/components/infobar/InfoBar'
-import BotTrainingForm from '@/components/settings/BotTrainingForm'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
