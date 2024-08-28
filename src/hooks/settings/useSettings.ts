@@ -1,9 +1,9 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
-import { DomainSettingsSchemaProps, DomainSettingsSchema } from "@/schemas/settings.schema"
+import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps } from "@/schemas/settings.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
@@ -138,5 +138,48 @@ export const useSettings = (id: string) => {
         loading,
         onDeleteDomain,
         deleting,
+    }
+}
+
+
+export const useHelpDesk = (id: string) => {
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm<HelpDeskQuestionsSchemaProps>({
+        resolver: zodResolver(HelpDeskQuestionsSchema),
+    })
+    const { toast } = useToast()
+
+    const [loading, setLoading] = useState<boolean>(false)
+    const [isQuestions, setIsQuestions] = useState<
+        { id: string; question: string; answer: string }[]
+    >([])
+    const onSubmitQuestion = handleSubmit(async (values) => {
+        setLoading(true)
+        const question = await onCreateHelpDeskQuestion(
+            id,
+            values.question,
+            values.answer
+        )
+        if (question) {
+            setIsQuestions(question.questions!)
+            toast({
+                title: question.status == 200 ? 'Success' : 'Error',
+                description: String(question.message),
+            })
+            setLoading(false)
+            reset()
+        }
+    })
+
+    return {
+        register,
+        onSubmitQuestion,
+        errors,
+        isQuestions,
+        loading,
     }
 }

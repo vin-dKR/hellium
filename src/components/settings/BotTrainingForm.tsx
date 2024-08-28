@@ -2,6 +2,7 @@ import React from 'react'
 import TabsMenu from '../tabs/TabsMenu'
 import { TabsContent } from '../ui/tabs'
 import { HELP_DESK_TABS_MENU } from '@/constants/menu'
+import HelpDesk from '../forms/settings/HelpDesk'
 
 
 const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
@@ -19,7 +20,7 @@ const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
                     value="help desk"
                     className="w-full"
                 >
-                    hiii
+                    <HelpDesk id={id} />
                 </TabsContent>
                 <TabsContent
                     value="questions"

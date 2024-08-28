@@ -310,3 +310,47 @@ export const onDeleteUserDomain = async (id: string) => {
         }
     }
 }
+
+export const onCreateHelpDeskQuestion = async (
+    id: string,
+    question: string,
+    answer: string
+) => {
+    try {
+        const helpDeskQuestion = await client.domain.update({
+            where: {
+                id: id,
+            },
+            data: {
+                helpdesk: {
+                    create: {
+                        question,
+                        answer,
+                    }
+                }
+            },
+            include: {
+                helpdesk: {
+                    select: {
+                        id: true,
+                        question: true,
+                        answer: true,
+                    }
+                }
+            }
+        })
+
+        if (helpDeskQuestion) {
+            return {
+                status: 200,
+                message: 'New help desk question added',
+                questions: helpDeskQuestion.helpdesk,
+            }
+        }
+    } catch (error) {
+        return {
+            status: 400,
+            message: error
+        }
+    }
+}

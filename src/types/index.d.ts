@@ -227,4 +227,9 @@ declare global {
         className?: string
         button?: JSX.Element
     }
+
+    type AccordionProps = {
+        trigger: string
+        content: string
+    }
 }
