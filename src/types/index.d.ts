@@ -213,4 +213,8 @@ declare global {
         register: UseFormRegister<FieldValues>
         errors: FieldErrors<FieldValues>
     }
+
+    type BotTrainingFormProps = {
+        id: string
+    }
 }

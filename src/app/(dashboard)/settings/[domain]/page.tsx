@@ -1,6 +1,7 @@
 import { onGetCurrentDomainInfo } from '@/actions/auth'
 import SettingsForm from '@/components/forms/settings/SettingsForm'
 import InfoBar from '@/components/infobar/InfoBar'
+import BotTrainingForm from '@/components/settings/BotTrainingForm'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -17,6 +18,7 @@ const DomainSetting = async ({ params }: DomainSettingProps) => {
                     chatBot={domain.domains[0].chatBot}
                     plan={domain.subscription?.plan!}
                 />
+                <BotTrainingForm id={domain.domains[0].id} />
             </div>
         </>
     )
