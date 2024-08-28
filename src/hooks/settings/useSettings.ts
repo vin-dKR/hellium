@@ -1,13 +1,13 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps } from "@/schemas/settings.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { UploadClient } from '@uploadcare/upload-client'
 
@@ -174,6 +174,19 @@ export const useHelpDesk = (id: string) => {
             reset()
         }
     })
+
+    const onGetQuestions = async () => {
+        setLoading(true)
+        const questions = await onGetAllHelpDeskQuestions(id)
+        if (questions && questions.questions) {
+            setIsQuestions(questions.questions)
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        onGetQuestions()
+    }, [])
 
     return {
         register,

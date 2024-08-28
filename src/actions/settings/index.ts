@@ -354,3 +354,30 @@ export const onCreateHelpDeskQuestion = async (
         }
     }
 }
+
+
+export const onGetAllHelpDeskQuestions = async (id: string) => {
+    try {
+        const questions = await client.helpDesk.findMany({
+            where: {
+                domainId: id,
+            },
+            select: {
+                id: true,
+                question: true,
+                answer: true,
+            }
+        })
+
+        return {
+            status: 200,
+            message: 'All questions',
+            questions: questions,
+        }
+    } catch (error) {
+        return {
+            status: 400,
+            message: error
+        }
+    }
+} 
