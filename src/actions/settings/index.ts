@@ -419,3 +419,33 @@ export const onCreateFilterQuestions = async (id: string, question: string) => {
         }
     }
 }
+
+export const onGetAllFilterQuestions = async (id: string) => {
+    try {
+        const questions = await client.filterQuestions.findMany({
+            where: {
+                domainId: id
+            },
+            select: {
+                question: true,
+                id: true,
+            },
+            orderBy: {
+                question: 'asc'
+            }
+        })
+
+        if (questions) {
+            return {
+                status: 200,
+                message: '',
+                questions: questions,
+            }
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
+    }
+}

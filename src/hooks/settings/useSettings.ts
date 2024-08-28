@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions, onGetAllFilterQuestions } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps, FilterQuestionsSchemaProps, FilterQuestionsSchema } from "@/schemas/settings.schema"
@@ -225,6 +225,19 @@ export const useFilterQuestions = (id: string) => {
             setLoading(false)
         }
     })
+
+    const onGetQuestions = async () => {
+        setLoading(true)
+        const questions = await onGetAllFilterQuestions(id)
+        if (questions && questions.questions) {
+            setIsQuestions(questions.questions)
+            setLoading(false)
+        }
+    }
+
+    useEffect(() => {
+        onGetQuestions()
+    }, [])
 
     return {
         loading,
