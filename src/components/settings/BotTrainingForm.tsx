@@ -1,4 +1,7 @@
 import React from 'react'
+import TabsMenu from '../tabs/TabsMenu'
+import { TabsContent } from '../ui/tabs'
+import { HELP_DESK_TABS_MENU } from '@/constants/menu'
 
 
 const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
@@ -11,6 +14,20 @@ const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
                     train your bot to act the way you want it to.
                 </p>
             </div>
+            <TabsMenu triggers={HELP_DESK_TABS_MENU}>
+                <TabsContent
+                    value="help desk"
+                    className="w-full"
+                >
+                    hiii
+                </TabsContent>
+                <TabsContent
+                    value="questions"
+                    className="w-full"
+                >
+                    biii
+                </TabsContent>
+            </TabsMenu>
         </div>
     )
 }

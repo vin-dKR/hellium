@@ -217,4 +217,14 @@ declare global {
     type BotTrainingFormProps = {
         id: string
     }
+
+    type TabsMenuProps = {
+        triggers: {
+            label: string
+            icon?: JSX.Element
+        }[]
+        children: React.ReactNode
+        className?: string
+        button?: JSX.Element
+    }
 }
