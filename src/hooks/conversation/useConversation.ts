@@ -1,4 +1,4 @@
-import { onGetDomainChatRooms } from "@/actions/conversation"
+import { onGetChatMessages, onGetDomainChatRooms } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
 import { ConversationSearchSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -46,4 +46,25 @@ export const useConversation = () => {
         })
         return () => search.unsubscribe()
     }, [watch])
+
+
+    const onGetActiveChatMessages = async (id: string) => {
+        try {
+            loadMessages(true)
+            const messages = await onGetChatMessages(id)
+            if (Array.isArray(messages) && messages.length > 0) {
+                loadMessages(false)
+                setChatRoom(id)
+                setChats(messages[0].message)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    return {
+        register,
+        chatRooms,
+        loading,
+        onGetActiveChatMessages,
+    }
 }

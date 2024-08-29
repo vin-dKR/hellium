@@ -97,3 +97,37 @@ export const onGetDomainChatRooms = async (id: string) => {
         }
     }
 }
+
+export const onGetChatMessages = async (id: string) => {
+    try {
+        const message = await client.chatRoom.findMany({
+            where: {
+                id,
+            },
+            select: {
+                id: true,
+                live: true,
+                message: {
+                    select: {
+                        id: true,
+                        role: true,
+                        message: true,
+                        createdAt: true,
+                        seen: true
+                    },
+                    orderBy: {
+                        createdAt: 'asc'
+                    }
+                }
+            },
+        })
+
+        if (message) return message
+
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
+    }
+}
