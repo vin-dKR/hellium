@@ -232,4 +232,14 @@ declare global {
         trigger: string
         content: string
     }
+
+    type ConversationPageProps = {
+        domains?:
+        | {
+            name: string,
+            id: string,
+            icon: string,
+        }[]
+        | undefined
+    }
 }

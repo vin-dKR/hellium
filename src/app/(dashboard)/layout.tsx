@@ -1,6 +1,6 @@
 import { onLoginUser } from '@/actions/auth'
 import SideBar from '@/components/sidebar/SideBar'
-import { ChatProvider } from '@/context/userChatContext'
+import { ChatProvider } from '@/context/useChatContext'
 import React from 'react'
 
 const layout = async ({ children }: Props) => {

@@ -2,7 +2,7 @@
 
 import { onGetConversationMode, onToggleRealtime } from '@/actions/conversation'
 import { useToast } from '@/components/ui/use-toast'
-import { useChatContext } from '@/context/userChatContext'
+import { useChatContext } from '@/context/useChatContext'
 import { useClerk } from '@clerk/nextjs'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'

@@ -54,3 +54,46 @@ export const onGetConversationMode = async (id: string) => {
         }
     }
 }
+
+export const onGetDomainChatRooms = async (id: string) => {
+    try {
+        const domains = await client.domain.findUnique({
+            where: {
+                id,
+            },
+            select: {
+                customer: {
+                    select: {
+                        email: true,
+                        chatRoom: {
+                            select: {
+                                createdAt: true,
+                                id: true,
+                                message: {
+                                    select: {
+                                        message: true,
+                                        createdAt: true,
+                                        seen: true
+                                    },
+                                    orderBy: {
+                                        createdAt: 'desc'
+                                    },
+                                    take: 1,
+                                }
+                            }
+                        }
+                    },
+                }
+            }
+        })
+
+        if (domains) {
+            return domains
+        }
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
+    }
+}
