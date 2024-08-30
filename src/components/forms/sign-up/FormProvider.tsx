@@ -1,6 +1,6 @@
 'use client'
 
-import { Loader } from '@/components/loader'
+import { Loader } from '@/components/loader/Loader'
 import { AuthContextProvider } from '@/context/UseAuthContext'
 import { useSignUpForm } from '@/hooks/sign-up/useSignUp'
 import React from 'react'

@@ -1,3 +1,5 @@
+'use client'
+
 import { useConversation } from '@/hooks/conversation/useConversation'
 import React from 'react'
 import TabsMenu from '../tabs/TabsMenu'

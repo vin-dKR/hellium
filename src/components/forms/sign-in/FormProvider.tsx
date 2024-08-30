@@ -3,7 +3,7 @@ import { AuthContextProvider } from '@/context/UseAuthContext'
 import { useSignInForm } from '@/hooks/sign-in/useSignIn'
 import React from 'react'
 import { FormProvider } from 'react-hook-form'
-import { Loader } from '@/components/loader'
+import { Loader } from '@/components/loader/Loader'
 
 
 const LoginFormProvider = ({ children }: Props) => {

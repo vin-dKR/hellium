@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import TypeSelectionForm from './TypeSelectionForm'
 import dynamic from 'next/dynamic'
-import { Spinner } from '@/components/spinner'
+import { Spinner } from '@/components/spinner/Spinner'
 
 import { DynamicOptionsLoadingProps } from 'next/dynamic'
 

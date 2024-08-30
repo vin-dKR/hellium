@@ -1,3 +1,5 @@
+'use client'
+
 import { onGetChatMessages, onGetDomainChatRooms } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
 import { ConversationSearchSchema } from "@/schemas/conversation.schema"

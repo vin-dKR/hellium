@@ -7,7 +7,7 @@ import {
     CardDescription,
     CardTitle,
 } from '@/components/ui/card'
-import { useFilterQuestions, useHelpDesk } from '@/hooks/settings/useSettings'
+import { useFilterQuestions } from '@/hooks/settings/useSettings'
 import React from 'react'
 import FormGenerator from '../form-generator/FormGenerator'
 import { Button } from '@/components/ui/button'
