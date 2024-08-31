@@ -8,7 +8,10 @@ import { TabsContent } from '../ui/tabs'
 import { Loader } from '@/components/loader/Loader'
 import { CardDescription } from '../ui/card'
 import { Separator } from '@radix-ui/react-separator'
+import ConversationSearch from './ConversationSearch'
+import ChatCard from './ChatCard'
 
+type GetActiveChatMessages = (id: string) => void;
 
 const ConversationMenu = ({ domains }: ConversationPageProps) => {
     const { register, chatRooms, loading, onGetActiveChatMessages } = useConversation()
@@ -17,29 +20,33 @@ const ConversationMenu = ({ domains }: ConversationPageProps) => {
         <div className="py-3 px-0">
             <TabsMenu triggers={TABS_MENU}>
                 <TabsContent value="unread">
-                    {/* <ConversationSearch
+                    <ConversationSearch
                         domains={domains}
                         register={register}
-                    /> */}
+                    />
                     <div className="flex flex-col">
-                        <Loader loading={loading}>
-                            {chatRooms.length ? (
-                                chatRooms.map((room) => (
-                                    // <ChatCard
-                                    //     seen={room.chatRoom[0].message[0]?.seen}
-                                    //     id={room.chatRoom[0].id}
-                                    //     onChat={() => onGetActiveChatMessages(room.chatRoom[0].id)}
-                                    //     createdAt={room.chatRoom[0].message[0]?.createdAt}
-                                    //     key={room.chatRoom[0].id}
-                                    //     title={room.email!}
-                                    //     description={room.chatRoom[0].message[0]?.message}
-                                    // />
-                                    <div>never mind</div>
-                                ))
-                            ) : (
-                                <CardDescription>No chats for you domain</CardDescription>
-                            )}
-                        </Loader>
+                        {loading ? (
+                            <Loader loading={loading}>
+                                {chatRooms.length ? (
+                                    chatRooms.map((room) => (
+                                        <ChatCard
+                                            seen={room.chatRoom[0].message[0]?.seen}
+                                            id={room.chatRoom[0].id}
+                                            onChat={() => onGetActiveChatMessages(room.chatRoom[0].id)}
+                                            createdAt={room.chatRoom[0].message[0]?.createdAt}
+                                            key={room.chatRoom[0].id}
+                                            title={room.email!}
+                                            description={room.chatRoom[0].message[0]?.message}
+                                        />
+                                    ))
+                                ) : (
+                                    <CardDescription>No chats for your domain</CardDescription>
+                                )}
+                            </Loader>
+                        ) : (
+                            <CardDescription>No chats for your domain</CardDescription>
+                        )}
+
                     </div>
                 </TabsContent>
                 <TabsContent value="all">

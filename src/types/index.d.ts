@@ -242,4 +242,33 @@ declare global {
         }[]
         | undefined
     }
+
+    type ConversationSearchProps = {
+        register: UseFormRegister<FieldValues>
+        domains?:
+        | {
+            name: string
+            id: string
+            icon: string
+        }[]
+        | undefined
+    }
+
+    type ChatCardProps = {
+        title: string
+        description?: string
+        createdAt: Date
+        id: string
+        onChat(): void
+        seen?: boolean
+    }
+
+    type ChatCardProps = {
+        title: string
+        description?: string
+        createdAt: Date
+        id: string
+        onChat(): void
+        seen?: boolean
+    }
 }
