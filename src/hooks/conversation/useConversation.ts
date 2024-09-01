@@ -141,15 +141,15 @@ export const useChatWindow = () => {
 
     useEffect(() => {
         if (chatRoom) {
-            pusherClient.subscribe(chatRoom)
-            pusherClient.bind('realtime-mode', (data: any) => {
-                setChats((prev) => [...prev, data.chat])
-            })
+            // pusherClient.subscribe(chatRoom)
+            // pusherClient.bind('realtime-mode', (data: any) => {
+            //     setChats((prev) => [...prev, data.chat])
+            // })
 
-            return () => {
-                pusherClient.unbind('realtime-mode')
-                pusherClient.unsubscribe(chatRoom)
-            }
+            // return () => {
+            //     pusherClient.unbind('realtime-mode')
+            //     pusherClient.unsubscribe(chatRoom)
+            // }
         }
     }, [chatRoom])
 
@@ -164,12 +164,12 @@ export const useChatWindow = () => {
 
             if (message) {
                 const typedMessage = message as { message: { message: string, id: string }[] }
-                await onRealTimeChat(
-                    chatRoom!,
-                    typedMessage.message[0].message,
-                    typedMessage.message[0].id,
-                    'assistant'
-                )
+                // await onRealTimeChat(
+                //     chatRoom!,
+                //     typedMessage.message[0].message,
+                //     typedMessage.message[0].id,
+                //     'assistant'
+                // )
             }
         } catch (error) {
             console.log(error)
