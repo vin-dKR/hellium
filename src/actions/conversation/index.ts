@@ -146,3 +146,47 @@ export const onViewUnReadMessages = async (id: string) => {
         console.log(error)
     }
 }
+
+export const onOwnerSendMessage = async (
+    chatRoom: string,
+    message: string,
+    role: 'assistant' | 'user'
+) => {
+    try {
+        const chat = await client.chatRoom.update({
+            where: {
+               id: chatRoom, 
+            },
+            data: {
+                message: {
+                    create: {
+                        message,
+                        role,
+                    }
+                }
+            },
+            select: {
+                message: {
+                    select: {
+                        id: true,
+                        role: true,
+                        message: true,
+                        createdAt: true,
+                        seen: true,
+                    },
+                    orderBy: {
+                        createdAt: 'desc'
+                    },
+                    take: 1,
+                }
+            }
+        })
+        
+        if (chat) return chat
+    } catch (error) {
+        return {
+            status: 500,
+            message: error
+        }
+    }
+}
