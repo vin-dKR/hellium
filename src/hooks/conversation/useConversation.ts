@@ -2,10 +2,10 @@
 
 import { onGetChatMessages, onGetDomainChatRooms, onViewUnReadMessages } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
-import { getMonthName } from "@/lib/utils"
-import { ConversationSearchSchema } from "@/schemas/conversation.schema"
+import { getMonthName, pusherClient } from "@/lib/utils"
+import { ChatBotMessageSchema, ConversationSearchSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 
 export const useConversation = () => {
@@ -118,4 +118,25 @@ export const useChatTime = (createdAt: Date, roomId: string) => {
     }, [])
 
     return { messageSentAt, urgent, onSeenChat }
+}
+
+export const useChatWindow = async () => {
+    const { chats, setChats, loading, chatRoom } = useChatContext()
+    const messageWindowRef = useRef<HTMLElement | null>(null)
+    const { register, handleSubmit, reset } = useForm({
+        resolver: zodResolver(ChatBotMessageSchema),
+        mode: 'onChange'
+    })
+    const onScrollToBottom = () => {
+        messageWindowRef.current?.scroll({
+            top: messageWindowRef.current.scrollHeight,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }
+
+    useEffect(() => {
+        onScrollToBottom()
+    }, [chats, messageWindowRef])
+
 }
