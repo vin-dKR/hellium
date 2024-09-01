@@ -51,6 +51,8 @@
     "next": "14.2.5",
     "next-themes": "^0.3.0",
     "prisma": "^5.18.0",
+    "pusher": "^5.2.0",
+    "pusher-js": "^8.4.0-rc2",
     "react": "^18",
     "react-day-picker": "8.10.1",
     "react-dom": "^18",
