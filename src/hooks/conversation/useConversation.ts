@@ -1,6 +1,6 @@
 'use client'
 
-import { onGetChatMessages, onGetDomainChatRooms, onViewUnReadMessages } from "@/actions/conversation"
+import { onGetChatMessages, onGetDomainChatRooms, onOwnerSendMessage, onViewUnReadMessages } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
 import { getMonthName, pusherClient } from "@/lib/utils"
 import { ChatBotMessageSchema, ConversationSearchSchema } from "@/schemas/conversation.schema"
@@ -139,4 +139,17 @@ export const useChatWindow = async () => {
         onScrollToBottom()
     }, [chats, messageWindowRef])
 
+
+    const onHandleSentMessage = handleSubmit(async (values) => {
+        try {
+            const message = await onOwnerSendMessage(
+                chatRoom!,
+                values.content,
+                'assistant'
+            )
+            // server-action onRealTimeChat 
+        } catch (error) {
+            console.log(error)
+        }
+    })
 }
