@@ -3,6 +3,7 @@
 import React from 'react'
 import { Loader } from "@/components/loader/Loader"
 import { useChatWindow } from '@/hooks/conversation/useConversation'
+import Bubble from '../chatbot/Bubble'
 
 
 const Messenger = () => {
