@@ -1,6 +1,6 @@
 'use client'
 
-import { onGetChatMessages, onGetDomainChatRooms, onOwnerSendMessage, onViewUnReadMessages } from "@/actions/conversation"
+import { onGetChatMessages, onGetDomainChatRooms, onOwnerSendMessage, onRealTimeChat, onViewUnReadMessages } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
 import { getMonthName, pusherClient } from "@/lib/utils"
 import { ChatBotMessageSchema, ConversationSearchSchema } from "@/schemas/conversation.schema"
@@ -147,7 +147,16 @@ export const useChatWindow = async () => {
                 values.content,
                 'assistant'
             )
-            // server-action onRealTimeChat 
+            
+            if (message) {
+                const typedMessage = message as { message: { message: string, id: string }[] }
+                await onRealTimeChat(
+                    chatRoom!,
+                    typedMessage.message[0].message,
+                    typedMessage.message[0].id,
+                    'assistant'
+                )
+            }
         } catch (error) {
             console.log(error)
         }
