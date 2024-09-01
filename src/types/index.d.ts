@@ -271,4 +271,14 @@ declare global {
         onChat(): void
         seen?: boolean
     }
+
+    type BubbleProps = {
+        message: {
+            role: 'assistant' | 'user'
+            content: string
+            link?: string
+        }
+        createdAt?: Date
+    }
+
 }

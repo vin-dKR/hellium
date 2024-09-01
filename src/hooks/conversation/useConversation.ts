@@ -2,7 +2,7 @@
 
 import { onGetChatMessages, onGetDomainChatRooms, onOwnerSendMessage, onRealTimeChat, onViewUnReadMessages } from "@/actions/conversation"
 import { useChatContext } from "@/context/useChatContext"
-import { getMonthName, pusherClient } from "@/lib/utils"
+import { getMonthName } from "@/lib/utils"
 import { ChatBotMessageSchema, ConversationSearchSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useRef, useState } from "react"
@@ -147,7 +147,7 @@ export const useChatWindow = async () => {
                 values.content,
                 'assistant'
             )
-            
+
             if (message) {
                 const typedMessage = message as { message: { message: string, id: string }[] }
                 await onRealTimeChat(
@@ -161,4 +161,12 @@ export const useChatWindow = async () => {
             console.log(error)
         }
     })
+    return {
+        messageWindowRef,
+        register,
+        onHandleSentMessage,
+        chats,
+        loading,
+        chatRoom,
+    }
 }
