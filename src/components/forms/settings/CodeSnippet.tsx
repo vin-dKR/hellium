@@ -5,7 +5,7 @@ import { Copy } from 'lucide-react'
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 // @ts-ignore
-import { vscDarkPlus, xt256 } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { xt256 } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 
 const CodeSnippet = ({ id }: CodeSnippetProps) => {

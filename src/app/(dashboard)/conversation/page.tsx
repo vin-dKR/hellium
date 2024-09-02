@@ -2,7 +2,7 @@ import { onGetAllAccountDomains } from '@/actions/settings'
 import ConversationMenu from '@/components/conversation/ConversationMenu'
 import Messenger from '@/components/conversation/Messenger'
 import InfoBar from '@/components/infobar/InfoBar'
-import { Separator } from '@radix-ui/react-separator'
+import { Separator } from '@/components/ui/separator'
 import React from 'react'
 
 
@@ -18,7 +18,7 @@ const ConversationPage = async () => {
                 <div className="px-5">
                     <InfoBar />
                 </div>
-                <Messenger/>
+                <Messenger />
             </div>
         </div>
     )
