@@ -1,3 +1,4 @@
+import { onGetCurrentChatBot } from "@/actions/chatbot"
 import { postToParent } from "@/lib/utils"
 import { ChatBotMessageProps, ChatBotMessageSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -84,7 +85,17 @@ export const useChatbot = () => {
     // Function to fetch and set the current chatbot based on the provided ID
     const onGetDomainChatBot = async (id: string) => {
         setCurrentBotId(id)
-        // SA: to call the chatbot
-        
+        const chatbot = await onGetCurrentChatBot(id)
+        if (chatbot) {
+            setOnChats((prev) => [
+                ...prev,
+                {
+                    role: 'assistant',
+                    content: chatbot.chatBot?.welcomeMessage!,
+                },
+            ])
+            setCurrentBot(chatbot)
+            setLoading(false)
+        }
     }
 }
