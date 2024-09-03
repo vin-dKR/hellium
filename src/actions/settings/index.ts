@@ -1,7 +1,7 @@
 'use server'
 
 import client from "@/lib/prisma"
-import { clerkClient, currentUser } from "@clerk/nextjs/server"
+import { clerkClient, currentUser } from "@clerk/nextjs"
 
 export const onGetSubsPlan = async () => {
     try {

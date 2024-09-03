@@ -1,7 +1,7 @@
 'use server'
 
 import client from '@/lib/prisma'
-import { auth, currentUser } from '@clerk/nextjs/server'
+import { currentUser, redirectToSignIn } from '@clerk/nextjs'
 import { onGetAllAccountDomains } from '../settings'
 
 export const onCompleteUserRegistration = async (
@@ -36,7 +36,7 @@ export const onCompleteUserRegistration = async (
 
 export const onLoginUser = async () => {
     const user = await currentUser()
-    if (!user) auth().redirectToSignIn()
+    if (!user) redirectToSignIn()
     else {
         try {
             const authenticated = await client.user.findUnique({

@@ -1,4 +1,4 @@
-import { currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import React from 'react'
