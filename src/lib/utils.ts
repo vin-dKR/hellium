@@ -31,6 +31,12 @@ export const pusherClient = {}
 //   }
 // )
 
+export const postToParent = (message: string) => {
+  // Sends a message to the parent window (if in an iframe) using the postMessage API.
+  // The '*' target origin allows the message to be sent to any origin.
+  window.parent.postMessage(message, '*')
+}
+
 export const getMonthName = (month: number) => {
   return month == 1
     ? 'Jan'
