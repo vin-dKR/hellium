@@ -1,4 +1,4 @@
-import { onGetCurrentChatBot } from "@/actions/chatbot"
+import { onAiChatBotAssistant, onGetCurrentChatBot } from "@/actions/chatbot"
 import { postToParent } from "@/lib/utils"
 import { ChatBotMessageProps, ChatBotMessageSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -127,12 +127,63 @@ export const useChatbot = () => {
 
             console.log('🟡 RESPONSE FROM UC', uploaded.uuid)
             setOnAiTyping(true)
-            
-            // SA: AI chatbot assistant
+
+            const response = await onAiChatBotAssistant(
+                currentBotId!,
+                onChats,
+                'user',
+                uploaded.uuid
+            )
+
+            if (response) {
+                setOnAiTyping(false)
+                if (response.live) {
+                    setOnRealTime((prev) => ({
+                        ...prev,
+                        chatroom: response.chatRoom,
+                        mode: response.live,
+                    }))
+                } else {
+                    setOnChats((prev: any) => [...prev, response.response])
+                }
+            }
         }
         reset()
 
-        
+        if (values.content) {
+            if (!onRealTime?.mode) {
+                setOnChats((prev: any) => [
+                    ...prev,
+                    {
+                        role: 'user',
+                        content: values.content,
+                    },
+                ])
+            }
+
+            setOnAiTyping(true)
+
+            const response = await onAiChatBotAssistant(
+                currentBotId!,
+                onChats,
+                'user',
+                values.content
+            )
+
+            if (response) {
+                setOnAiTyping(false)
+                if (response.live) {
+                    setOnRealTime((prev) => ({
+                        ...prev,
+                        chatroom: response.chatRoom,
+                        mode: response.live,
+                    }))
+                } else {
+                    setOnChats((prev: any) => [...prev, response.response])
+                }
+            }
+
+        }
     })
 
     return {
