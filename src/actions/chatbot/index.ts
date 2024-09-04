@@ -199,6 +199,12 @@ export const onAiChatBotAssistant = async (
                         chatRoom: checkCustomer.customer[0].chatRoom[0].id,
                     }
                 }
+
+                await onStoreConversations(
+                    checkCustomer?.customer[0].chatRoom[0].id!,
+                    message,
+                    author
+                )
             }
         }
     }
