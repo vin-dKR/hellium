@@ -281,4 +281,36 @@ declare global {
         createdAt?: Date
     }
 
+    type BotWindowProps = {
+        errors: any
+        register: UseFormRegister<ChatBotMessageProps>
+        chats: { role: 'assistant' | 'user'; content: string; link?: string }[]
+        onChat(): void
+        onResponding: boolean
+        domainName: string
+        theme?: string | null
+        textColor?: string | null
+        help?: boolean
+        realtimeMode:
+        | {
+            chatroom: string
+            mode: boolean
+        }
+        | undefined
+        helpdesk: {
+            id: string
+            question: string
+            answer: string
+            domainId: string | null
+        }[]
+        setChat: React.Dispatch<
+            React.SetStateAction<
+                {
+                    role: 'user' | 'assistant'
+                    content: string
+                    link?: string | undefined
+                }[]
+            >
+        >
+    }
 }
