@@ -2,6 +2,9 @@
 
 import client from "@/lib/prisma"
 import { extractEmailsFromString } from "@/lib/utils"
+import { onRealTimeChat } from "../conversation"
+import { clerkClient } from "@clerk/nextjs"
+import { onMailer } from "../mailer"
 
 export const onGetCurrentChatBot = async (id: string) => {
     try {
@@ -154,12 +157,52 @@ export const onAiChatBotAssistant = async (
                     }
                 }
                 if (checkCustomer && checkCustomer.customer[0].chatRoom[0].live) {
-                    // SA: onStoreConversations
-                }
+                    await onStoreConversations(
+                        checkCustomer?.customer[0].chatRoom[0].id!,
+                        message,
+                        author
+                    )
 
+                    onRealTimeChat(
+                        checkCustomer.customer[0].chatRoom[0].id,
+                        message,
+                        'user',
+                        author
+                    )
+
+                    if (!checkCustomer.customer[0].chatRoom[0].mailed) {
+                        const user = await clerkClient.users.getUser(
+                            checkCustomer.User?.clerkId!
+                        )
+
+                        onMailer(user.emailAddresses[0].emailAddress)
+
+                        //update mail status to prevent spamming
+                        const mailed = await client.chatRoom.update({
+                            where: {
+                                id: checkCustomer.customer[0].chatRoom[0].id,
+                            },
+                            data: {
+                                mailed: true,
+                            },
+                        })
+
+                        if (mailed) {
+                            return {
+                                live: true,
+                                chatRoom: checkCustomer.customer[0].chatRoom[0].id,
+                            }
+                        }
+                    }
+                    return {
+                        live: true,
+                        chatRoom: checkCustomer.customer[0].chatRoom[0].id,
+                    }
+                }
             }
         }
-    } catch (error) {
+    }
+    catch (error) {
         console.log(error)
     }
 }
