@@ -5,6 +5,12 @@ import { extractEmailsFromString } from "@/lib/utils"
 import { onRealTimeChat } from "../conversation"
 import { clerkClient } from "@clerk/nextjs"
 import { onMailer } from "../mailer"
+import OpenAi from 'openai'
+
+const openai = new OpenAi({
+    apiKey: process.env.OPEN_AI_KEY,
+})
+
 
 export const onGetCurrentChatBot = async (id: string) => {
     try {
@@ -205,6 +211,54 @@ export const onAiChatBotAssistant = async (
                     message,
                     author
                 )
+
+                const chatCompletion = await openai.chat.completions.create({
+                    messages: [
+                        {
+                            role: 'assistant',
+                            content: `
+                        You will get an array of questions that you must ask the customer. 
+                        
+                        Progress the conversation using those questions. 
+                        
+                        Whenever you ask a question from the array i need you to add a keyword at the end of the question (complete) this keyword is extremely important. 
+                        
+                        Do not forget it.
+          
+                        only add this keyword when your asking a question from the array of questions. No other question satisfies this condition
+          
+                        Always maintain character and stay respectfull.
+          
+                        The array of questions : [${chatBotDomain.filterQuestions
+                                    .map((questions) => questions.question)
+                                    .join(', ')}]
+          
+                        if the customer says something out of context or inapporpriate. Simply say this is beyond you and you will get a real user to continue the conversation. And add a keyword (realtime) at the end.
+          
+                        if the customer agrees to book an appointment send them this link http://localhost:3000/portal/${id}/appointment/${checkCustomer?.customer[0].id
+                                }
+          
+                        if the customer wants to buy a product redirect them to the payment page http://localhost:3000/portal/${id}/payment/${checkCustomer?.customer[0].id
+                                }
+                    `,
+                        },
+                        ...chat,
+                        {
+                            role: 'user',
+                            content: message,
+                        },
+                    ],
+                    model: 'gpt-3.5-turbo',
+                })
+
+                if (chatCompletion) {
+                    const response = {
+                        role: 'assistant',
+                        content: chatCompletion.choices[0].message.content,
+                    }
+
+                    return { response }
+                }
             }
         }
     }
