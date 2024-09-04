@@ -34,13 +34,29 @@ export const onGetCurrentChatBot = async (id: string) => {
 }
 
 
-
-
-
-
-
-
-
+export const onStoreConversations = async (
+    id: string,
+    message: string,
+    role: 'assistant' | 'user'
+) => {
+    try {
+        await client.chatRoom.update({
+            where: {
+                id,
+            },
+            data: {
+                message: {
+                    create: {
+                        message,
+                        role,
+                    }
+                }
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 
