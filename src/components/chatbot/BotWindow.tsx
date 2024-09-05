@@ -1,5 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import RealTimeMode from './RealTimeMode'
+import Image from 'next/image'
 
 // huge perops in BotWindowProps..
 const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
@@ -33,7 +35,7 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                         </Avatar>
                         <div className="flex items-start flex-col">
                             <h3 className="text-lg font-bold leading-none">
-                                Sales Rep - Web Prodigies
+                                Sales Rep - Hellium
                             </h3>
                             <p className="text-sm">{domainName.split('.com')[0]}</p>
                             {realtimeMode?.mode && (
@@ -43,6 +45,14 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                                 />
                             )}
                         </div>
+                    </div>
+                    <div className="relative w-16 h-16">
+                        <Image
+                            src="https://ucarecdn.com/019dd17d-b69b-4dea-a16b-60e0f25de1e9/propuser.png"
+                            fill
+                            alt="users"
+                            objectFit="contain"
+                        />
                     </div>
                 </div>
             </div>

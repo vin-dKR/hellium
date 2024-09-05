@@ -2,6 +2,9 @@
 import { useChatbot } from '@/hooks/chat-bot/useChatbot'
 import React from 'react'
 import BotWindow from './BotWindow'
+import Image from 'next/image'
+import { BotIcon } from '@/icons/bot-icon'
+import { cn } from '@/lib/utils'
 
 
 const AiChatbot = () => {
@@ -38,6 +41,23 @@ const AiChatbot = () => {
                     onResponding={onAiTyping}
                 />
             )}
+            <div
+                className={cn(
+                    'rounded-full relative cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis',
+                    loading ? 'invisible' : 'visible'
+                )}
+                onClick={onOpenChatBot}
+            >
+                {currentBot?.chatBot?.icon ? (
+                    <Image
+                        src={`https://ucarecdn.com/${currentBot.chatBot.icon}/`}
+                        alt="bot"
+                        fill
+                    />
+                ) : (
+                    <BotIcon />
+                )}
+            </div>
         </div>
     )
 }

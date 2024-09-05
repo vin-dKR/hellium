@@ -313,4 +313,17 @@ declare global {
             >
         >
     }
+
+    type RealTimeModeProps = {
+        chatRoomId: string
+        setChats: React.Dispatch<
+            React.SetStateAction<
+                {
+                    role: 'user' | 'assistant'
+                    content: string
+                    link?: string | undefined
+                }[]
+            >
+        >
+    }
 }
