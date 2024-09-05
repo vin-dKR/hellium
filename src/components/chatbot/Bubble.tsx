@@ -35,42 +35,34 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
             )}
             <div
                 className={cn(
-                    'flex flex-col gap-3 min-w-[200px] max-w-[300px] p-4 rounded-t-md',
+                    'flex flex-col min-w-[200px] max-w-[300px] p-1 rounded-lg shadow-lg',
                     message.role == 'assistant'
-                        ? 'bg-muted rounded-r-md'
-                        : 'bg-grandis rounded-l-md'
+                        ? 'bg-white border border-gray-300 rounded-br-lg'
+                        : 'bg-grandis border border-grandis rounded-bl-lg'
                 )}
             >
                 {createdAt ? (
-                    <div className="flex gap-2 text-xs text-gray-600">
-                        <p>
+                    <div className="flex text-xs text-gray-600 mb-2">
+                        <p className="font-semibold">
                             {createdAt.getDate()} {getMonthName(createdAt.getMonth())}
                         </p>
-                        <p>
-                            {createdAt.getHours()}:{createdAt.getMinutes()}
-                            {createdAt.getHours() > 12 ? 'PM' : 'AM'}
-                        </p>
                     </div>
-                ) : (
-                    <p className="text-xs">
-                        {`${d.getHours()}:${d.getMinutes()} ${d.getHours() > 12 ? 'pm' : 'am'
-                            }`}
-                    </p>
-                )}
+                ) : null}
                 {image ? (
-                    <div className="relative aspect-square">
+                    <div className="relative aspect-square rounded-lg overflow-hidden">
                         <Image
                             src={`https://ucarecdn.com/${image[0]}/`}
                             fill
                             alt="image"
+                            className="object-cover"
                         />
                     </div>
                 ) : (
-                    <p className="text-sm">
+                    <p className="text-sm text-gray-800">
                         {message.content.replace('(complete)', ' ')}
                         {message.link && (
                             <Link
-                                className="underline font-bold pl-2"
+                                className="underline font-bold pl-2 text-blue-600 hover:text-blue-800"
                                 href={message.link}
                                 target="_blank"
                             >
@@ -79,6 +71,13 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
                         )}
                     </p>
                 )}
+                <p className="text-xs text-gray-600 mt-0 text-right">
+                    {createdAt ? (
+                        `${createdAt.getHours()}:${String(createdAt.getMinutes()).padStart(2, '0')} ${createdAt.getHours() > 12 ? 'PM' : 'AM'}`
+                    ) : (
+                        `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')} ${d.getHours() > 12 ? 'pm' : 'am'}`
+                    )}
+                </p>
             </div>
         </div>
     )

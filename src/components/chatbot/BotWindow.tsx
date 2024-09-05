@@ -2,6 +2,18 @@ import React, { forwardRef } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import RealTimeMode from './RealTimeMode'
 import Image from 'next/image'
+import TabsMenu from '../tabs/TabsMenu'
+import { BOT_TABS_MENU } from '@/constants/menu'
+import { TabsContent } from '../ui/tabs'
+import { Separator } from '../ui/separator'
+import Bubble from './Bubble'
+import { Responding } from './Responding'
+import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { Paperclip, Send } from 'lucide-react'
+import { Label } from '../ui/label'
+import { CardDescription, CardTitle } from '../ui/card'
+import Accordion from '../accordion/Accordion'
 
 // huge perops in BotWindowProps..
 const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
@@ -55,6 +67,78 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                         />
                     </div>
                 </div>
+                <TabsMenu
+                    triggers={BOT_TABS_MENU}
+                    className=" bg-transparent border-[1px] border-border m-2"
+                >
+                    <TabsContent value="chat">
+                        <Separator orientation="horizontal" />
+                        <div className="flex flex-col h-full">
+                            <div
+                                style={{
+                                    background: theme || '',
+                                    color: textColor || '',
+                                }}
+                                className="px-3 flex h-[400px] flex-col py-5 gap-3 chat-window overflow-y-auto"
+                                ref={ref}
+                            >
+                                {chats.map((chat, key) => (
+                                    <Bubble
+                                        key={key}
+                                        message={chat}
+                                    />
+                                ))}
+                                {onResponding && <Responding />}
+                            </div>
+                            <form
+                                onSubmit={onChat}
+                                className="flex px-3 py-1 flex-col flex-1 bg-porcelain"
+                            >
+                                <div className="flex justify-between items-center">
+                                    <Label htmlFor="bot-image">
+                                        <Paperclip />
+                                        <Input
+                                            {...register('image')}
+                                            type="file"
+                                            id="bot-image"
+                                            className="hidden"
+                                        />
+                                    </Label>
+                                    <Input
+                                        {...register('content')}
+                                        placeholder="Type your message..."
+                                        className="focus-visible:ring-0 flex-1 focus-visible:ring-offset-0 bg-porcelain rounded-none outline-none border-none pl-2"
+                                    />
+                                    <Button
+                                        type="submit"
+                                    >
+                                        <Send />
+                                    </Button>
+                                </div>
+                            </form>
+                        </div>
+                    </TabsContent>
+
+                    <TabsContent value="helpdesk">
+                        <div className="h-[485px] overflow-y-auto overflow-x-hidden p-4 flex flex-col gap-4">
+                            <div>
+                                <CardTitle>Help Desk</CardTitle>
+                                <CardDescription>
+                                    Browse from a list of questions people usually ask.
+                                </CardDescription>
+                            </div>
+                            <Separator orientation="horizontal" />
+
+                            {helpdesk.map((desk) => (
+                                <Accordion
+                                    key={desk.id}
+                                    trigger={desk.question}
+                                    content={desk.answer}
+                                />
+                            ))}
+                        </div>
+                    </TabsContent>
+                </TabsMenu>
             </div>
         )
     }
