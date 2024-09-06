@@ -151,6 +151,7 @@ export const useChatbot = () => {
         reset()
 
         if (values.content) {
+            console.log("va,lue content!!")
             if (!onRealTime?.mode) {
                 setOnChats((prev: any) => [
                     ...prev,
