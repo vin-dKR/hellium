@@ -95,12 +95,12 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                                 className="flex px-3 py-1 flex-col flex-1 bg-porcelain"
                             >
                                 <div className="flex justify-between items-center">
-                                    <Label htmlFor="bot-image">
+                                    <Label htmlFor="upload">
                                         <Paperclip />
                                         <Input
                                             {...register('image')}
                                             type="file"
-                                            id="bot-image"
+                                            id="upload"
                                             className="hidden"
                                         />
                                     </Label>

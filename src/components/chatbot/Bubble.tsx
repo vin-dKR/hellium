@@ -9,7 +9,7 @@ import Link from 'next/link'
 const Bubble = ({ message, createdAt }: BubbleProps) => {
     let d = new Date()
     const image = extractUUIDFromString(message.content)
-    console.log(message.link)
+    // console.log(message.content)
 
     return (
         <div
@@ -35,7 +35,7 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
             )}
             <div
                 className={cn(
-                    'flex flex-col min-w-[200px] max-w-[300px] p-1 rounded-lg shadow-lg',
+                    'flex flex-col min-w-[200px] max-w-[300px] px-2 py-1 rounded-lg shadow-lg',
                     message.role == 'assistant'
                         ? 'bg-white border border-gray-300 rounded-br-lg'
                         : 'bg-grandis border border-grandis rounded-bl-lg'
@@ -59,6 +59,7 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
                     </div>
                 ) : (
                     <p className="text-sm text-gray-800">
+                        {/* actual message */}
                         {message.content.replace('(complete)', ' ')}
                         {message.link && (
                             <Link
@@ -71,7 +72,7 @@ const Bubble = ({ message, createdAt }: BubbleProps) => {
                         )}
                     </p>
                 )}
-                <p className="text-xs text-gray-600 mt-0 text-right">
+                <p className="text-[10px] text-gray-600 mt-0 text-right">
                     {createdAt ? (
                         `${createdAt.getHours()}:${String(createdAt.getMinutes()).padStart(2, '0')} ${createdAt.getHours() > 12 ? 'PM' : 'AM'}`
                     ) : (

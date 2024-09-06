@@ -2,7 +2,7 @@
 
 import client from "@/lib/prisma"
 //WIP
-// import { pusherServer } from "@/lib/utils"
+import { pusherServer } from "@/lib/utils"
 
 export const onToggleRealtime = async (id: string, state: boolean) => {
     try {
@@ -200,12 +200,12 @@ export const onRealTimeChat = async (
     role: 'assistant' | 'user'
 ) => {
     //WIP
-    // pusherServer.trigger(chatroomId, 'realtime-mode', {
-    //     chat: {
-    //         message: {
-    //             id,
-    //             role,
-    //         }
-    //     }
-    // })
+    pusherServer.trigger(chatroomId, 'realtime-mode', {
+        chat: {
+            message: {
+                id,
+                role,
+            }
+        }
+    })
 }

@@ -1,5 +1,5 @@
 import { onAiChatBotAssistant, onGetCurrentChatBot } from "@/actions/chatbot"
-import { postToParent } from "@/lib/utils"
+import { postToParent, pusherClient } from "@/lib/utils"
 import { ChatBotMessageProps, ChatBotMessageSchema } from "@/schemas/conversation.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useRef, useState } from "react"
@@ -83,7 +83,7 @@ export const useChatbot = () => {
 
     useEffect(() => {
         window.addEventListener('message', (e) => {
-            console.log(e.data)
+            // console.log(e.data)
             const botid = e.data
             if (limitRequest < 1 && typeof botid == 'string') {
                 onGetDomainChatBot(botid)
@@ -218,23 +218,23 @@ export const useRealTime = (
 
     useEffect(() => {
         //WIP
-        // pusherClient.subscribe(chatRoom)
-        // pusherClient.bind('realtime-mode', (data: any) => {
-        //     console.log('✅', data)
-        //     if (counterRef.current !== 1) {
-        //         setChats((prev: any) => [
-        //             ...prev,
-        //             {
-        //                 role: data.chat.role,
-        //                 content: data.chat.message,
-        //             },
-        //         ])
-        //     }
-        //     counterRef.current += 1
-        // })
-        // return () => {
-        //     pusherClient.unbind('realtime-mode')
-        //     pusherClient.unsubscribe(chatRoom)
-        // }
+        pusherClient.subscribe(chatRoom)
+        pusherClient.bind('realtime-mode', (data: any) => {
+            console.log('✅', data)
+            if (counterRef.current !== 1) {
+                setChats((prev: any) => [
+                    ...prev,
+                    {
+                        role: data.chat.role,
+                        content: data.chat.message,
+                    },
+                ])
+            }
+            counterRef.current += 1
+        })
+        return () => {
+            pusherClient.unbind('realtime-mode')
+            pusherClient.unsubscribe(chatRoom)
+        }
     }, [])
 }

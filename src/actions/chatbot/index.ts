@@ -256,7 +256,7 @@ export const onAiChatBotAssistant = async (
                         role: 'assistant',
                         content: chatCompletion.choices[0].message.content,
                     }
-
+                    console.log(response)
                     return { response }
                 }
             }
