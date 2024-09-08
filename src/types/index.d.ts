@@ -326,4 +326,11 @@ declare global {
             >
         >
     }
+
+    type CustomerSignUpFormProps = {
+        params: {
+            domainid: string;
+            customerid: string
+        }
+    }
 }
