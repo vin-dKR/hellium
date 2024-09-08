@@ -27,3 +27,23 @@ export const onDomainCustomerResponses = async (customerId: string) => {
         console.log(error)
     }
 }
+
+export const onGetAllDomainBookings = async (domainId: string) => {
+    try {
+        const bookings = await client.bookings.findMany({
+            where: {
+                id: domainId
+            },
+            select: {
+                slot: true,
+                date: true,
+            }
+        })
+
+        if (bookings) {
+            return bookings
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
