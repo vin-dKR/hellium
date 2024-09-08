@@ -12,6 +12,7 @@ const PortalForm = ({
     amount,
     stripeId,
 }: PortalFormProps) => {
+    // hooks: usePortal
     return (
         <div>
             portla form
