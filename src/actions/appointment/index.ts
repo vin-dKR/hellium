@@ -1,6 +1,7 @@
 'use server'
 
 import client from "@/lib/prisma"
+import { boolean } from "zod"
 
 export const onDomainCustomerResponses = async (customerId: string) => {
     try {
@@ -46,4 +47,36 @@ export const onGetAllDomainBookings = async (domainId: string) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const onBookNewAppointment = async (
+    domainId: string,
+    customerId: string,
+    slot: string,
+    date: string,
+    email: string
+) => {
+    try {
+        const bookings = await client.customer.update({
+            where: {
+                id: customerId,
+            },
+            data: {
+                booking: {
+                    create: {
+                        domainId,
+                        slot,
+                        date,
+                        email
+                    }
+                }
+            }
+        })
+        if (bookings) {
+            return { status: 200, message: 'Booking created' }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
 }
