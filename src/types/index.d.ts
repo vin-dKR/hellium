@@ -360,4 +360,38 @@ declare global {
         amount?: number
         stripeId?: string
     }
+
+    type PortalStepsProps = {
+        questions: {
+            id: string
+            question: string
+            answered: string | null
+        }[]
+        type: 'Appointment' | 'Payment'
+        register: UseFormRegister<FieldValues>
+        error: FieldErrors<FieldValues>
+        onNext(): void
+        step: number
+        date: Date | undefined
+        onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>
+        onBack(): void
+        onSlot(slot: string): void
+        slot?: string
+        loading: boolean
+        bookings?:
+        | {
+            date: Date
+            slot: string
+        }[]
+        | undefined
+        products?:
+        | {
+            name: string
+            image: string
+            price: number
+        }[]
+        | undefined
+        amount?: number
+        stripeId?: string
+    }
 }
