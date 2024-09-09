@@ -1,3 +1,4 @@
+import usePortal from '@/hooks/portal/usePortal'
 import React from 'react'
 
 
@@ -12,7 +13,19 @@ const PortalForm = ({
     amount,
     stripeId,
 }: PortalFormProps) => {
-    // hooks: usePortal
+    const {
+        step,
+        onNext,
+        onPrev,
+        register,
+        errors,
+        date,
+        setDate,
+        onBookAppointment,
+        onSelectedTimeSlot,
+        selectedSlot,
+        loading,
+    } = usePortal(customerId, domainid, email)
     return (
         <div>
             portla form
