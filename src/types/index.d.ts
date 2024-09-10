@@ -394,4 +394,15 @@ declare global {
         amount?: number
         stripeId?: string
     }
+
+    type QuestionsFormProps = {
+        questions: {
+            id: string
+            question: string
+            answered: string | null
+        }[]
+        register: UseFormRegister<FieldValues>
+        error: FieldErrors<FieldValues>
+        onNext(): void
+    }
 }

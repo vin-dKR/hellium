@@ -1,4 +1,5 @@
 import React from 'react'
+import QuestionsForm from './QuestionForm'
 
 
 const PortalSteps = ({
@@ -22,7 +23,12 @@ const PortalSteps = ({
     if (step == 1) {
         return (
             <div>
-                {/* Question Form */}
+                <QuestionsForm
+                    register={register}
+                    error={error}
+                    onNext={onNext}
+                    questions={questions}
+                />
             </div>
         )
     }
