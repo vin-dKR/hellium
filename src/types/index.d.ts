@@ -405,4 +405,20 @@ declare global {
         error: FieldErrors<FieldValues>
         onNext(): void
     }
+
+    type BookAppointmentDateProps = {
+        date: Date | undefined
+        onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>
+        onBack(): void
+        register: UseFormRegister<FieldValues>
+        onSlot(slot: string): void
+        currentSlot?: string
+        loading: boolean
+        bookings:
+        | {
+            date: Date
+            slot: string
+        }[]
+        | undefined
+    }
 }

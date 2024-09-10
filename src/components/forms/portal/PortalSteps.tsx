@@ -1,5 +1,6 @@
 import React from 'react'
 import QuestionsForm from './QuestionForm'
+import BookAppointmentDate from './BookAppointmentDate'
 
 
 const PortalSteps = ({
@@ -36,7 +37,16 @@ const PortalSteps = ({
     if (step == 2 && type == 'Appointment') {
         return (
             <div>
-                {/* Book Appointment Date */}
+                <BookAppointmentDate
+                    date={date}
+                    bookings={bookings}
+                    currentSlot={slot}
+                    register={register}
+                    onBack={onBack}
+                    onBooking={onBooking}
+                    onSlot={onSlot}
+                    loading={loading}
+                />
             </div>
         )
     }
