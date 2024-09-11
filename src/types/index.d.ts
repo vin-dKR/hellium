@@ -421,4 +421,8 @@ declare global {
         }[]
         | undefined
     }
+
+    type CustomerPaymentFormProps = {
+        onNext(): void
+    }
 }

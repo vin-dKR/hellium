@@ -1,7 +1,6 @@
 'use server'
 
 import client from "@/lib/prisma"
-import { boolean } from "zod"
 
 export const onDomainCustomerResponses = async (customerId: string) => {
     try {
