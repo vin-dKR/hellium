@@ -1,12 +1,12 @@
 import { PortalBanner } from '@/components/portal/PortalBanner'
 import React from 'react'
 
-type Props = {}
 
-const layout = (props: Props) => {
+const layout = ({ children }: Props) => {
   return (
     <div>
       <PortalBanner />
+      <div className="container flex justify-center flex-1 h-0 mt-12">{children}</div>
     </div>
   )
 }

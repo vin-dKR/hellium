@@ -1,3 +1,5 @@
+'use client'
+
 import usePortal from '@/hooks/portal/usePortal'
 import { cn } from '@/lib/utils'
 import React, { useEffect } from 'react'

@@ -1,6 +1,6 @@
 import { onBookNewAppointment } from '@/actions/appointment'
 import { useToast } from '@/components/ui/use-toast'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 

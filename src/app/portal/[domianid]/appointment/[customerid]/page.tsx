@@ -7,7 +7,7 @@ const CustomerSignUpForm = async ({ params }: CustomerSignUpFormProps) => {
     const questions = await onDomainCustomerResponses(params.customerid)
     const bookings = await onGetAllDomainBookings(params.customerid)
 
-    if (!questions) return null
+    if (!questions) return <h3>You have no questions!</h3>
 
     return (
         <div>

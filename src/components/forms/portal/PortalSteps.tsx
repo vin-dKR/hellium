@@ -55,6 +55,7 @@ const PortalSteps = ({
     if (step == 2 && type == 'Payment') {
         return (
             <div>
+                {/* WIP */}
                 {/* Paymetn Checkout */}
             </div>
         )
