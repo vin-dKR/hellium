@@ -82,7 +82,7 @@ export const onBookNewAppointment = async (
 
 export const onGetAllDomainBookingsForCurrentUser = async (clerkId: string) => {
     try {
-        const booking = await client.bookings.findMany({
+        const bookings = await client.bookings.findMany({
             where: {
                 Customer: {
                     Domain: {
@@ -111,9 +111,9 @@ export const onGetAllDomainBookingsForCurrentUser = async (clerkId: string) => {
             }
         })
 
-        if (booking) {
+        if (bookings) {
             return {
-                booking
+                bookings
             }
         }
     } catch (error) {

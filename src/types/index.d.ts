@@ -425,4 +425,27 @@ declare global {
     type CustomerPaymentFormProps = {
         onNext(): void
     }
+
+    type AllAppointmentProps = {
+        bookings:
+        | {
+            Customer: {
+                Domain: {
+                    name: string
+                } | null
+            } | null
+            id: string
+            email: string
+            domainId: string | null
+            date: Date
+            slot: string
+            createdAt: Date
+        }[]
+        | undefined
+    }
+
+    type DataTableProps = {
+        headers: string[]
+        children: React.ReactNode
+    }
 }
