@@ -448,4 +448,10 @@ declare global {
         headers: string[]
         children: React.ReactNode
     }
+
+    type IntegrationListProps = {
+        connections: {
+            strip: boolean
+        }
+    }
 }
