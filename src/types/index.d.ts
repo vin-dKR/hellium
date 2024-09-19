@@ -454,4 +454,21 @@ declare global {
             strip: boolean
         }
     }
+
+    type IntegrationTriggersProps = {
+        name: 'stripe',
+        logo: string,
+        title: string,
+        description: string,
+        connections: {
+            [key in 'stripe']: boolean
+        }
+    }
+
+    type ModalBodyProps = {
+        type: string,
+        connection: {
+            [key in 'stripe']: boolean
+        }
+    }
 }

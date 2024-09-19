@@ -1,15 +1,5 @@
 import React from 'react'
 
-type IntegrationTriggersProps = {
-    name: 'stripe',
-    logo: string,
-    title: string,
-    description: string,
-    connections: {
-        [key in 'stripe']: boolean
-    }
-}
-
 const IntegrationTriggers = ({
     name,
     logo,
@@ -20,7 +10,7 @@ const IntegrationTriggers = ({
     return (
         <>
             {/* <Modal>
-            impleementation........
+            WIP: impleementation........
             </Modal> */}
         </>
     )
