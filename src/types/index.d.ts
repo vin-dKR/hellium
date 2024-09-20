@@ -471,4 +471,13 @@ declare global {
             [key in 'stripe']: boolean
         }
     }
+
+    type ModalProps = {
+        trigger: React.ReactNode
+        children: React.ReactNode
+        title: string
+        description: string
+        type?: 'Integration'
+        logo?: string
+    }
 }
