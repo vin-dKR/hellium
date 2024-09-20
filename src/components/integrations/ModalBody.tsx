@@ -5,7 +5,7 @@ import { Button } from '../ui/button'
 
 const ModalBody = ({
     type,
-    connection
+    connections
 }: ModalBodyProps) => {
     switch (type) {
         case 'stripe':

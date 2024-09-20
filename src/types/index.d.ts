@@ -467,7 +467,7 @@ declare global {
 
     type ModalBodyProps = {
         type: string,
-        connection: {
+        connections: {
             [key in 'stripe']: boolean
         }
     }
