@@ -1,7 +1,9 @@
+'use client'
 import { INTEGRATION_LIST_ITEMS } from '@/constants/integration'
 import React from 'react'
 import { Card, CardContent, CardDescription } from '../ui/card'
 import Image from 'next/image'
+import IntegrationTriggers from './IntegrationTriggers'
 
 
 const IntegrationList = ({ connections }: IntegrationListProps) => {
@@ -22,7 +24,13 @@ const IntegrationList = ({ connections }: IntegrationListProps) => {
                                 </div>
                                 <h2 className="font-bold capitalize">{item.name}</h2>
                             </div>
-                            {/* IntegrationTrigger  */}
+                            <IntegrationTriggers
+                                connections={connections}
+                                title={item.title}
+                                description={item.modalDescription}
+                                logo={item.logo}
+                                name={item.name}
+                            />
                         </div>
                         <CardDescription>{item.description}</CardDescription>
                     </CardContent>

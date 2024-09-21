@@ -451,7 +451,7 @@ declare global {
 
     type IntegrationListProps = {
         connections: {
-            strip: boolean
+            stripe: boolean
         }
     }
 
