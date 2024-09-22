@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { Button } from '../ui/button'
-import { connected } from 'process'
 import { Loader } from '@/components/loader/Loader'
 import { useStripe } from '@/hooks/billing/useBillings'
 

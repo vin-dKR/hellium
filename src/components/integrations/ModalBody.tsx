@@ -1,6 +1,7 @@
 import { CheckCircle2Icon } from 'lucide-react'
 import React from 'react'
 import { Button } from '../ui/button'
+import StripeConnect from '../settings/StripeConnect'
 
 
 const ModalBody = ({
@@ -28,7 +29,7 @@ const ModalBody = ({
                     ))}
                     <div className="flex justify-between mt-10">
                         <Button variant="outline">Learn more</Button>
-                        {/* WIP: stripe settings */}
+                        <StripeConnect connected={connections[type]} />
                     </div>
                 </div>
             )
