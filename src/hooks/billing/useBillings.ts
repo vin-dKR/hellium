@@ -4,6 +4,26 @@ import {
     useElements,
     useStripe as useStripeHook,
 } from '@stripe/react-stripe-js'
+import axios from 'axios'
+
+export const useStripe = () => {
+    const [onStripeAccountPending, setOnStripeAccountPending] = useState<boolean>(false)
+
+    const onStripeConnect = async () => {
+        try {
+            setOnStripeAccountPending(true);
+            const account = await axios.get(`/api/stripe/connect`)
+
+            if (account) {
+                setOnStripeAccountPending(false)
+                window.location.href = account.data.url
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    return { onStripeConnect, onStripeAccountPending }
+}
 
 export const useCompleteCustomerPayment = (onNext: () => void) => {
     const [processing, setProcessing] = useState<boolean>(false)

@@ -4,17 +4,17 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { connected } from 'process'
 import { Loader } from '@/components/loader/Loader'
+import { useStripe } from '@/hooks/billing/useBillings'
 
-const StripeConnect = ({ connect }: StripeConnectProps) => {
-    // WIP: stripe
-    const { onStripeConnect, onStripAccountPending } = useStripe()
+const StripeConnect = ({ connected }: StripeConnectProps) => {
+    const { onStripeConnect, onStripeAccountPending } = useStripe()
 
     return (
         <Button
             disabled={connected}
             onClick={onStripeConnect}
         >
-            <Loader loading={onStripAccountPending}>
+            <Loader loading={onStripeAccountPending}>
                 {connected ? 'Connected' : 'Connect to Stripe'}
             </Loader>
         </Button>

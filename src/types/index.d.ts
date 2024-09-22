@@ -482,7 +482,7 @@ declare global {
     }
 
     type StripeConnectProps = {
-        connect: boolean
+        connected: boolean
     }
 
 }
