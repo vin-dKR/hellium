@@ -480,4 +480,9 @@ declare global {
         type?: 'Integration'
         logo?: string
     }
+
+    type StripeConnectProps = {
+        connect: boolean
+    }
+
 }

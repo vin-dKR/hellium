@@ -8,7 +8,7 @@ const IntegrationsPage = async () => {
     const payment = await onGetPaymetConnected()
 
     const connections = {
-        strip: payment ? true : false
+        stripe: payment ? true : false
     }
 
     return (
