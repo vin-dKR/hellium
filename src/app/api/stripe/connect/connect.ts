@@ -30,7 +30,26 @@ export async function GET() {
                 ip: '172.18.80.19',
             },
         })
-        
+
+        if (account) {
+            const approve = await stripe.accounts.update(account.id, {
+                business_profile: {
+                    mcc: '5045',
+                    url: 'https://fakeweb.com',
+                },
+                company: {
+                    address: {
+                        city: 'Nala',
+                        line1: '123 State St.',
+                        postal_code: '815355',
+                        state: 'JH',
+                    },
+                    tax_id: '000000000',
+                    name: 'The Fake web',
+                    phone: '00000000',
+                },
+            })
+        }
     } catch (error) {
         console.log(error)
     }
