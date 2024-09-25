@@ -49,6 +49,37 @@ export async function GET() {
                     phone: '00000000',
                 },
             })
+            if (approve) {
+                const person = await stripe.accounts.createPerson(account.id, {
+                    first_name: 'Vin',
+                    last_name: 'KR',
+                    relationship: {
+                        representative: true,
+                        title: 'CEO',
+                    },
+                })
+                if (person) {
+                    const approvePerson = await stripe.accounts.updatePerson(account.id, person.id, {
+                        address: {
+                            city: 'victoria ',
+                            line1: '123 State St',
+                            postal_code: 'V8P 1A1',
+                            state: 'BC',
+                        },
+                        dob: {
+                            day: 10,
+                            month: 11,
+                            year: 1980,
+                        },
+                        ssn_last_4: '0000',
+                        phone: '8888675309',
+                        email: 'jenny@bestcookieco.com',
+                        relationship: {
+                            executive: true,
+                        },
+                    })
+                }
+            }
         }
     } catch (error) {
         console.log(error)
