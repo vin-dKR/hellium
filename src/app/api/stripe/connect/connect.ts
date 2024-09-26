@@ -78,6 +78,29 @@ export async function GET() {
                             executive: true,
                         },
                     })
+                    if (approvePerson) {
+                        const owner = await stripe.accounts.createPerson(account.id, {
+                            first_name: 'Kathleen',
+                            last_name: 'Banks',
+                            email: 'kathleen@bestcookieco.com',
+                            address: {
+                                city: 'victoria ',
+                                line1: '123 State St',
+                                postal_code: 'V8P 1A1',
+                                state: 'BC',
+                            },
+                            dob: {
+                                day: 10,
+                                month: 11,
+                                year: 1980,
+                            },
+                            phone: '8888675309',
+                            relationship: {
+                                owner: true,
+                                percent_ownership: 80,
+                            },
+                        })
+                    }
                 }
             }
         }
