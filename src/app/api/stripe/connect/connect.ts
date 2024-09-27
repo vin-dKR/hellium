@@ -1,3 +1,4 @@
+import client from '@/lib/prisma'
 import { currentUser } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
@@ -100,6 +101,39 @@ export async function GET() {
                                 percent_ownership: 80,
                             },
                         })
+                        if (owner) {
+                            const complete = await stripe.accounts.update(account.id, {
+                                company: {
+                                    owners_provided: true,
+                                },
+                            })
+                            if (complete) {
+                                const saveAccountId = await client.user.update({
+                                    where: {
+                                        clerkId: user.id,
+                                    },
+                                    data: {
+                                        stripeId: account.id,
+                                    },
+                                })
+                                if (saveAccountId) {
+                                    const accountLink = await stripe.accountLinks.create({
+                                        account: account.id,
+                                        refresh_url:
+                                            'http://localhost:3000/callback/stripe/refresh',
+                                        return_url: 'http://localhost:3000/callback/stripe/success',
+                                        type: 'account_onboarding',
+                                        collection_options: {
+                                            fields: 'currently_due',
+                                        },
+                                    })
+
+                                    return NextResponse.json({
+                                        url: accountLink.url,
+                                    })
+                                }
+                            }
+                        }
                     }
                 }
             }
