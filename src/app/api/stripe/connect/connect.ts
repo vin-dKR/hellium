@@ -139,6 +139,9 @@ export async function GET() {
             }
         }
     } catch (error) {
-        console.log(error)
+        console.error(
+            'An error occurred when calling the Stripe API to create an account:',
+            error
+        )
     }
 }
