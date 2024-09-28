@@ -485,4 +485,15 @@ declare global {
         connected: boolean
     }
 
+    type ProductTableProps = {
+        products: {
+            id: string
+            name: string
+            price: number
+            image: string
+            createdAt: Date
+            domainId: string | null
+        }[]
+        id: string
+    }
 }
