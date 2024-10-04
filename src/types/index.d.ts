@@ -496,4 +496,12 @@ declare global {
         }[]
         id: string
     }
+
+    type SheetProps = {
+        trigger: ReactNode,
+        title: string,
+        description: string,
+        className?: string,
+        children: ReactNode
+    }
 }
