@@ -504,4 +504,8 @@ declare global {
         className?: string,
         children: ReactNode
     }
+
+    type ProductFormProps = {
+        id: string
+    }
 }

@@ -7,7 +7,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 
-export function MainSheet({
+export function SideSheet({
     className,
     trigger,
     title,
