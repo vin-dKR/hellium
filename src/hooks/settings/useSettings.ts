@@ -1,6 +1,6 @@
 'use client'
 
-import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions, onGetAllFilterQuestions } from "@/actions/settings"
+import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions, onGetAllFilterQuestions, onCreateNewDomainProducts } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
 import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps, FilterQuestionsSchemaProps, FilterQuestionsSchema, AddProductSchemaProps, AddProductSchema } from "@/schemas/settings.schema"
@@ -260,13 +260,28 @@ export const useProducts = (domainId: string) => {
         resolver: zodResolver(AddProductSchema)
     })
 
-    const createNewProducts = handleSubmit(async (values) => {
+    const onCreateNewProduct = handleSubmit(async (values) => {
         try {
             setLoading(true)
             const uploaded = await upload.uploadFile(values.image[0])
-            const product = await onCreateNewDomainProducts()
+            const product = await onCreateNewDomainProducts(
+                domainId,
+                values.name,
+                values.image,
+                values.price
+            )
+
+            if (product) {
+                reset()
+                toast({
+                    title: 'Success',
+                    description: product.message,
+                })
+                setLoading(false)
+            }
         } catch (error) {
             console.log(error)
         }
     })
+    return { onCreateNewProduct, register, errors, loading }
 }
