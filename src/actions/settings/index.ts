@@ -470,3 +470,35 @@ export const onGetPaymetConnected = async () => {
         console.log(error)
     }
 }
+
+export const onCreateNewDomainProducts = async (
+    id: string,
+    name: string,
+    image: string,
+    price: string
+) => {
+    try {
+        const products = await client.domain.update({
+            where: {
+                id,
+            },
+            data: {
+                products: {
+                    create: {
+                        name,
+                        image,
+                        price: parseInt(price)
+                    }
+                }
+            }
+        })
+        if (products) {
+            return {
+                status: 200,
+                message: 'Product Successfully Created'
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

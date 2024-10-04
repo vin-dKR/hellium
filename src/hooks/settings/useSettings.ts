@@ -3,7 +3,7 @@
 import { onUpdateDomain, onUpdatePassword, onChatBotImageUpdate, onUpdateWelcomeMessage, onDeleteUserDomain, onCreateHelpDeskQuestion, onGetAllHelpDeskQuestions, onCreateFilterQuestions, onGetAllFilterQuestions } from "@/actions/settings"
 import { useToast } from "@/components/ui/use-toast"
 import { ChangePasswordProps, ChangePasswordSchema } from "@/schemas/auth.schema"
-import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps, FilterQuestionsSchemaProps, FilterQuestionsSchema } from "@/schemas/settings.schema"
+import { DomainSettingsSchemaProps, DomainSettingsSchema, HelpDeskQuestionsSchema, HelpDeskQuestionsSchemaProps, FilterQuestionsSchemaProps, FilterQuestionsSchema, AddProductSchemaProps, AddProductSchema } from "@/schemas/settings.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
@@ -246,4 +246,27 @@ export const useFilterQuestions = (id: string) => {
         errors,
         isQuestions,
     }
+}
+
+export const useProducts = (domainId: string) => {
+    const { toast } = useToast()
+    const [loading, setLoading] = useState<boolean>(false)
+    const {
+        register,
+        reset,
+        formState: { errors },
+        handleSubmit
+    } = useForm<AddProductSchemaProps>({
+        resolver: zodResolver(AddProductSchema)
+    })
+
+    const createNewProducts = handleSubmit(async (values) => {
+        try {
+            setLoading(true)
+            const uploaded = await upload.uploadFile(values.image[0])
+            const product = await onCreateNewDomainProducts()
+        } catch (error) {
+            console.log(error)
+        }
+    })
 }
