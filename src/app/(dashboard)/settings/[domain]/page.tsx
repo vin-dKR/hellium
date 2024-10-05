@@ -2,6 +2,7 @@ import { onGetCurrentDomainInfo } from '@/actions/auth'
 import BotTrainingForm from '@/components/forms/settings/BotTrainingForm'
 import SettingsForm from '@/components/forms/settings/SettingsForm'
 import InfoBar from '@/components/infobar/InfoBar'
+import ProductTable from '@/components/products/ProductTable'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
@@ -19,6 +20,10 @@ const DomainSetting = async ({ params }: DomainSettingProps) => {
                     plan={domain.subscription?.plan!}
                 />
                 <BotTrainingForm id={domain.domains[0].id} />
+                <ProductTable
+                    products={domain.domains[0].products || []}
+                    id={domain.domains[0].id}
+                />
             </div>
         </>
     )
