@@ -2,7 +2,7 @@ import { PortalBanner } from '@/components/portal/PortalBanner'
 import React from 'react'
 
 
-const layout = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <div>
       <PortalBanner />
@@ -11,4 +11,4 @@ const layout = ({ children }: Props) => {
   )
 }
 
-export default layout
+export default Layout
