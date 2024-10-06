@@ -546,9 +546,6 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
             return userDomain
         }
     } catch (error) {
-        return {
-            status: 500,
-            message: error
-        }
+        console.log(error)
     }
 }

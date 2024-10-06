@@ -8,7 +8,6 @@ import { currentUser } from '@clerk/nextjs'
 import { Separator } from '@radix-ui/react-separator'
 import React from 'react'
 
-
 const Page = async () => {
     const user = await currentUser()
 

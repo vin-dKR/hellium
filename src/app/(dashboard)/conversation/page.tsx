@@ -5,7 +5,6 @@ import InfoBar from '@/components/infobar/InfoBar'
 import { Separator } from '@/components/ui/separator'
 import React from 'react'
 
-
 const ConversationPage = async () => {
     const result = await onGetAllAccountDomains()
     const domains = result && 'domains' in result ? result.domains : undefined

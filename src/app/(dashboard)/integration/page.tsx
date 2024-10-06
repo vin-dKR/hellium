@@ -1,4 +1,4 @@
-import { onGetPaymetConnected } from '@/actions/settings'
+import { onGetPaymetConnected } from '@/actions/settings' 
 import InfoBar from '@/components/infobar/InfoBar'
 import IntegrationList from '@/components/integrations/IntegrationList'
 import React from 'react'
