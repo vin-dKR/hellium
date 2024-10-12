@@ -472,7 +472,7 @@ export const onGetPaymetConnected = async () => {
 }
 
 export const onCreateNewDomainProducts = async (
-    id: string,
+    domainId: string,
     name: string,
     image: string,
     price: string
@@ -480,7 +480,7 @@ export const onCreateNewDomainProducts = async (
     try {
         const products = await client.domain.update({
             where: {
-                id,
+                id: domainId,
             },
             data: {
                 products: {

@@ -60,7 +60,7 @@ const ProductTable = ({ products, id }: ProductTableProps) => {
                                         alt="image"
                                     />
                                 </TableCell>
-                                <TableCell>${product.name}</TableCell>
+                                <TableCell>{product.name}</TableCell>
                                 <TableCell>{product.price}</TableCell>
                                 <TableCell className="text-right">
                                     {product.createdAt.getDate()}{' '}

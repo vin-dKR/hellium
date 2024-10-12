@@ -7,7 +7,8 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 const DomainSetting = async ({ params }: DomainSettingProps) => {
-  const domain = await onGetCurrentDomainInfo("vinod.com")
+  console.log(params.domain)
+  const domain = await onGetCurrentDomainInfo(`${params.domain}.com`)
   if (!domain) redirect("/dashboard")
   return (
     <>

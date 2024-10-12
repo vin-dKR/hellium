@@ -267,7 +267,7 @@ export const useProducts = (domainId: string) => {
             const product = await onCreateNewDomainProducts(
                 domainId,
                 values.name,
-                values.image,
+                uploaded.uuid,
                 values.price
             )
 

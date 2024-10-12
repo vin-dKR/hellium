@@ -2,7 +2,6 @@ import React from 'react'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
-
 const TabsMenu = ({ triggers, children, className, btn }: TabsMenuProps) => {
     return (
         <>
