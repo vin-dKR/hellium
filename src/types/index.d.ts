@@ -225,7 +225,7 @@ declare global {
         }[]
         children: React.ReactNode
         className?: string
-        btn?: JSX.Element 
+        btn?: JSX.Element
     }
 
     type AccordionProps = {
@@ -507,5 +507,19 @@ declare global {
 
     type ProductFormProps = {
         id: string
+    }
+
+    type PaymentCheckoutProps = {
+        onBack(): void
+        products?:
+        | {
+            name: string,
+            price: number,
+            image: string
+        }[]
+        | undefined
+        amount?: number
+        onNext(): void
+        stripeId?: string
     }
 }
