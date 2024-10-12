@@ -23,33 +23,30 @@ const ProductTable = ({ products, id }: ProductTableProps) => {
             <TabsMenu
                 className="w-full flex justify-start"
                 triggers={[
-                    {
-                        label: 'All products',
-                    },
+                    { label: 'All products', },
                     { label: 'Live' },
                     { label: 'Deactivated' },
                 ]}
-                button={
+                btn={(
                     <div className="flex-1 flex justify-end">
                         <SideSheet
-                            description="Add products to your store and set them live to accept payments from
-          customers."
                             title="Add a product"
+                            description="Add products to your store and set them live to accept payments from customers."
                             className="flex items-center gap-2 bg-orange px-4 py-2 text-black font-semibold rounded-lg text-sm"
-                            trigger={
-                                <>
+                            trigger={(
+                                <div>
                                     <Plus
                                         size={20}
                                         className="text-white"
                                     />
                                     <p className="text-white">Add Product</p>
-                                </>
-                            }
+                                </div>
+                            )}
                         >
                             <CreateProductForm id={id} />
                         </SideSheet>
                     </div>
-                }
+                )}
             >
                 <TabsContent value="All products">
                     <DataTable headers={['Featured Image', 'Name', 'Pricing', 'Created']}>

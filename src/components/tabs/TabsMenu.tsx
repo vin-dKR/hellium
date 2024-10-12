@@ -3,7 +3,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
 
-const TabsMenu = ({ triggers, children, className, button }: TabsMenuProps) => {
+const TabsMenu = ({ triggers, children, className, btn }: TabsMenuProps) => {
     return (
         <>
             <Tabs
@@ -21,7 +21,7 @@ const TabsMenu = ({ triggers, children, className, button }: TabsMenuProps) => {
                             {trigger.label}
                         </TabsTrigger>
                     ))}
-                    {button}
+                    {btn}
                 </TabsList>
                 {children}
             </Tabs>

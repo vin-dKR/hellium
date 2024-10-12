@@ -7,9 +7,9 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 const DomainSetting = async ({ params }: DomainSettingProps) => {
-    const domain = await onGetCurrentDomainInfo("vinod.com")
-    if (!domain) redirect("/dashboard")
-    return (
+  const domain = await onGetCurrentDomainInfo("vinod.com")
+  if (!domain) redirect("/dashboard")
+  return (
     <>
       <InfoBar />
       <div className="overflow-y-auto w-full chat-window flex-1 h-0">

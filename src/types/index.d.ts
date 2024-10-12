@@ -225,7 +225,7 @@ declare global {
         }[]
         children: React.ReactNode
         className?: string
-        button?: JSX.Element
+        btn?: JSX.Element 
     }
 
     type AccordionProps = {
@@ -498,7 +498,7 @@ declare global {
     }
 
     type SheetProps = {
-        trigger: ReactNode,
+        trigger: JSX.Element,
         title: string,
         description: string,
         className?: string,
