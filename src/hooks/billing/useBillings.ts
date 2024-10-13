@@ -1,10 +1,11 @@
 import { useToast } from "@/components/ui/use-toast"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
     useElements,
     useStripe as useStripeHook,
 } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { onCreateCustomerPaymentSecret } from "@/actions/stripe"
 
 export const useStripe = () => {
     const [onStripeAccountPending, setOnStripeAccountPending] = useState<boolean>(false)
@@ -74,10 +75,27 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 export const useStripeCustomer = (amount: number, stripeId: string) => {
     const [stripSecret, setStripeSecret] = useState<string>('')
     const [loadForm, setLoadForm] = useState<boolean>(false)
-    try {
-        setLoadForm(true)
-        
-    } catch (error) {
-        console.log(error)
+
+    const onGetCustomerIntent = async (amount: number) => {
+        try {
+            setLoadForm(true)
+            const paymentIntent = await onCreateCustomerPaymentSecret(amount, stripeId)
+
+            if (paymentIntent) {
+                setLoadForm(false)
+                setStripeSecret(paymentIntent.secret!)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        onGetCustomerIntent(amount)
+    }, [])
+
+    return {
+        stripSecret,
+        loadForm
     }
 }
