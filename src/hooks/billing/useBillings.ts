@@ -70,3 +70,14 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 
     return { processing, onMakePayment }
 }
+
+export const useStripeCustomer = (amount: number, stripeId: string) => {
+    const [stripSecret, setStripeSecret] = useState<string>('')
+    const [loadForm, setLoadForm] = useState<boolean>(false)
+    try {
+        setLoadForm(true)
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
