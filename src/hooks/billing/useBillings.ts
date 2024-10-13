@@ -73,7 +73,7 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 }
 
 export const useStripeCustomer = (amount: number, stripeId: string) => {
-    const [stripSecret, setStripeSecret] = useState<string>('')
+    const [stripeSecret, setStripeSecret] = useState<string>('')
     const [loadForm, setLoadForm] = useState<boolean>(false)
 
     const onGetCustomerIntent = async (amount: number) => {
@@ -95,7 +95,7 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
     }, [])
 
     return {
-        stripSecret,
+        stripeSecret,
         loadForm
     }
 }
