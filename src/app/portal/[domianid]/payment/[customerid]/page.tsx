@@ -3,12 +3,16 @@ import { onGetDomainProductsAndConnectedAccountId } from '@/actions/payment'
 import PortalForm from '@/components/forms/portal/PortalForm'
 
 const CustomerPaymentPage = async ({ params }: {
-    params: { domainId: string, customerId: string }
+    params: { domainId: string, customerid: string }
 }) => {
-    const questions = await onDomainCustomerResponses(params.customerId)
+    const questions = await onDomainCustomerResponses(params.customerid)
     const products = await onGetDomainProductsAndConnectedAccountId(params.domainId)
 
-    if (!questions) return null
+    if (!questions) return (
+        <>
+            <div>{"No questions available"}</div>
+        </>
+    )
 
     return (
         <>
@@ -17,7 +21,7 @@ const CustomerPaymentPage = async ({ params }: {
                 products={products?.products}
                 amount={products?.amount}
                 domainid={params.domainId}
-                customerId={params.customerId}
+                customerId={params.customerid}
                 questions={questions.questions}
                 stripeId={products?.stripeId!}
                 type='Payment'

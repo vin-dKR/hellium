@@ -23,7 +23,7 @@ const HelpDesk = ({ id }: BotTrainingFormProps) => {
             <CardContent className="p-6 border-r-[1px]">
                 <CardTitle>Help Desk</CardTitle>    
                 <form
-                    onSubmit={onSubmitQuestion}
+                    onSubmit={onSubmitQuestion} 
                     className="flex flex-col gap-6 mt-10"
                 >
                     <div className="flex flex-col gap-3">

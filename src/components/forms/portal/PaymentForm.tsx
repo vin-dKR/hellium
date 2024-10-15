@@ -3,7 +3,6 @@ import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/button'
 import { useCompleteCustomerPayment } from '@/hooks/billing/useBillings'
 import { PaymentElement } from '@stripe/react-stripe-js'
-import React from 'react'
 
 
 export const CustomerPaymentForm = ({ onNext }: CustomerPaymentFormProps) => {
