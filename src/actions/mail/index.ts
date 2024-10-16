@@ -2,13 +2,13 @@
 
 import client from "@/lib/prisma"
 
-export const onGetAllCustomer = async (id : string) => {
+export const onGetAllCustomer = async (id: string) => {
     try {
         const customer = await client.user.findUnique({
             where: {
                 clerkId: id
             },
-            select:{
+            select: {
                 subscription: {
                     select: {
                         credits: true,
@@ -33,8 +33,34 @@ export const onGetAllCustomer = async (id : string) => {
             }
         })
 
-        if(customer) {
+        if (customer) {
             return customer
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const onGetAllCampaigns = async (id: string) => {
+    try {
+        const campaign = await client.user.findUnique({
+            where: {
+                clerkId: id
+            },
+            select: {
+                campaign: {
+                    select: {
+                        name: true,
+                        id: true,
+                        customers: true,
+                        createdAt: true
+                    }
+                }
+            }
+        })
+
+        if (campaign) {
+            return campaign
         }
     } catch (error) {
         console.log(error)
