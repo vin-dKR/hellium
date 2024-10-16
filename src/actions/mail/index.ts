@@ -1,0 +1,42 @@
+"use server"
+
+import client from "@/lib/prisma"
+
+export const onGetAllCustomer = async (id : string) => {
+    try {
+        const customer = await client.user.findUnique({
+            where: {
+                clerkId: id
+            },
+            select:{
+                subscription: {
+                    select: {
+                        credits: true,
+                        plan: true,
+                    }
+                },
+                domains: {
+                    select: {
+                        customer: {
+                            select: {
+                                id: true,
+                                email: true,
+                                Domain: {
+                                    select: {
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        if(customer) {
+            return customer
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

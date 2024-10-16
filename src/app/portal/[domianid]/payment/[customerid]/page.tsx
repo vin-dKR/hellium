@@ -10,7 +10,7 @@ const CustomerPaymentPage = async ({ params }: {
 
     if (!questions) return (
         <>
-            <div>{"No questions available"}</div>
+            <div>No questions available</div>
         </>
     )
 
