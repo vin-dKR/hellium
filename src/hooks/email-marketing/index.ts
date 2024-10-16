@@ -1,4 +1,7 @@
+import { useToast } from "@/components/ui/use-toast"
+import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 
@@ -10,11 +13,33 @@ export const useEmailMarketing = () => {
     const [isId, setIsId] = useState<string | undefined>()
     const [editing, setEditing] = useState<boolean>(false)
 
-    const {register,
+    const {
+        register,
         handleSubmit,
-        formState: {errors},
+        formState: { errors },
         reset
     } = useForm({
         resolver: zodResolver(EmailMarketingSchema)
+    })
+
+    const {
+        register: registerEmail,
+        handleSubmit: SubmitEmail,
+        formState: { errors: emailErrors },
+        setValue
+    } = useForm({
+        resolver: zodResolver(EmailMarketingBodySchema)
+    })
+
+    const { toast } = useToast()
+    const router = useRouter()
+
+    const onCreateCampaign = handleSubmit(async (values) => {
+        try {
+            setLoading(true)
+            // const campaign = await onCreateMarketingCampaign()
+        } catch (error) {
+            console.log(error)
+        }
     })
 }
