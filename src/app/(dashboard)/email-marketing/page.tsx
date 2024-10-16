@@ -1,4 +1,5 @@
 import { onGetAllCampaigns, onGetAllCustomer } from '@/actions/mail'
+import InfoBar from '@/components/infobar/InfoBar'
 import { currentUser } from '@clerk/nextjs'
 import React from 'react'
 
@@ -12,7 +13,9 @@ const Page = async (props: Props) => {
     const campaign = await onGetAllCampaigns(user.id)
 
     return (
-        <div>page</div>
+        <div>
+            <InfoBar />
+        </div>
     )
 }
 

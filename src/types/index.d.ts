@@ -522,4 +522,26 @@ declare global {
         onNext(): void
         stripeId?: string
     }
+
+    type EmailMarketingProps = {
+        domains: {
+            customer: {
+                Domain: {
+                    name: string
+                } | null
+                id: string
+                email: string | null
+            }[]
+        }[]
+        campaign: {
+            name: string
+            id: string
+            customers: string[]
+            createdAt: Date
+        }[]
+        subscription: {
+            plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
+            credits: number
+        } | null
+    }
 }
