@@ -1,7 +1,8 @@
+import { onCreateMarketingCampaign } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 
@@ -37,9 +38,22 @@ export const useEmailMarketing = () => {
     const onCreateCampaign = handleSubmit(async (values) => {
         try {
             setLoading(true)
-            // const campaign = await onCreateMarketingCampaign()
+            const campaign = await onCreateMarketingCampaign(values.name)
+            if (campaign) {
+                reset()
+                toast({
+                    title: "Success",
+                    description: campaign.message
+                })
+                setLoading(false)
+                router.refresh()
+            }
         } catch (error) {
             console.log(error)
         }
     })
+
+    return {
+        onCreateCampaign
+    }
 }
