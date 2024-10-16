@@ -1,6 +1,7 @@
 "use server"
 
 import client from "@/lib/prisma"
+import { currentUser } from "@clerk/nextjs"
 
 export const onGetAllCustomer = async (id: string) => {
     try {
@@ -61,6 +62,32 @@ export const onGetAllCampaigns = async (id: string) => {
 
         if (campaign) {
             return campaign
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const onCreateMarketingCampaign = async (name: string) => {
+    try {
+        const user = await currentUser()
+        if (!user) return null
+
+        const campaign = await client.user.update({
+            where: {
+                clerkId: user.id
+            },
+            data: {
+                campaign: {
+                    create: {
+                        name
+                    }
+                }
+            }
+        })
+
+        if (campaign) {
+            return { status: 200, message: 'You campaign was created' }
         }
     } catch (error) {
         console.log(error)
