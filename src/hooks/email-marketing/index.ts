@@ -66,11 +66,21 @@ export const useEmailMarketing = () => {
                 })
                 setEditing(false)
             }
-
         } catch (error) {
             console.log(error)
         }
     })
+
+    const onSelectCampagin = (id: string) => setCampaignId(id)
+
+    const addCustomerToCampaign = async () => {
+        try {
+            setProcessing(true)
+            // WIP: SA 
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return {
         onCreateCampaign,
