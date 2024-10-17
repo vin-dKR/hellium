@@ -114,3 +114,25 @@ export const onSaveEmailTemplate = async (template: string, campaignId: string) 
         console.log(error)
     }
 }
+
+export const onAddCustomerToEmail = async (customers: string[], id: string) => {
+    try {
+        const customerAdd = await client.campaign.update({
+            where: {
+                id
+            },
+            data: {
+                customers
+            }
+        })
+
+        if (customerAdd) {
+            return {
+                status: 200,
+                message: "Customer added to Campaign."
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
