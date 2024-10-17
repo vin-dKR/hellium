@@ -91,8 +91,19 @@ export const useEmailMarketing = () => {
         }
     }
 
+    const onSelectedEmail = (email: string) => {
+        const duplicate = isSelected.find((e) => e === email)
+        if (duplicate) {
+            setIsSelected(isSelected.filter((e) => e != email))
+        } else {
+            setIsSelected((prev) => [...prev, email])
+        }
+    }
+
     return {
         onCreateCampaign,
-        onCreateEmailTemplate
+        onCreateEmailTemplate,
+        onSelectCampagin,
+        addCustomerToCampaign
     }
 }
