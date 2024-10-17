@@ -53,6 +53,16 @@ export const useEmailMarketing = () => {
         }
     })
 
+    const onCreateEmailTemplate = SubmitEmail(async (values) => {
+        try {
+            setEditing(false)
+            const template = JSON.stringify(values.description)
+            // WIP:  SA 
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
     return {
         onCreateCampaign
     }
