@@ -1,4 +1,4 @@
-import { onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
+import { onAddCustomerToEmail, onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -76,7 +76,16 @@ export const useEmailMarketing = () => {
     const addCustomerToCampaign = async () => {
         try {
             setProcessing(true)
-            // WIP: SA 
+            const customerAdd = await onAddCustomerToEmail(isSelected, campaignId!)
+            if (customerAdd) {
+                toast({
+                    title: "Success",
+                    description: customerAdd.message
+                })
+            }
+            setProcessing(false)
+            setCampaignId(undefined)
+            router.refresh()
         } catch (error) {
             console.log(error)
         }
