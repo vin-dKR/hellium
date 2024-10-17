@@ -1,4 +1,4 @@
-import { onCreateMarketingCampaign } from "@/actions/mail"
+import { onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -55,15 +55,25 @@ export const useEmailMarketing = () => {
 
     const onCreateEmailTemplate = SubmitEmail(async (values) => {
         try {
-            setEditing(false)
+            setEditing(true)
             const template = JSON.stringify(values.description)
-            // WIP:  SA 
+            const emailTemplate = await onSaveEmailTemplate(template, campaignId!)
+
+            if (emailTemplate) {
+                toast({
+                    title: "Success",
+                    description: emailTemplate.message
+                })
+                setEditing(false)
+            }
+
         } catch (error) {
             console.log(error)
         }
     })
 
     return {
-        onCreateCampaign
+        onCreateCampaign,
+        onCreateEmailTemplate
     }
 }
