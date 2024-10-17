@@ -93,3 +93,24 @@ export const onCreateMarketingCampaign = async (name: string) => {
         console.log(error)
     }
 }
+
+export const onSaveEmailTemplate = async (template: string, campaignId: string) => {
+    try {
+        const newTemplate = await client.campaign.update({
+            where: {
+                id: campaignId
+            },
+            data: {
+                template
+            }
+        })
+
+        if (newTemplate) {
+            return {
+                status: 200, message: 'Email template created'
+            }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
