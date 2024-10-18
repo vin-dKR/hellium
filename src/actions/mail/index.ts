@@ -2,6 +2,7 @@
 
 import client from "@/lib/prisma"
 import { currentUser } from "@clerk/nextjs"
+import nodemailer from 'nodemailer'
 
 export const onGetAllCustomer = async (id: string) => {
     try {
@@ -131,6 +132,65 @@ export const onAddCustomerToEmail = async (customers: string[], id: string) => {
                 status: 200,
                 message: "Customer added to Campaign."
             }
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// send mail in bulk
+export const onBulkMailer = async (email: string[], campaignId: string) => {
+    try {
+        const user = await currentUser()
+        if (!user) return null
+
+        const template = await client.campaign.findUnique({
+            where: {
+                id: campaignId
+            },
+            select: {
+                name: true,
+                template: true
+            }
+        })
+
+        if (template && template.template) {
+            const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: process.env.NODE_MAILER_EMAIL,
+                    pass: process.env.NODE_MAILER_PASSWORD
+                }
+            })
+
+            const mailOption = {
+                to: email,
+                subject: template.name,
+                text: JSON.parse(template.template)
+            }
+
+            transporter.sendMail(mailOption, function (error, info) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log('Email Sent' + info.response)
+                }
+            })
+
+            const creditUsed = await client.user.update({
+                where: {
+                    id: user.id
+                },
+                data: {
+                    subscription: {
+                        update: {
+                            credits: {decrement: email.length}
+                        }
+                    }
+                }
+            })
         }
     } catch (error) {
         console.log(error)

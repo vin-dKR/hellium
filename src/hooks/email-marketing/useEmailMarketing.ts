@@ -1,4 +1,4 @@
-import { onAddCustomerToEmail, onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
+import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -100,9 +100,9 @@ export const useEmailMarketing = () => {
         }
     }
 
-    const onBulkEmail = (email: string, campaignId: string) => {
+    const onBulkEmail = async (email: string[], campaignId: string) => {
         try {
-            // WIP: SA
+            const mails = await onBulkMailer(email, campaignId)
         } catch (error) {
             console.log(error)
         }
