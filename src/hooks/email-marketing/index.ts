@@ -100,10 +100,18 @@ export const useEmailMarketing = () => {
         }
     }
 
+    const onBulkEmail = (email: string, campaignId: string) => {
+        try {
+            // WIP: SA
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return {
         onCreateCampaign,
         onCreateEmailTemplate,
         onSelectCampagin,
-        addCustomerToCampaign
+        addCustomerToCampaign,
+        onSelectedEmail
     }
 }
