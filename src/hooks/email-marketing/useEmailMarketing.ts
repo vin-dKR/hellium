@@ -103,15 +103,39 @@ export const useEmailMarketing = () => {
     const onBulkEmail = async (email: string[], campaignId: string) => {
         try {
             const mails = await onBulkMailer(email, campaignId)
+
+            if (mails) {
+                toast({
+                    title: "Success",
+                    description: mails.message
+                })
+                router.refresh()
+            }
         } catch (error) {
             console.log(error)
         }
     }
+
+    const onSetAnswersId = (id: string) => setIsId(id)
+
     return {
         onCreateCampaign,
         onCreateEmailTemplate,
         onSelectCampagin,
         addCustomerToCampaign,
-        onSelectedEmail
+        onSelectedEmail,
+        onBulkEmail,
+        isSelected,
+        register,
+        errors,
+        loading,
+        processing,
+        campaignId,
+        onSetAnswersId,
+        isId,
+        registerEmail,
+        emailErrors,
+        editing,
+        setValue,
     }
 }

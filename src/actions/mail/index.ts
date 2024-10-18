@@ -186,11 +186,15 @@ export const onBulkMailer = async (email: string[], campaignId: string) => {
                 data: {
                     subscription: {
                         update: {
-                            credits: {decrement: email.length}
+                            credits: { decrement: email.length }
                         }
                     }
                 }
             })
+
+            if (creditUsed) {
+                return { status: 200, message: 'Campaign emails sent' }
+            }
         }
     } catch (error) {
         console.log(error)
