@@ -1,4 +1,5 @@
 import { onGetAllCampaigns, onGetAllCustomer } from '@/actions/mail'
+import EmailMarketing from '@/components/email-marketing/EmailMarketing'
 import InfoBar from '@/components/infobar/InfoBar'
 import { currentUser } from '@clerk/nextjs'
 import React from 'react'
@@ -15,6 +16,11 @@ const Page = async (props: Props) => {
     return (
         <div>
             <InfoBar />
+            <EmailMarketing
+                campaign={campaign?.campaign!}
+                subscription={customer?.subscription!}
+                domains={customer?.domains!}
+            />
         </div>
     )
 }
