@@ -544,4 +544,20 @@ declare global {
             credits: number
         } | null
     }
+
+    type CustomerTableProps = {
+        domains: {
+            customer: {
+                Domain: {
+                    name: string
+                } | null
+                id: string
+                email: string | null
+            }[]
+        }[]
+        onSelect(email: string): void
+        select: string[]
+        onId(id: string): void
+        id?: string
+    }
 }

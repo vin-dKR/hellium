@@ -25,7 +25,7 @@ const EmailMarketing = (props: EmailMarketingProps) => {
         setValue,
     } = useEmailMarketing()
     return (
-        <div>
+        <div className="w-full flex-1 grid grid-cols-1 lg:grid-cols-2 gap-10">
             Email Marketing
         </div>
     )
