@@ -9,7 +9,7 @@ import { ErrorMessage } from "@hookform/error-message"
 import { Button } from "../ui/button"
 import { Loader } from '@/components/loader/Loader'
 
-const CreateProductForm = ({ id }: ProductFormProps) => {
+const CreateProductForm = ({ id }: IdProps) => {
     const { onCreateNewProduct, register, errors, loading } = useProducts(id)
     return (
         <form

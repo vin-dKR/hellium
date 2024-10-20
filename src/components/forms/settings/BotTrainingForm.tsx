@@ -6,7 +6,7 @@ import HelpDesk from './HelpDesk'
 import FilterQuestions from './FilterQuesions'
 
 
-const BotTrainingForm = ({ id }: BotTrainingFormProps) => {
+const BotTrainingForm = ({ id }: IdProps) => {
     return (
         <div className="py-5 mb-10 flex flex-col gap-5 items-start">
             <div className="flex flex-col gap-2">

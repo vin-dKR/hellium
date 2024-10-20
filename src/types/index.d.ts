@@ -194,10 +194,6 @@ declare global {
         errors: FieldErrors<FieldValues>
     }
 
-    type CodeSnippetProps = {
-        id: string
-    }
-
     type EditChatBotIconProps = {
         register: UseFormRegister<FieldValues>
         errors: FieldErrors<FieldValues>
@@ -214,7 +210,7 @@ declare global {
         errors: FieldErrors<FieldValues>
     }
 
-    type BotTrainingFormProps = {
+    type IdProps = {
         id: string
     }
 
@@ -503,10 +499,6 @@ declare global {
         description: string,
         className?: string,
         children: ReactNode
-    }
-
-    type ProductFormProps = {
-        id: string
     }
 
     type PaymentCheckoutProps = {

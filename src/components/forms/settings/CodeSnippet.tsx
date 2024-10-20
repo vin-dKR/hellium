@@ -8,7 +8,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { xt256 } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 
-const CodeSnippet = ({ id }: CodeSnippetProps) => {
+const CodeSnippet = ({ id }: IdProps) => {
     const { toast } = useToast()
     let snippet = `
     const iframe = document.createElement("iframe");

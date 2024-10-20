@@ -15,7 +15,7 @@ import { useHelpDesk } from '@/hooks/settings/useSettings'
 import Accordion from '@/components/accordion/Accordion'
 
 
-const HelpDesk = ({ id }: BotTrainingFormProps) => {
+const HelpDesk = ({ id }: IdProps) => {
     const { register, errors, onSubmitQuestion, isQuestions, loading } = useHelpDesk(id)
 
     return (
