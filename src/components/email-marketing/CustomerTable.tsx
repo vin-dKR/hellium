@@ -5,6 +5,7 @@ import { TableCell, TableRow } from '../ui/table'
 import { Card } from '../ui/card'
 import { cn } from '@/lib/utils'
 import { SideSheet } from '../sheet/Sheet'
+import CustomerAnswer from './CustomerAnswer'
 
 const CustomerTable = ({ domains, id, onSelect, select, onId }: CustomerTableProps) => {
     return (
@@ -37,9 +38,7 @@ const CustomerTable = ({ domains, id, onSelect, select, onId }: CustomerTablePro
                                     </Card>
                                 }
                             >
-                                <div>
-                                    {/* Answer Components */}
-                                </div>
+                                <CustomerAnswer id={id!}/>
                             </SideSheet>
                         </TableCell>
                     </TableRow>

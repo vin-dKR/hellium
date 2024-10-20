@@ -1,9 +1,10 @@
 "use client"
 import { useEmailMarketing } from '@/hooks/email-marketing/useEmailMarketing'
 import React from 'react'
+import CustomerTable from './CustomerTable'
 
 
-const EmailMarketing = (props: EmailMarketingProps) => {
+const EmailMarketing = ({domains, campaign, subscription}: EmailMarketingProps) => {
     const {
         onCreateCampaign,
         onCreateEmailTemplate,
@@ -26,7 +27,13 @@ const EmailMarketing = (props: EmailMarketingProps) => {
     } = useEmailMarketing()
     return (
         <div className="w-full flex-1 grid grid-cols-1 lg:grid-cols-2 gap-10">
-            Email Marketing
+            <CustomerTable
+                domains={domains}
+                onId={onSetAnswersId}
+                onSelect={onSelectedEmail}
+                select={isSelected}
+                id={isId}
+            />
         </div>
     )
 }
