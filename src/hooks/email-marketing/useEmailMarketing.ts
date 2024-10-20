@@ -1,3 +1,5 @@
+"use client"
+
 import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
