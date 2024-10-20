@@ -1,11 +1,11 @@
 "use client"
 
-import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onSaveEmailTemplate } from "@/actions/mail"
+import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onGetAllCustomerResponse, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 
 export const useEmailMarketing = () => {
@@ -139,5 +139,38 @@ export const useEmailMarketing = () => {
         emailErrors,
         editing,
         setValue,
+    }
+}
+
+export const useAnswers = (id: string) => {
+    const [answers, setAnswer] = useState<
+        {
+            customer: {
+                questions: { question: string; answered: string | null }[]
+            }[]
+        }[]
+    >([])
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const onGetCustomerAnswers = async () => {
+        try {
+            setLoading(true)
+            const answer = await onGetAllCustomerResponse(id)
+            setLoading(false)
+
+            if (answer) {
+                setAnswer(answer)
+            }
+
+            useEffect(() => {
+                onGetCustomerAnswers()
+            }, [])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return {
+        answers, loading
     }
 }
