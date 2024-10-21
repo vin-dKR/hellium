@@ -5,11 +5,13 @@ import CustomerTable from './CustomerTable'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
 import Modal from '../modal/Modal'
-import { Card, CardContent, CardDescription } from '../ui/card'
+import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
 import { Loader } from '@/components/loader/Loader'
 import FormGenerator from '../forms/form-generator/FormGenerator'
 import { cn, getMonthName } from '@/lib/utils'
 import CalIcon from '@/icons/cal-icon'
+import PersonIcon from '@/icons/person-icon'
+import EditMail from './EditMail'
 
 
 const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps) => {
@@ -108,8 +110,29 @@ const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps
                                                     {camp.createdAt.getDate()}th
                                                 </CardDescription>
                                             </div>
-                                            <div className=''>
-
+                                            <div className='flex gap-2'>
+                                                <PersonIcon />
+                                                <CardDescription>
+                                                    {camp.customers.length} customers added
+                                                </CardDescription>
+                                            </div>
+                                        </div>
+                                        <div className="flex w-full justify-between items-center">
+                                            <CardTitle className='text-xl '>
+                                                {camp.name}
+                                            </CardTitle>
+                                            <div className="gap-3 flex">
+                                                <Modal
+                                                    title='Edit email'
+                                                    description='This email will be sent to all the members'
+                                                    trigger={
+                                                        <Card className='rounded-lg cursor-pointer bg-grandis py-2 px-5 font-semibold text-sm hover:bg-orange text-gray-700'>
+                                                            Edit Mail
+                                                        </Card>
+                                                    }
+                                                >
+                                                    <EditMail />
+                                                </Modal>
                                             </div>
                                         </div>
                                     </CardContent>
