@@ -5,9 +5,11 @@ import CustomerTable from './CustomerTable'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
 import Modal from '../modal/Modal'
-import { Card, CardDescription } from '../ui/card'
+import { Card, CardContent, CardDescription } from '../ui/card'
 import { Loader } from '@/components/loader/Loader'
 import FormGenerator from '../forms/form-generator/FormGenerator'
+import { cn, getMonthName } from '@/lib/utils'
+import CalIcon from '@/icons/cal-icon'
 
 
 const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps) => {
@@ -85,6 +87,35 @@ const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps
                             {subscription?.credits} credits
                         </CardDescription>
                     </Card>
+                </div>
+                <div className="flex flex-col items-end mt-5 gap-3">
+                    {campaign &&
+                        campaign.map((camp, i) => (
+                            <Card
+                                key={camp.id}
+                                className={cn('p-5 min-w-[600px] cursor-pointer',
+                                    campaignId == camp.id ? 'bg-gray-50' : '')
+                                }
+                                onClick={() => onSelectCampagin(camp.id)}
+                            >
+                                <Loader loading={processing}>
+                                    <CardContent className='p-0 flex flex-col items-center gap-3'>
+                                        <div className="flex w-full justify-between items-center">
+                                            <div className='flex gap-2 items-center'>
+                                                <CalIcon />
+                                                <CardDescription>
+                                                    Created {getMonthName(camp.createdAt.getMonth())}{' '}
+                                                    {camp.createdAt.getDate()}th
+                                                </CardDescription>
+                                            </div>
+                                            <div className=''>
+
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Loader>
+                            </Card>
+                        ))}
                 </div>
             </div>
         </div>
