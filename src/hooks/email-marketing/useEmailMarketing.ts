@@ -174,3 +174,33 @@ export const useAnswers = (id: string) => {
         answers, loading
     }
 }
+
+export const useEditEmail = (id: string) => {
+	const [loading, setLoading] = useState<boolean>(false)
+	const [template, setTemplate] = useState<string>('')
+
+	const onGetTemplate = async (id: string) => {
+		try{
+			setLoading(true)
+            // SA: 
+			const email = await onGetEmailIdTemplate(id)
+
+			if (email) {
+				setTemplate(email)
+			}
+			setLoading(false)
+		} catch(err){
+			console.log(err)
+		}
+	}
+
+	useEffect(() => {
+		onGetTemplate(id)
+	}, [])
+	
+	return {
+		loading, template
+	}
+}
+
+

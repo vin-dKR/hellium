@@ -1,5 +1,14 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import {
+    Dispatch,
+    ReactNode,
+    SetStateAction
+} from 'react';
+import {
+    FieldValues,
+    UseFormRegister,
+    FieldErrors,
+    UseFormSetValue
+} from 'react-hook-form'
 
 declare global {
     type Props = {
@@ -551,5 +560,13 @@ declare global {
         select: string[]
         onId(id: string): void
         id?: string
+    }
+
+    type EditMailProps = {
+        id: string
+        onCreate(): void
+        register: UseFormRegister<FieldValues>
+        errors: FieldErrors<FieldValues>
+        setDefault: UseFormSetValue<FieldValues>
     }
 }

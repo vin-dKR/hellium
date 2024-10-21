@@ -131,7 +131,13 @@ const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps
                                                         </Card>
                                                     }
                                                 >
-                                                    <EditMail />
+                                                    <EditMail
+                                                        register={registerEmail}
+                                                        errors={emailErrors}
+                                                        setDefault={setValue}
+                                                        id={camp.id}
+                                                        onCreate={onCreateEmailTemplate}
+                                                    />
                                                 </Modal>
                                             </div>
                                         </div>
