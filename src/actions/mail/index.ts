@@ -216,7 +216,7 @@ export const onGetAllCustomerResponse = async (id: string) => {
                         customer: {
                             select: {
                                 questions: {
-                                    where:{
+                                    where: {
                                         customerId: id,
                                         answered: {
                                             not: null
@@ -239,5 +239,25 @@ export const onGetAllCustomerResponse = async (id: string) => {
         }
     } catch (error) {
         console.log(error)
+    }
+}
+
+
+export const onGetEmailTemplate = async (id: string) => {
+    try {
+        const template = await client.campaign.findUnique({
+            where: {
+                id
+            },
+            select: {
+                template: true
+            }
+        })
+
+        if (template) {
+            return template.template
+        }
+    } catch (err) {
+        console.log(err)
     }
 }

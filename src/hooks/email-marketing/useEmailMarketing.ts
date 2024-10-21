@@ -1,6 +1,6 @@
 "use client"
 
-import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onGetAllCustomerResponse, onSaveEmailTemplate } from "@/actions/mail"
+import { onAddCustomerToEmail, onBulkMailer, onCreateMarketingCampaign, onGetAllCustomerResponse, onGetEmailTemplate, onSaveEmailTemplate } from "@/actions/mail"
 import { useToast } from "@/components/ui/use-toast"
 import { EmailMarketingBodySchema, EmailMarketingSchema } from "@/schemas/marketing.schema"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -183,7 +183,7 @@ export const useEditEmail = (id: string) => {
 		try{
 			setLoading(true)
             // SA: 
-			const email = await onGetEmailIdTemplate(id)
+			const email = await onGetEmailTemplate(id)
 
 			if (email) {
 				setTemplate(email)
