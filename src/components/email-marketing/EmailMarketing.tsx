@@ -2,9 +2,11 @@
 import { useEmailMarketing } from '@/hooks/email-marketing/useEmailMarketing'
 import React from 'react'
 import CustomerTable from './CustomerTable'
+import { Button } from '../ui/button'
+import { Plus } from 'lucide-react'
 
 
-const EmailMarketing = ({domains, campaign, subscription}: EmailMarketingProps) => {
+const EmailMarketing = ({ domains, campaign, subscription }: EmailMarketingProps) => {
     const {
         onCreateCampaign,
         onCreateEmailTemplate,
@@ -34,6 +36,16 @@ const EmailMarketing = ({domains, campaign, subscription}: EmailMarketingProps) 
                 select={isSelected}
                 id={isId}
             />
+            <div>
+                <div className="flex gap-3 justify-end">
+                    <Button
+                        disabled={isSelected.length == 0}
+                        onClick={addCustomerToCampaign}
+                    >
+                        <Plus /> Add to Campaign
+                    </Button>
+                </div>
+            </div>
         </div>
     )
 }

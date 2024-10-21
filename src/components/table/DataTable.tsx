@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils'
 
 export const DataTable = ({ headers, children }: DataTableProps) => {
     return (
-        <Table className="rounded-t-xl overflow-hidden">
-            <TableHeader>
+        <Table className="rounded-t-xl overflow-hidden rounded-t-lg">
+            <TableHeader className='bg-orange'>
                 <TableRow className="">
                     {headers.map((header, key) => (
                         <TableHead
