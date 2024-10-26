@@ -5,7 +5,8 @@ import {
     useStripe as useStripeHook,
 } from '@stripe/react-stripe-js'
 import axios from 'axios'
-import { onCreateCustomerPaymentSecret } from "@/actions/stripe"
+import { onCreateCustomerPaymentSecret, onUpdateSubscription } from "@/actions/stripe"
+import { useRouter } from 'next/navigation'
 
 export const useStripe = () => {
     const [onStripeAccountPending, setOnStripeAccountPending] = useState<boolean>(false)
@@ -107,12 +108,31 @@ export const useSubscription = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 	const { toast } = useToast()
 	const router = useRouter()
 
-	const onUpdate = async () => {
+	const onUpdateToFreeTier = async () => {
 		try {
 			setLoading(true)
-			// SA: onUpdateSubscription
+			const free = await onUpdateSubscription('STANDARD')
+			if (free) {
+				setLoading(false)
+				toast({
+					title: "Success",
+					description: free.message
+				})
+				router.refresh()
+			}
 		} catch(e) {
 			console.log(e)
 		}
+
+		const onSetPayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => setPayment(payment)
+
+		return {
+			loading, 
+			onSetPayment, 
+			payment, 
+			onUpdateToFreeTier 
+		}
 	}
+
+
 }

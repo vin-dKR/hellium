@@ -72,3 +72,4 @@ export const onUpdateSubscription = async (plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
 		console.log(e) 
 	} 
 }
+
