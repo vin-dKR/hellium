@@ -124,15 +124,13 @@ export const useSubscription = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 			console.log(e)
 		}
 
-		const onSetPayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => setPayment(payment)
-
-		return {
-			loading, 
-			onSetPayment, 
-			payment, 
-			onUpdateToFreeTier 
-		}
+	}	
+	const onSetPayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => setPayment(payment)
+	
+	return {
+		loading, 
+		onSetPayment, 
+		payment, 
+		onUpdateToFreeTier 
 	}
-
-
 }
