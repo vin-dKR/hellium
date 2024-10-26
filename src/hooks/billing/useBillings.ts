@@ -102,5 +102,17 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
 
 
 export const useSubscription = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
-	 
+	const [loading, setLoading] = useState<boolean>(false)
+	const [payment, setPayment] = useState<'STANDARD' | 'PRO' | 'ULTIMATE'>(plan)
+	const { toast } = useToast()
+	const router = useRouter()
+
+	const onUpdate = async () => {
+		try {
+			setLoading(true)
+			// SA: onUpdateSubscription
+		} catch(e) {
+			console.log(e)
+		}
+	}
 }

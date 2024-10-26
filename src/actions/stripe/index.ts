@@ -1,6 +1,8 @@
 "use server"
 
 import Stripe from 'stripe'
+import { currentUser } from "@clerk/nextjs"
+import client from '@/lib/prisma'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
     typescript: true,
@@ -29,4 +31,44 @@ export const onCreateCustomerPaymentSecret = async (amount: number, stripeId: st
     } catch (error) {
         console.log(error)
     }
+}
+
+export const onUpdateSubscription = async (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+	try {
+		const user = await currentUser()
+		if (!user) return
+
+		const update = await client.user.update({
+			where: {
+				clerkId: user.id
+			},
+			data: {
+				subscription: {
+					update: {
+						data: {
+							plan,
+							credits: plan == 'PRO' ? 50 : plan == 'ULTIMATE' ? 500 : 10
+						}
+					} 
+				} 
+			},
+			select: {
+				subscription: {
+					select: {
+						plan: true
+					}
+				}
+			}
+		}) 
+
+		if (update) {
+			return {
+				status: 200,
+				message: 'Hurrrah! Subscription Updated',
+				plan: update.subscription?.plan
+			}
+		}
+	} catch(e) { 
+		console.log(e) 
+	} 
 }
