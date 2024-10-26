@@ -99,3 +99,8 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
         loadForm
     }
 }
+
+
+export const useSubscription = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+	 
+}

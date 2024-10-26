@@ -569,4 +569,8 @@ declare global {
         errors: FieldErrors<FieldValues>
         setDefault: UseFormSetValue<FieldValues>
     }
+
+    type SubscriptionFormProps = {
+	plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
+    }
 }
