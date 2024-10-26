@@ -573,4 +573,13 @@ declare global {
     type SubscriptionFormProps = {
 	plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
     }
+
+    type SubscriptionCardProps = {
+	title: string,
+	description: string,
+	price: string,
+	payment: string,
+	onPayment(payment: string) : void
+	id: string
+    }
 }
