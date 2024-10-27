@@ -5,7 +5,7 @@ import {
     useStripe as useStripeHook,
 } from '@stripe/react-stripe-js'
 import axios from 'axios'
-import { onCreateCustomerPaymentSecret, onUpdateSubscription } from "@/actions/stripe"
+import { onCreateCustomerPaymentSecret, onGetStripeClientSecret, onUpdateSubscription } from "@/actions/stripe"
 import { useRouter } from 'next/navigation'
 
 export const useStripe = () => {
@@ -143,9 +143,21 @@ export const useStripeElements = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 	const onGetBillingIntent = async (plans: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 		try{
 			setLoadForm(true)
-			// SA  	
+			const intent = await onGetStripeClientSecret(plans)
+
+			if (intent) {
+				setLoadForm(false)
+				setStripeSecret(intent.secret!)
+			}
 		} catch(e){
 			console.log(e)
 		}
+	}
+	useEffect(() => {
+		onGetBillingIntent(payment)
+	}, [payment])
+
+	return {
+		stripeSecret, loadForm
 	}
 }
