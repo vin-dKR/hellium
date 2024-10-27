@@ -133,4 +133,19 @@ export const useSubscription = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 		payment, 
 		onUpdateToFreeTier 
 	}
+
+}
+
+export const useStripeElements = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+	const [stripeSecret, setStripeSecret] = useState<string>('')
+	const [loadForm, setLoadForm] = useState<boolean>(false)
+
+	const onGetBillingIntent = async (plans: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+		try{
+			setLoadForm(true)
+			// SA  	
+		} catch(e){
+			console.log(e)
+		}
+	}
 }
