@@ -16,7 +16,7 @@ const SubscriptionForm = ({ plan }: SubscriptionFormProps ) => {
 						description= 'Perfect if you are just getting started with Hellium AI.'
 						price= '0'
 						payment={payment}
-						onSetPayment={onSetPayment}
+						onPayment={onSetPayment}
 						id='STANDARD'
 					/>	
 					<SubscriptionCard
@@ -24,7 +24,7 @@ const SubscriptionForm = ({ plan }: SubscriptionFormProps ) => {
 						description= 'Perfect if you are just getting started with Hellium AI.'
 						price= '15'
 						payment={payment}
-						onSetPayment={onSetPayment}
+						onPayment={onSetPayment}
 						id='PRO'
 					/>	
 					<SubscriptionCard
@@ -32,11 +32,11 @@ const SubscriptionForm = ({ plan }: SubscriptionFormProps ) => {
 						description= 'Perfect if you are just getting started with Hellium AI.'
 						price= '35'
 						payment={payment}
-						onSetPayment={onSetPayment}
+						onPayment={onSetPayment}
 						id='ULTIMATE'
 					/>	
-
 				</div>
+				<StripeElements payment={payment} />
 			</div>
 		</Loader>
 	)
