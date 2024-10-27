@@ -586,4 +586,8 @@ declare global {
     type StripeElementProps = {
 	payment: "STANDARD" | "PRO" | "ULTIMATE"
     }
+
+    type PlanProps = {
+	plan: "STANDARD" | "PRO" | "ULTIMATE"
+    }
 }
