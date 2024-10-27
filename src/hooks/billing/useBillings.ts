@@ -161,3 +161,55 @@ export const useStripeElements = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
 		stripeSecret, loadForm
 	}
 }
+
+
+export const useCompletePayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+	const [processing, setProcessing] = useState<boolean>(false)
+	const router = useRouter()
+	const { toast } = useToast()
+	const stripe = useStripeHook()
+	const elements = useElements()
+
+	const onMakePayment = async(e: React.MouseEvent) => {
+		e.preventDefault() 
+		if(!stripe || !elements) {
+			return null
+		}
+
+		console.log('no reload')
+		
+		try{
+			setProcessing(true)
+
+			const { error, paymentIntent } = await stripe.confirmPayment({
+				elements,
+				confirmParams: {
+					return_url: 'http://localhost:3000/settings'
+				},
+				redirect: 'if_required'
+			})
+			
+			if(error) {
+				console.log(error)
+			}
+
+			if(paymentIntent?.status === 'succeeded') {
+				const plan = await onUpdateSubscription(payment)
+				if (plan) {
+					toast({
+						title: "Success",
+						description: plan?.message
+					})
+
+				}
+			}
+
+			setProcessing(false)
+			router.refresh()
+		} catch(e) {
+			console.log(e)
+		}
+
+
+	}
+}

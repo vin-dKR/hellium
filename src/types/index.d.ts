@@ -582,4 +582,8 @@ declare global {
 	onPayment(payment: string) : void
 	id: string
     }
+
+    type StripeElementProps = {
+	payment: "STANDARD" | "PRO" | "ULTIMATE"
+    }
 }
