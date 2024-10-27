@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardTitle } from "../ui/card"
 import { FormLabel } from "../ui/form"
 import { Input } from "../ui/input"
 
-export default const SubscriptionCard = ({
+const SubscriptionCard = ({
 	title,
 	description,
 	price,
@@ -52,3 +52,5 @@ export default const SubscriptionCard = ({
 		</FormLabel>
 	)
 }
+
+export default SubscriptionCard
