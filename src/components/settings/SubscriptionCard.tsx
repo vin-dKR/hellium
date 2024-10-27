@@ -32,7 +32,6 @@ export default const SubscriptionCard = ({
 							</CardDescription> 
 						</div>
 					</div>
-					
 					<div>
 						<div
 							className={cn(
