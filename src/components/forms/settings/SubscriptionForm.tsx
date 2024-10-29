@@ -4,6 +4,7 @@ import { useSubscription } from "@/hooks/billing/useBillings"
 import { Loader } from "@/components/loader/Loader"
 import SubscriptionCard from "@/components/settings/SubscriptionCard"
 import StripeElements from "@/components/settings/StripeElements"
+import { Button } from "@/components/ui/button"
 
 const SubscriptionForm = ({ plan }: SubscriptionFormProps) => {
 	const { loading, onSetPayment, payment, onUpdateToFreeTier } = useSubscription(plan)
@@ -38,6 +39,11 @@ const SubscriptionForm = ({ plan }: SubscriptionFormProps) => {
 					/>
 				</div>
 				<StripeElements payment={payment} />
+				{payment === 'STANDARD' && (
+					<Button onClick={onUpdateToFreeTier}>
+						<Loader loading={loading}>Confirm</Loader> 
+					</Button>
+				)}
 			</div>
 		</Loader>
 	)
