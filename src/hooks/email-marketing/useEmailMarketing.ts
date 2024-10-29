@@ -182,7 +182,6 @@ export const useEditEmail = (id: string) => {
 	const onGetTemplate = async (id: string) => {
 		try{
 			setLoading(true)
-            // SA: 
 			const email = await onGetEmailTemplate(id)
 
 			if (email) {

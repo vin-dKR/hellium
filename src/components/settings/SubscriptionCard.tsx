@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card"
-import { FormLabel } from "../ui/form"
 import { Input } from "../ui/input"
+import { Label } from "../ui/label"
 
 const SubscriptionCard = ({
 	title,
@@ -10,26 +10,26 @@ const SubscriptionCard = ({
 	payment,
 	onPayment,
 	id
-}: SubscriptionCardProps ) => {
+}: SubscriptionCardProps) => {
 	return (
-		<FormLabel htmlFor={id} >
-			<Card 
+		<Label htmlFor={id} >
+			<Card
 				className={cn(
 					'w-full cursor-pointer',
 					payment == id && 'border-orange'
-			)} >
+				)} >
 				<CardContent className="flex justify-center p-2" >
 					<div className="flex items-center gap-3">
 						<Card className={cn('flex justify-center p-3 border-none')} >
 							<CardTitle>
-								${price}
+							₹{price}
 							</CardTitle>
 						</Card>
 						<div>
 							<CardDescription className="font-bold">{title}</CardDescription>
-							<CardDescription className="font-bold">
+							<CardDescription className="font-normal">
 								{description}
-							</CardDescription> 
+							</CardDescription>
 						</div>
 					</div>
 					<div>
@@ -47,9 +47,9 @@ const SubscriptionCard = ({
 							type="radio"
 						/>
 					</div>
-				</CardContent>	
+				</CardContent>
 			</Card>
-		</FormLabel>
+		</Label>
 	)
 }
 

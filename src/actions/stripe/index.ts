@@ -75,10 +75,10 @@ export const onUpdateSubscription = async (plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
 
 const setPlanAmount = (item: "STANDARD" | "PRO" | "ULTIMATE") => {
 	if (item == "PRO") {
-		return 1500
+		return 5000
 	}
 	if (item == "ULTIMATE") {
-		return 3500
+		return 10000
 	}
 	return 0
 }

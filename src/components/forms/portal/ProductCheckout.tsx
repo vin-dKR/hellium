@@ -23,7 +23,7 @@ const PaymentCheckout = ({ onBack, products, onNext, amount, stripeId }: Payment
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                         <div className="col-span-1 border-r-2 pr-5 flex flex-col">
-                            <h2 className="text-3xl font-bold mb-5">${amount}</h2>
+                            <h2 className="text-3xl font-bold mb-5">₹{amount}</h2>
                             {products?.map((product, key) => (
                                 <Card
                                     key={key}
