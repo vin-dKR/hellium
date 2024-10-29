@@ -6,6 +6,7 @@ import { CheckCircle2, Plus } from 'lucide-react'
 import { pricingCards } from '@/constants/pricing'
 import Modal from '../modal/Modal'
 import SubscriptionForm from '../forms/settings/SubscriptionForm'
+import Image from 'next/image'
 
 const BillingSettings = async () => {
 
@@ -13,7 +14,7 @@ const BillingSettings = async () => {
   const planFeatures = pricingCards.find(
     (card) => card.title.toUpperCase() === plan?.toUpperCase()
   )?.features
-
+  console.log(plan)
   if (!planFeatures) return
 
   return (
@@ -28,7 +29,8 @@ const BillingSettings = async () => {
           title="Choose a plan."
           description="Tell us about yourself! What you do? Let’s tailor your experience so it best suits you."
           trigger={
-            <Card className="border-dashed bg-cream border-gray-400 w-full cursor-pointer h-[270px] flex justify-center items-center">
+		  plan && plan == 'STANDARD' ? (
+			<Card className="border-dashed bg-cream border-gray-400 w-full cursor-pointer h-[270px] flex justify-center items-center">
               <CardContent className="flex gap-2 items-center">
                 <div className="rounded-full border-2 p-1">
                   <Plus className="text-gray-400" />
@@ -38,7 +40,17 @@ const BillingSettings = async () => {
                 </CardDescription>
               </CardContent>
             </Card>
-          }>
+
+		  ) : (
+		  <>
+			<Image
+			src="/images/creditcard.png"
+			width={400}
+			height={400}
+			alt="credit card image"/>
+			</>
+		  )
+                      }>
           <SubscriptionForm plan={plan!} />
         </Modal>
       </div>
