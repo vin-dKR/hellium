@@ -61,3 +61,40 @@ export const getUserBalance = async () => {
     console.log(e);
   }
 };
+
+export const getUserPlanInfo = async () => {
+  try {
+    const user = await currentUser();
+
+    if (user) {
+      const plan = await client.user.findUnique({
+        where: {
+          clerkId: user.id,
+        },
+        select: {
+          _count: {
+            select: {
+              domains: true,
+            },
+          },
+          subscription: {
+            select: {
+              plan: true,
+              credits: true,
+            },
+          },
+        },
+      });
+
+      if (plan) {
+        return {
+          plan: plan.subscription?.plan,
+          credits: plan.subscription?.credits,
+          domains: plan._count?.domains,
+        };
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
