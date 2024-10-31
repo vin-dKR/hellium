@@ -1,6 +1,7 @@
 'use server';
 
 import client from '@/lib/prisma';
+import { currentUser } from '@clerk/nextjs';
 
 export const onDomainCustomerResponses = async (customerId: string) => {
   try {
