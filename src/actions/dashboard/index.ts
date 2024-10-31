@@ -130,3 +130,32 @@ export const getUserTotalProductPrice = async () => {
     console.log(e);
   }
 };
+
+export const getUserTransaction = async () => {
+  try {
+    const user = await currentUser();
+
+    if (user) {
+      const connnectedStripe = await client.user.findUnique({
+        where: {
+          clerkId: user.id,
+        },
+        select: {
+          stripeId: true,
+        },
+      });
+
+      if (connnectedStripe) {
+        const transcations = await stripe.charges.list({
+          stripeAccount: connnectedStripe.stripeId!,
+        });
+
+        if (transcations) {
+          return transcations;
+        }
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
