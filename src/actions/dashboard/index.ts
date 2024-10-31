@@ -98,3 +98,35 @@ export const getUserPlanInfo = async () => {
     console.log(e);
   }
 };
+
+export const getUserTotalProductPrice = async () => {
+  try {
+    const user = await currentUser();
+
+    if (user) {
+      const products = await client.product.findMany({
+        where: {
+          Domain: {
+            User: {
+              clerkId: user.id,
+            },
+          },
+        },
+        select: {
+          price: true,
+        },
+      });
+
+      if (products) {
+        // reduce method user here...
+        const total = products.reduce((total, next) => {
+          return total + next.price;
+        }, 0);
+
+        return total;
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
