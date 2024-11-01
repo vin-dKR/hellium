@@ -7,9 +7,12 @@ import {
   getUserTransaction,
 } from '@/actions/dashboard';
 import DashboardCard from '@/components/dashboard/Dashboard';
+import PlanUses from '@/components/dashboard/PlanUses';
 import InfoBar from '@/components/infobar/InfoBar';
+import { Separator } from '@/components/ui/separator';
 import CalIcon from '@/icons/cal-icon';
 import PersonIcon from '@/icons/person-icon';
+import { TransactionsIcon } from '@/icons/transactions-icon';
 import { DollarSign } from 'lucide-react';
 
 const Dashboard = async () => {
@@ -56,6 +59,36 @@ const Dashboard = async () => {
                 A detailed overview of your metrices, uses, customer and more
               </p>
             </div>
+            <PlanUses
+              plan={plan?.plan!}
+              credits={plan?.credits || 0}
+              domains={plan?.domains || 0}
+              clients={clients || 0}
+            />
+          </div>
+          <div className='flex flex-col'>
+            <div className='w-full flex justify-between items-start mb-5'>
+              <div className='flex gap-3 items-center'>
+                <TransactionsIcon />
+                <p className='font-bold'>Recent Transactions</p>
+              </div>
+              <p className='text-sm'>See more</p>
+            </div>
+            <Separator orientation='horizontal' />
+            {transaction &&
+              transaction.data.map((transaction) => (
+                <div
+                  className='flex gap-3 w-full justify-between items-center border-b-2 py-5'
+                  key={transaction.id}
+                >
+                  <p className='font-bold'>
+                    {transaction.calculated_statement_descriptor}
+                  </p>
+                  <p className='font-bold text-xl'>
+                    {transaction.amount / 100}
+                  </p>
+                </div>
+              ))}
           </div>
         </div>
       </div>
