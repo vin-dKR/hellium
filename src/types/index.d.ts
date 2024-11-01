@@ -600,4 +600,10 @@ declare global {
     domains: number;
     clients: number;
   };
+
+  type ProgressBarProps = {
+    end: number;
+    label: string;
+    credits: number;
+  };
 }
