@@ -593,4 +593,11 @@ declare global {
     title: string;
     sales?: boolean;
   };
+
+  type PlanUses = {
+    plan: 'STANDARD' | 'PRO' | 'ULTIMATE';
+    credits: number;
+    domains: number;
+    clients: number;
+  };
 }
