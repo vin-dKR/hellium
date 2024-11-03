@@ -15,15 +15,15 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
     const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
     return (
-        <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
-            <div className="flex justify-between w-full items-center">
+        <div className={cn('flex flex-col gap-3', min ? 'items-center mt-6' : 'mt-3')}>
+            <div className="flex justify-between w-full items-center justify-center">
                 {!min && <p className="text-xs text-gray-500">DOMAINS</p>}
                 <AppDrawer
                     description="add in your domain address to integrate your chatbot"
                     title="Add your business domain"
                     onOpen={
-                        <div className="cursor-pointer text-gray-500 rounded-full border-2">
-                            <Plus />
+                        <div className="relative flex justify-center items-center cursor-pointer text-gray-500 rounded-full border-2 w-8 h-8">
+                            <Plus className="m-auto" />
                         </div>
                     }
                 >
@@ -63,16 +63,18 @@ const DomainMenu = ({ domains, min }: DomainMenuProps) => {
                             href={`/settings/${domain.name.split('.')[0]}`}
                             key={domain.id}
                             className={cn(
-                                'flex gap-3 hover:bg-white rounded-full transition duration-100 ease-in-out cursor-pointer ',
-                                !min ? 'p-2' : 'py-2',
+                                'flex gap-3 rounded-full transition duration-100 ease-in-out cursor-pointer ',
+                                !min ? 'p-2' : 'w-[30px] h-[30px]',
                                 domain.name.split('.')[0] == isDomain && 'bg-white'
                             )}
                         >
                             <Image
                                 src={`https://ucarecdn.com/${domain.icon}/`}
                                 alt="logo"
-                                width={20}
-                                height={20}
+                                width={30}
+                                height={30}
+                                className="rounded-full object-cover"
+                                layout="intrinsic"
                             />
                             {!min && <p className="text-sm">{domain.name}</p>}
                         </Link>

@@ -6,7 +6,7 @@ function NavBar() {
         <div className="flex gap-5 justify-between items-center px-7 py-1 font-bold border-b border-solid border-zinc-100 leading-[154.5%] max-md:flex-wrap max-md:px-5">
             <div className="flex gap-1.5 justify-center self-stretch my-auto text-2xl tracking-tighter text-neutral-700">
                 <Image
-                    src="/images/logo.png"
+                    src="/images/logo.svg"
                     alt="LOGO"
                     sizes="100vw"
                     style={{

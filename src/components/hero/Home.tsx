@@ -10,7 +10,7 @@ const HomePage = () => {
                     An AI powered sales assistant chatbot
                 </span>
                 <Image
-                    src="/images/corinna-ai-logo.png"
+                    src="/images/logo-hero.svg"
                     width={400}
                     height={100}
                     alt="Logo"

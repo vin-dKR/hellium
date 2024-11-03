@@ -11,7 +11,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaxMenuProps) => {
         <div className="py-3 px-4 flex flex-col h-full z-[100]">
             <div className="flex justify-between items-center">
                 <Image
-                    src="/images/logo.png"
+                    src="/images/logo.svg"
                     alt="LOGO"
                     sizes="100vw"
                     className="animate-fade-in opacity-0 delay-300 fill-mode-forwards"

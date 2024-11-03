@@ -11,7 +11,7 @@ const Layout = async ({ children }: Props) => {
     <div className='h-screen flex w-full justify-center  bg-cream'>
       <div className='w-[600px] ld:w-full flex flex-col bg-white items-start p-6 md:rounded-r-4xl md:shadow-xl'>
         <Image
-          src='/images/logo.png'
+          src='/images/logo.svg'
           alt='LOGO'
           sizes='100vw'
           style={{
