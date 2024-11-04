@@ -6,8 +6,9 @@ const HomePage = () => {
     return (
         <div>
             <div className="flex items-center justify-center flex-col mt-[80px] gap-4 ">
-                <span className="text-orange bg-orange/20 px-4 py-2 rounded-full text-sm">
-                    An AI powered sales assistant chatbot
+                <span className="relative inline-block px-4 py-2 text-sm text-white">
+                    <span className="absolute inset-0 rounded-full border-2 border-orange bg-opacity-0"></span>
+                    <span className="relative z-10">✨ An AI powered sales assistant chatbot</span>
                 </span>
                 <Image
                     src="/images/logo-hero.svg"

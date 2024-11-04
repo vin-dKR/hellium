@@ -9,10 +9,9 @@ import { MinMenu } from './MinMenu'
 const SideBar = ({ domains }: SidebarProps) => {
     const { expand, onExpand, page, onSignOut } = useSideBar()
 
-
     return (
         <div className={cn(
-            'bg-cream dark:bg-neutral-950 h-full w-[60px] fill-mode-forwards fixed md:relative z-10',
+            'bg-cream dark:bg-neutral-950 h-full w-[250px] fill-mode-forwards fixed md:relative z-50',
             expand == undefined && '',
             expand == true
                 ? 'animate-open-sidebar'
