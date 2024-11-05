@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 
-{
-  /*  */
-}
 const HomePage = () => {
   return (
     <div>
@@ -29,6 +26,7 @@ const HomePage = () => {
         <Button className='bg-orange font-bold text-white px-4'>
           Start For Free
         </Button>
+        {/*
         <Image
           src='/images/iphonecorinna.png'
           width={260}
@@ -36,6 +34,7 @@ const HomePage = () => {
           alt='Logo'
           className='max-w-lg object-contain'
         />
+	*/}
       </div>
 
       <div className='flex justify-center items-center flex-col gap-4 mt-10'>
