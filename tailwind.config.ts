@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config = {
   darkMode: ['class'],
@@ -19,10 +19,15 @@ const config = {
     },
     borderRadius: {
       '4xl': '45px',
-      'full': '9999px',
+      full: '9999px',
     },
     extend: {
       colors: {
+        night: '#000',
+        mistorg: '#894B03',
+        peachorg: '#FFF7F7',
+        fadeorg: '#FFC07D',
+        darkorg: '#FF8800',
         cream: '#F5F5F5',
         gravel: '#4E4E4E',
         iridium: '#3F3F3F',
@@ -109,6 +114,6 @@ const config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
