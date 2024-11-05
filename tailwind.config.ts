@@ -24,6 +24,7 @@ const config = {
     extend: {
       colors: {
         night: '#000',
+        brown: '#1F1101',
         mistorg: '#894B03',
         peachorg: '#FFF7F7',
         fadeorg: '#FFC07D',

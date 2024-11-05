@@ -1,13 +1,16 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 
+{
+  /*  */
+}
 const HomePage = () => {
   return (
     <div>
       <div className='flex items-center justify-center flex-col mt-[80px] gap-4 '>
-        <span className='relative inline-block px-4 py-2 text-sm text-white'>
-          <span className='absolute inset-0 rounded-full bg-gradient-to-r from-slate-50 to-orange-500'></span>
-          <span className='absolute inset-0 rounded-full bg-'></span>
+        <span className='relative inline-block  px-4 py-2 text-sm text-white'>
+          <span className='absolute inset-0 rounded-full bg-gradient-to-r from-slate-50 to-orange' />
+          <span className='absolute justify-self-center self-center w-[98%] h-[94%] inset-0 rounded-full bg-brown bg-opacity-60 backdrop-blur-md' />
           <span className='relative z-10'>
             ✨ An AI powered sales assistant chatbot
           </span>
