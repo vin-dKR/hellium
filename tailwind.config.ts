@@ -115,6 +115,9 @@ const config = {
         'close-sidebar': 'close-sidebar 0.2s ease-out',
         'fade-in': 'fade-in 0.2s ease-out',
       },
+      backgroundImage: {
+        'theme-gradient': 'linear-gradient(to right, theme("colors.slate.50"), theme("colors.orange"))',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
