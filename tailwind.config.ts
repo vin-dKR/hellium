@@ -22,6 +22,9 @@ const config = {
       full: '9999px',
     },
     extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'sans-serif'],
+      },
       colors: {
         night: '#000',
         brown: '#1F1101',
