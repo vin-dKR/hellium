@@ -15,7 +15,7 @@ export default function Home() {
         blur='100px'
         position={{ top: '100px', left: '47%' }}
       />
-      <TorchBlur />
+      <TorchBlur blur='100px' position={{ top: '20%', left: '0' }} />
       <NavBar />
       <HomePage />
       <ChatbotIntro />

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
+import TorchBlur from '../ui/TorchBlur';
 
 const HomePage = () => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const HomePage = () => {
           alt='Logo'
           className='max-w-lg object-contain'
         />
+        <TorchBlur blur='100px' />
         <p className='text-center max-w-[500px]'>
           Your AI powered sales assistant! Embed Corinna AI into any website
           with just a snippet of code!
