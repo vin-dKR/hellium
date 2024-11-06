@@ -1,3 +1,4 @@
+import ChatbotIntro from '@/components/hero/ChatbotIntro';
 import HomePage from '@/components/hero/Home';
 import Subscription from '@/components/hero/Subscription';
 import NavBar from '@/components/navbar/Nabvar';
@@ -17,6 +18,7 @@ export default function Home() {
       <TorchBlur />
       <NavBar />
       <HomePage />
+      <ChatbotIntro />
       <Subscription />
     </div>
   );
