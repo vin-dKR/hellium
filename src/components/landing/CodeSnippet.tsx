@@ -60,7 +60,7 @@ iframeStyles('
             background: 'rbga(0, 0, 0, 0.8)',
             backdropFilter: 'blur(100px)',
             WebkitBackdropFilter: 'blur(200px)',
-            fontSize: '0.8rem',
+            fontSize: '0.7rem',
             lineHeight: '1',
             zIndex: 0,
           }}
