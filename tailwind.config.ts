@@ -11,13 +11,16 @@ const config = {
   prefix: '',
   theme: {
   	container: {
-  		center: 'true',
+  		center: "true",
   		padding: '2rem',
   		screens: {
   			'2xl': '1400px'
   		}
   	},
   	borderRadius: {
+		'md': '6px',
+		'lg': '8px',
+		'xl' : '12px',
   		'4xl': '45px',
   		full: '9999px'
   	},
@@ -134,6 +137,17 @@ const config = {
   				'100%': {
   					'offset-distance': '100%'
   				}
+  			},
+  			shine: {
+  				'0%': {
+  					'background-position': '0% 0%'
+  				},
+  				'50%': {
+  					'background-position': '100% 100%'
+  				},
+  				to: {
+  					'background-position': '0% 0%'
+  				}
   			}
   		},
   		animation: {
@@ -143,7 +157,8 @@ const config = {
   			'open-sidebar': 'open-sidebar 0.2s ease-out',
   			'close-sidebar': 'close-sidebar 0.2s ease-out',
   			'fade-in': 'fade-in 0.2s ease-out',
-  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear'
+  			'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
+  			shine: 'shine var(--duration) infinite linear'
   		},
   		backgroundImage: {
   			'theme-gradient': 'linear-gradient(to right, theme("colors.slate.50"), theme("colors.orange"))'

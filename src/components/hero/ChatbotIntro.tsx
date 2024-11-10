@@ -3,7 +3,7 @@ import CodeSnippet from '../landing/CodeSnippet';
 import RadialBlur from '../ui/RadialBlur';
 
 const ChatbotIntro = () => {
-  return (
+  return (      
     <div className='flex w-full my-36 items-center justify-center'>
       <RadialBlur
         color='#FF9D2D'
