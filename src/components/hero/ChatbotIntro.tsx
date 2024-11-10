@@ -12,7 +12,7 @@ const ChatbotIntro = () => {
         position={{ top: '500px', right: '-150px' }}
       />
 
-      <div className='w-full lg:w-9/12 p-4 md:p-12 lg:w-full lg:p-36'>
+      <div className='w-full lg:w-5/6 p-4 md:p-12 lg:p-36'>
         <div>
           <h1 className='text-3xl md:text-4xl lg:text-6xl'>Integrate</h1>
           <h1 className='text-3xl md:text-4xl lg:text-6xl'>AI Chatbot</h1>

@@ -1,4 +1,4 @@
-import Bento from '@/components/hero/Bento';
+import BentoWrapper from '@/components/hero/BentoWrapper';
 import ChatbotIntro from '@/components/hero/ChatbotIntro';
 import HomePage from '@/components/hero/Home';
 import Subscription from '@/components/hero/Subscription';
@@ -20,7 +20,7 @@ export default function Home() {
       <NavBar />
       <HomePage />
       <ChatbotIntro />
-      <Bento />
+      <BentoWrapper />
       <Subscription />
     </div>
   );
