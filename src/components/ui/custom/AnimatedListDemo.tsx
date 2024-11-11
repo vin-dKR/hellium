@@ -13,30 +13,30 @@ interface Item {
 
 let notifications = [
   {
-    name: "Payment received",
-    description: "Magic UI",
+    name: "New Campaign Created!",
+    description: "hellium.ai",
     time: "15m ago",
 
-    icon: "💸",
+    icon: "🔔",
     color: "#00C9A7",
   },
   {
-    name: "User signed up",
-    description: "Magic UI",
+    name: "Sales & Promotions",
+    description: "yourweb.com",
     time: "10m ago",
-    icon: "👤",
+    icon: "💸",
     color: "#FFB800",
   },
   {
-    name: "New message",
-    description: "Magic UI",
+    name: "Customer Engagement",
+    description: "hellium.ai",
     time: "5m ago",
     icon: "💬",
     color: "#FF3D71",
   },
   {
     name: "New event",
-    description: "Magic UI",
+    description: "yourweb.com",
     time: "2m ago",
     icon: "🗞️",
     color: "#1E86FF",

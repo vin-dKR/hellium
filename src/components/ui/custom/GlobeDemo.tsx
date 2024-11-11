@@ -17,7 +17,7 @@ export function GlobeDemo({ className }: { className?: string }) {
         <div
           onClick={handleToggle}
           className={`relative w-24 h-12 bg-gray-300 rounded-full cursor-pointer transition-colors duration-300 ${
-            isToggled ? "bg-green-500" : "bg-red-500"
+            isToggled ? "bg-brown-500" : "bg-darkorg"
           }`}
         >
           <div

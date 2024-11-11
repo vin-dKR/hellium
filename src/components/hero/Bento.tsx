@@ -1,5 +1,5 @@
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
+import { BellIcon, Share2Icon, MessageSquareIcon } from "lucide-react";
 
 import { Calendar } from "@/components/ui/calendar";
 import {AnimatedBeamMultipleOutputDemo} from "@/components/ui/custom/AnimatedBeamMultipleOutputDemo";
@@ -10,7 +10,7 @@ import { GlobeDemo } from "@/components/ui/custom/GlobeDemo";
 
 const features = [
   {
-    Icon: FileTextIcon,
+    Icon: MessageSquareIcon,
     name: "Real time conversaation",
     description: "Make strong customer realtion.",
     href: "#",
@@ -34,7 +34,7 @@ const features = [
   {
     Icon: Share2Icon,
     name: "Integrations",
-    description: "Supports 100+ integrations and counting.",
+    description: "Sripe Payment integration.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
@@ -44,8 +44,8 @@ const features = [
   },
   {
     Icon: CalendarIcon,
-    name: "Calendar",
-    description: "Use the calendar to filter your files by date.",
+    name: "Ez Appointment",
+    description: "Block calender make it ez.",
     className: "col-span-3 lg:col-span-1",
     href: "#",
     cta: "Learn more",
