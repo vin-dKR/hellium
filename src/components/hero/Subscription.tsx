@@ -4,7 +4,7 @@ import PricingCard from './PricingCard';
 
 const Subscription = () => {
   return (
-    <div className='h-full'>
+    <div className='h-full mt-36'>
       <div className='flex justify-center items-center flex-col gap-4'>
         <h2 className='text-6xl text-center'>Choose what fits you right</h2>
         <p className='text-muted-foreground text-center max-w-lg'>
