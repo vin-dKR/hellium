@@ -12,7 +12,7 @@ interface PricingCardProps {
 const PricingCard = ({ title, price, description, features }: PricingCardProps) => {
     return (
         <div
-            className="relative pricing-card w-64 h-96  rounded-xl p-8 border border-t-black dark:border-t-white border-b-white dark:border-b-black"
+            className="relative bg-gradient-to-t from-mistorg from-10% via-orange to-night to-96% pricing-card w-64 h-96 rounded-xl p-8 border border-t-black border-r-black border-l-black border-b-white dark:border-t-white dark:border-r-white dark:border-l-white dark:border-b-black"
         >
             <div className="absolute inset-0 -z-10 ">
                 <RadialBlur

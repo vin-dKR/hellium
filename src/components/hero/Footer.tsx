@@ -1,8 +1,14 @@
+"use client"
+
 import Link from 'next/link';
 import { Github, Twitter, Linkedin } from 'lucide-react';
 import RadialBlur from '../ui/RadialBlur';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 const Footer = () => {
+    const { theme } = useTheme()
+    let isDark = theme === "dark"
     return (
         <footer className="relative border-t border-t-black dark:border-t-white mt-36">
             <div className="absolute inset-0 -z-10">
@@ -18,12 +24,19 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Brand Column */}
                     <div className="space-y-4">
-                        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-black via-gray-900 to-slate-400">
-                            Your Brand
-                        </h3>
+                        <Image
+                            src={isDark ? '/images/logo.svg' : '/images/Dark-logo.svg'}
+                            alt='LOGO'
+                            sizes='100vw'
+                            style={{
+                                width: '150px',
+                                height: 'auto',
+                            }}
+                            width={0}
+                            height={0}
+                        />
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Building the future of web applications with modern solutions.
-                        </p>
+                            Making marketing effortless with AI-powered webbots for automated business sales.                        </p>
                     </div>
 
                     {/* Quick Links */}

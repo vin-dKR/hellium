@@ -1,7 +1,7 @@
 export const pricingCards = [
     {
       title: 'STANDARD',
-      description: 'Perfect for trying out Corinna AI',
+      description: 'Perfect for trying out',
       price: '₹0',
       duration: '',
       highlight: 'Key features',
