@@ -1,5 +1,6 @@
 import BentoWrapper from '@/components/hero/BentoWrapper';
 import ChatbotIntro from '@/components/hero/ChatbotIntro';
+import Footer from '@/components/hero/Footer';
 import HomePage from '@/components/hero/Home';
 import Subscription from '@/components/hero/Subscription';
 import NavBar from '@/components/navbar/Nabvar';
@@ -22,6 +23,7 @@ export default function Home() {
       <ChatbotIntro />
       <BentoWrapper />
       <Subscription />
+      <Footer />
     </div>
   );
 }
