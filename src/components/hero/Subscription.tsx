@@ -13,8 +13,8 @@ const Subscription = () => {
                 position={{ top: '2700px', left: '-180px' }}
             />
       <div className='flex justify-center items-center flex-col gap-4'>
-        <h2 className='text-6xl text-center'>Choose what fits you right</h2>
-        <p className='text-muted-foreground text-center max-w-lg'>
+        <h2 className='text-3xl lg:text-6xl text-center'>Choose what fits you right</h2>
+        <p className='text-xl lg:text-3xl text-muted-foreground text-center max-w-lg'>
           Our straightforward pricing plans are tailored to meet your needs. If
           {" you're"} not ready to commit you can get started for free.
         </p>

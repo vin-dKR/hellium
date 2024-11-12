@@ -18,28 +18,30 @@ const ChatbotIntro = () => {
           <h1 className='text-3xl md:text-4xl lg:text-6xl'>AI Chatbot</h1>
           <p className='text-gray-500'>Integrate it with fast as fuck boi!!</p>
           <div className='grid grid-cols-1 md:grid-cols-5 gap-6 mt-8 lg:mt-16'>
-            <div className='md:col-span-2 flex flex-col justify-between py-5 lg:py-10'>
-              <div>
-                <Image
-                  src='/images/Big Logo.svg'
-                  alt='big-logo.com'
-                  width={240}
-                  height={240}
-                  className='w-[180px] md:w-[200px] lg:w-[240px]'
-                />
-              </div>
-              <div>
-                <h1 className='text-2xl md:text-3xl lg:text-4xl'>Just</h1>
-                <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold'>
-                  Ctrl + C
-                </h1>
-                <span className='text-xl md:text-2xl lg:text-3xl place-item-end pr-4'>
-                  &
-                </span>
-                <span className='text-4xl md:text-5xl lg:text-6xl font-bold'>
-                  Ctrl + V
-                </span>
-                <p>and there you go!</p>
+          <div className='md:col-span-2 flex flex-col justify-between py-5 lg:py-10'>
+              <div className='flex flex-row md:flex-col items-center md:items-start justify-between gap-4 md:gap-0'>
+                <div>
+                  <Image
+                    src='/images/Big Logo.svg'
+                    alt='big-logo.com'
+                    width={240}
+                    height={240}
+                    className='w-[120px] md:w-[200px] lg:w-[240px]'
+                  />
+                </div>
+                <div className='pl-3'>
+                  <h1 className='text-2xl md:text-3xl lg:text-4xl'>Just</h1>
+                  <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold'>
+                    Ctrl + C
+                  </h1>
+                  <span className='text-xl md:text-2xl lg:text-3xl place-item-end pr-4'>
+                    &
+                  </span>
+                  <span className='text-4xl md:text-5xl lg:text-6xl font-bold'>
+                    Ctrl + V
+                  </span>
+                  <p>and there you go!</p>
+                </div>
               </div>
             </div>
             <div className='md:col-span-3'>
