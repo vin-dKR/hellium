@@ -1,9 +1,14 @@
+'use client';
 import { currentUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import { useTheme } from 'next-themes';
 
 const Layout = async ({ children }: Props) => {
+  const { theme } = useTheme();
+  let isDark = theme === 'dark';
+
   const user = await currentUser();
 
   if (user) redirect('/');
@@ -11,7 +16,7 @@ const Layout = async ({ children }: Props) => {
     <div className='h-screen flex w-full justify-center  bg-cream'>
       <div className='w-[600px] ld:w-full flex flex-col bg-white items-start p-6 md:rounded-r-4xl md:shadow-xl'>
         <Image
-          src='/images/logo.svg'
+          src={isDark ? '/images/logo.svg' : '/images/Dark-logo.svg'}
           alt='LOGO'
           sizes='100vw'
           style={{

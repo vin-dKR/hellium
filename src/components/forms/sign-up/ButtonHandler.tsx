@@ -26,7 +26,7 @@ function ButtonHandler() {
   if (currentStep === 3) {
     return (
       <div className='w-full flex flex-col gap-3 items-center'>
-        <Button type='submit' className='w-full hover:bg-orange'>
+        <Button type='submit' className='w-full bg-gray-500 hover:bg-orange'>
           Create an account
         </Button>
         <p className='text-iridium'>
@@ -84,7 +84,7 @@ function ButtonHandler() {
     <div className='w-full flex flex-col gap-3 items-center'>
       <Button
         type='submit'
-        className='w-full hover:bg-orange'
+        className='w-full bg-gray-500 hover:bg-orange'
         onClick={() => setCurrentStep((prev: number) => prev + 1)}
       >
         Continue
