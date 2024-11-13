@@ -10,7 +10,7 @@ const IntegrationList = ({ connections }: IntegrationListProps) => {
     return (
         <div className="flex-1 h-0 grid grid-cols-1 content-start lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {INTEGRATION_LIST_ITEMS.map((item) => (
-                <Card key={item.id}>
+                <Card key={item.id} className='dark:bg-brown border-neutral-700 w-80'>
                     <CardContent className="flex flex-col p-5 gap-2">
                         <div className="flex w-full justify-between items-start gap-x-20">
                             <div className="">

@@ -30,7 +30,7 @@ const Modal = ({
                                 <Image
                                     src={`https://ucarecdn.com/2c9bd4ab-1f00-41df-bad2-df668f65a232/`}
                                     fill
-                                    alt="Corinna"
+                                    alt="Hellium"
                                 />
                             </div>
                             <div className="text-gray-400">
