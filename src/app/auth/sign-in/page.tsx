@@ -12,7 +12,7 @@ const SignInPage = () => {
           <div className='flex flex-col gap-3'>
             <LoginForm />
             <div className='w-full flex flex-col gap-3 items-center'>
-              <Button type='submit' className='w-full hover:bg-orange'>
+              <Button type='submit' className='bg-brown w-full hover:bg-orange'>
                 Submit
               </Button>
               <p className='text-iridium'>
