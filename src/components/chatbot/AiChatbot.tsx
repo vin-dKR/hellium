@@ -23,7 +23,14 @@ const AiChatbot = () => {
         errors,
     } = useChatbot()
     return (
-        <div className="h-screen flex flex-col justify-end items-end gap-4">
+        <div 
+          className="h-screen flex flex-col justify-end items-end gap-4" 
+          style={{ 
+            background: 'none !important',
+            backgroundColor: 'rgba(0,0,0,0) !important',
+            backgroundImage: 'none !important'
+          }}
+        >
             {botOpened && (
                 <BotWindow
                     errors={errors}
