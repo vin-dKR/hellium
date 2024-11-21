@@ -7,6 +7,7 @@ export default authMiddleware({
     '/portal(.*)',
     '/images(.*)',
     '/favicon.ico',
+    '/contact'
   ],
   ignoredRoutes: ['/chatbot'],
 });

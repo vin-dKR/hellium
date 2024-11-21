@@ -14,6 +14,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +23,7 @@ export default function ContactForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setSubmitted(true);
         setIsSubmitting(false);
     };
@@ -42,35 +43,29 @@ export default function ContactForm() {
                 animate="animate"
                 className="w-full max-w-2xl z-10"
             >
-                <Card className="p-8 backdrop-blur-sm bg-black/50 border border-gray-800">
+                <Card className="p-8 backdrop-blur-sm bg-black/50 dark:border-gray border-brown-200">
+                    <BorderBeam />
                     <motion.div {...fadeIn} className="space-y-6">
                         <div className="text-center">
                             <motion.h1
-                                className="text-3xl font-bold text-white mb-2"
+                                className="text-3xl font-bold text-brown-800 dark:text-white mb-2"
                                 {...fadeIn}
                             >
                                 Let's Talk Business
                             </motion.h1>
                             <motion.p
-                                className="text-gray-400"
+                                className="text-brown-600 dark:text-gray-400"
                                 {...fadeIn}
                             >
                                 Transform your business with our AI-powered solutions
                             </motion.p>
                         </div>
-
                         {!submitted ? (
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6 text-cream">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <motion.div {...fadeIn}>
                                         <Input
-                                            placeholder="First Name"
-                                            className="bg-gray-900/50 border-gray-800"
-                                        />
-                                    </motion.div>
-                                    <motion.div {...fadeIn}>
-                                        <Input
-                                            placeholder="Last Name"
+                                            placeholder="Name"
                                             className="bg-gray-900/50 border-gray-800"
                                         />
                                     </motion.div>
@@ -108,7 +103,7 @@ export default function ContactForm() {
                                 <motion.div {...fadeIn}>
                                     <Button
                                         type="submit"
-                                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                                        className="w-full bg-theme-gradient text-brown"
                                         disabled={isSubmitting}
                                     >
                                         {isSubmitting ? "Sending..." : "Let's Connect"}
