@@ -5,7 +5,7 @@ import RadialBlur from '../ui/RadialBlur';
 
 const Subscription = () => {
   return (
-    <div className='h-full mt-52'>
+    <div id="pricing" className='h-full mt-52'>
       <RadialBlur
                 color='#FF9D2D'
                 size='400px'

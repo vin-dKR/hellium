@@ -6,7 +6,7 @@ type Props = {}
 
 const BentoWrapper = (props: Props) => {
     return (
-        <div className='flex justify-center flex-col items-center'>
+        <div id="features" className='flex justify-center flex-col items-center'>
             <RadialBlur
                 color='#FF9D2D'
                 size='500px'

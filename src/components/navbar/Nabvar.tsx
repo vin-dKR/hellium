@@ -26,11 +26,18 @@ function NavBar() {
         <span className='absolute justify-self-center self-center w-[98%] h-[94%] inset-0 rounded-full bg-brown bg-opacity-60 backdrop-blur-md z-0' />
 
         <ul className='relative gap-5 justify-between self-stretch my-auto text-sm leading-5 text-neutral-300 max-md:flex-wrap max-md:max-w-full font-normal md:flex z-[10]'>
-          <li>Home</li>
-          <li>Pricing</li>
-          <li>News Room</li>
-          <li>Features</li>
-          <li>Contact us</li>
+            <Link href='/'>
+              <li>Home</li>
+            </Link>
+            <Link href='#pricing'>
+              <li>Pricing</li>
+            </Link>
+            <Link href='#features'>
+              <li>Features</li>
+            </Link>
+            <Link href='/contact'>
+              <li>Contact us</li>
+            </Link>
         </ul>
       </div>
       <div className='flex w-[150px] justify-end'>
