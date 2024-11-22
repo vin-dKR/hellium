@@ -43,7 +43,7 @@ const AiChatbot = () => {
             )}
             <div
                 className={cn(
-                    'rounded-full relative cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis',
+                    'rounded-full relative cursor-pointer shadow-md w-20 h-20 flex items-center justify-center',
                     loading ? 'invisible' : 'visible'
                 )}
                 onClick={onOpenChatBot}
@@ -55,7 +55,13 @@ const AiChatbot = () => {
                         fill
                     />
                 ) : (
-                    <BotIcon />
+                    <Image
+                        src='/images/Big Logo.svg'
+                        alt='big-logo.com'
+                        width={60}
+                        height={60}
+                        className='bg-transparent'
+                    />
                 )}
             </div>
         </div>

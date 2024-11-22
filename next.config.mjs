@@ -8,10 +8,7 @@ const nextConfig = {
                 hostname: 'ucarecdn.com'
             }
         ]
-    },
-    experimental: {
-        transparentFrames: true,
-    },
+    }
 };
 
 export default nextConfig;
