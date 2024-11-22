@@ -16,7 +16,8 @@ export const submitContact = async (data: ContactFormData) => {
         })
 
         await transporter.sendMail({
-            from: validated.email,
+            from: process.env.NODE_MAILER_EMAIL,
+            replyTo: validated.email,
             to: process.env.NODE_MAILER_EMAIL,
             subject: `Hellium AI support: ${validated.interest} by ${validated.name}`,
             html: `
