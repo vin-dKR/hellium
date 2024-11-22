@@ -35,7 +35,7 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
         ref
     ) => {
         return (
-            <div className="h-[670px] w-[450px] flex flex-col dark:bg-brown rounded-xl mr-[80px] border-[1px] overflow-hidden">
+            <div className="h-[600px] w-[450px] flex flex-col dark:bg-brown rounded-xl mr-[80px] border-[1px] overflow-hidden">
                 <div className="flex justify-between px-4 pt-4">
                     <div className="flex gap-2">
                         <Avatar className="w-20 h-20">
@@ -47,9 +47,9 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                         </Avatar>
                         <div className="flex items-start flex-col">
                             <h3 className="text-lg font-bold leading-none">
-                                Sales Rep - Hellium
+                                Sales Rep - Hellium AI
                             </h3>
-                            <p className="text-sm">{domainName.split('.com')[0]}</p>
+                            <p className="text-sm">{domainName}</p>
                             {realtimeMode?.mode && (
                                 <RealTimeMode
                                     setChats={setChat}
@@ -92,11 +92,11 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                             </div>
                             <form
                                 onSubmit={onChat}
-                                className="flex px-3 py-1 flex-col flex-1 bg-porcelain"
+                                className="flex px-3 flex-col flex-1 bg-porcelain"
                             >
                                 <div className="flex justify-between items-center">
                                     <Label htmlFor="upload">
-                                        <Paperclip />
+                                        <Paperclip className='text-brown' />
                                         <Input
                                             {...register('image')}
                                             type="file"
@@ -107,10 +107,11 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                                     <Input
                                         {...register('content')}
                                         placeholder="Type your message..."
-                                        className="focus-visible:ring-0 flex-1 focus-visible:ring-offset-0 bg-porcelain rounded-none outline-none border-none pl-2"
+                                        className="focus-visible:ring-0 flex-1 focus-visible:ring-offset-0 bg-porcelain rounded-none outline-none border-none pl-2 text-brown"
                                     />
                                     <Button
                                         type="submit"
+                                        className='text-brown'
                                     >
                                         <Send />
                                     </Button>

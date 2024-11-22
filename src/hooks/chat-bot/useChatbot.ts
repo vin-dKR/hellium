@@ -74,6 +74,7 @@ export const useChatbot = () => {
             JSON.stringify({
                 width: botOpened ? 550 : 80,
                 height: botOpened ? 800 : 80,
+                borderRadius: 12,
             })
         )
     }, [botOpened])
@@ -218,7 +219,6 @@ export const useRealTime = (
     const counterRef = useRef(1)
 
     useEffect(() => {
-        //WIP
         pusherClient.subscribe(chatRoom)
         pusherClient.bind('realtime-mode', (data: any) => {
             console.log('✅', data)

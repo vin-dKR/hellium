@@ -6,7 +6,7 @@ import Subscription from '@/components/hero/Subscription';
 import NavBar from '@/components/navbar/Nabvar';
 import RadialBlur from '@/components/ui/RadialBlur';
 import TorchBlur from '@/components/ui/TorchBlur';
-import ChatbotEmbded from "./ChatbotEmbded.js"
+import ChatbotEmbded from "./ChatbotEmbded"
 
 // Main Home component
 export default function Home() {
