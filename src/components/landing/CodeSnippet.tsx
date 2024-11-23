@@ -44,7 +44,7 @@ iframeStyles('
       <div className='px-1 py-2 bg-brown w-full rounded-lg inline-block relative'>
         <BorderBeam />
         <Copy
-          className='absolute top-5 right-5 text-slate-700 z-10 cursor-pointer'
+          className='absolute top-5 right-5 text-slate-700 z-0 cursor-pointer'
           onClick={() => {
             navigator.clipboard.writeText(snippet);
             toast({

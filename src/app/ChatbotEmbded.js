@@ -1,25 +1,30 @@
 "use client";
 import { useEffect } from "react";
 
-const ChatbotEmbed = () => {
+const ChatbotEmbed = ({
+  domainId,
+  baseUrl = process.env.NEXT_PUBLIC_CHATBOT_URL || "http://192.168.1.2:3000",
+  position = { bottom: "50px", right: "50px" }
+}) => {
   useEffect(() => {
-    // Create the iframe
     const iframe = document.createElement("iframe");
 
-    // Apply inline styles
+    // Apply inline styles with configurable position
     iframe.style.position = "fixed";
-    iframe.style.bottom = "50px";
-    iframe.style.right = "50px";
+    iframe.style.bottom = position.bottom;
+    iframe.style.right = position.right;
     iframe.style.border = "none";
-    
-    // Set iframe source
-    iframe.src = "http://localhost:3000/chatbot";
+    iframe.style.zIndex = "9999"; // Ensure iframe stays on top
+
+    // Use environment-based URL
+    iframe.src = `${baseUrl}/chatbot`;
 
     // Append iframe to the document body
     document.body.appendChild(iframe);
 
     const handleMessage = (e) => {
-      if (e.origin !== "http://localhost:3000") return;
+      // Validate origin using the baseUrl
+      if (!e.origin.startsWith(baseUrl)) return;
 
       console.log("Received message:", e.data); // Debugging
 
@@ -37,10 +42,9 @@ const ChatbotEmbed = () => {
         iframe.height = dimensions.height;
       }
 
-      // Post back the unique identifier to the iframe
       iframe.contentWindow.postMessage(
-        "b2ef15db-d57d-486c-bcca-bce201f7f364",
-        "http://localhost:3000/"
+        domainId,
+        baseUrl
       );
     };
 
@@ -51,9 +55,9 @@ const ChatbotEmbed = () => {
       window.removeEventListener("message", handleMessage);
       document.body.removeChild(iframe);
     };
-  }, []);
+  }, [domainId, baseUrl, position]);
 
-  return null; // This component doesn't render anything in JSX
+  return null;
 };
 
 export default ChatbotEmbed;

@@ -283,6 +283,7 @@ declare global {
   };
 
   type BotWindowProps = {
+    className: string;
     errors: any;
     register: UseFormRegister<ChatBotMessageProps>;
     chats: { role: 'assistant' | 'user'; content: string; link?: string }[];

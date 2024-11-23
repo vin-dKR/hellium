@@ -25,7 +25,10 @@ export default function Home() {
       <BentoWrapper />
       <Subscription />
       <Footer />
-      <ChatbotEmbded />
+      <ChatbotEmbded
+        domainId="b2ef15db-d57d-486c-bcca-bce201f7f364"
+        position={{ bottom: "20px", right: "20px" }}
+      />
     </div>
   );
 }

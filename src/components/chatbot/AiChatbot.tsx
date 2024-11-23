@@ -3,7 +3,6 @@ import { useChatbot } from '@/hooks/chat-bot/useChatbot'
 import React from 'react'
 import BotWindow from './BotWindow'
 import Image from 'next/image'
-import { BotIcon } from '@/icons/bot-icon'
 import { cn } from '@/lib/utils'
 
 
@@ -23,9 +22,10 @@ const AiChatbot = () => {
         errors,
     } = useChatbot()
     return (
-        <div className="h-screen flex flex-col justify-end items-end gap-4">
+        <div className="h-screen flex flex-col justify-end items-end gap-4 md:pr-4 pr-2 pb-2 md:pb-4">
             {botOpened && (
                 <BotWindow
+                    className="w-2/3 h-[85vh] md:w-[400px] md:h-[600px] fixed bottom-22 right-0 md:bottom-24 md:right-6"
                     errors={errors}
                     setChat={setOnChats}
                     realtimeMode={onRealTime}

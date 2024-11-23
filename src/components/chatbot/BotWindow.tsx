@@ -14,6 +14,7 @@ import { Paperclip, Send } from 'lucide-react'
 import { Label } from '../ui/label'
 import { CardDescription, CardTitle } from '../ui/card'
 import Accordion from '../accordion/Accordion'
+import { cn } from '@/lib/utils'
 
 // huge perops in BotWindowProps..
 const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
@@ -31,11 +32,17 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
             textColor,
             theme,
             help,
+            className,
         },
         ref
     ) => {
         return (
-            <div className="h-[600px] w-[450px] flex flex-col dark:bg-brown rounded-xl mr-[80px] border-[1px] overflow-hidden">
+            <div className={cn(
+                "flex flex-col dark:bg-brown bg-theme-gradient dark:bg-none rounded-xl border-[1px] overflow-hidden",
+                "w-full h-[85vh] md:h-[600px] md:w-[450px]", 
+                "fixed bottom-48 md:relative md:mr-[80px]",
+                className
+            )}>
                 <div className="flex justify-between px-4 pt-4">
                     <div className="flex gap-2">
                         <Avatar className="w-20 h-20">
@@ -111,7 +118,7 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
                                     />
                                     <Button
                                         type="submit"
-                                        className='text-brown'
+                                        className='dark:text-brown'
                                     >
                                         <Send />
                                     </Button>

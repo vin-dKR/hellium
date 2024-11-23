@@ -74,7 +74,6 @@ export const useChatbot = () => {
             JSON.stringify({
                 width: botOpened ? 550 : 80,
                 height: botOpened ? 800 : 80,
-                borderRadius: 12,
             })
         )
     }, [botOpened])
