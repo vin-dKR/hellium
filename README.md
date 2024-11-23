@@ -98,13 +98,14 @@ To democratize AI-powered customer service by providing businesses with easy-to-
 
 ### 1. Authentication Flow
 
-mermaid
+```mermaid
 graph LR
-A[Landing Page] --> B{User Status}
-B -->|New User| C[Sign Up]
-B -->|Existing User| D[Login]
-C --> E[Dashboard]
-D --> E[Dashboard]
+    A[Landing Page] --> B{User Status}
+    B -->|New User| C[Sign Up]
+    B -->|Existing User| D[Login]
+    C --> E[Dashboard]
+    D --> E[Dashboard]
+```
 
 ### 2. Bot Creation Process
 
@@ -137,33 +138,36 @@ D --> E[Dashboard]
 
 The platform implements a mobile-first approach with responsive breakpoints:
 
-css
-/ Base Mobile Styles /
+```css
+/* Base Mobile Styles */
 .chatbot-window {
-width: 100%;
-height: 85vh;
+    width: 100%;
+    height: 85vh;
 }
-/ Tablet & Desktop /
+
+/* Tablet & Desktop */
 @media (min-width: 768px) {
-.chatbot-window {
-width: 400px;
-height: 600px;
+    .chatbot-window {
+        width: 400px;
+        height: 600px;
+    }
 }
-}
+```
 
 ### 2. Real-time Communication
 
-typescript
+```typescript
 interface ChatMessage {
-id: string;
-content: string;
-timestamp: Date;
-sender: 'user' | 'bot';
-metadata?: {
-sentiment?: string;
-confidence?: number;
-};
+    id: string;
+    content: string;
+    timestamp: Date;
+    sender: 'user' | 'bot';
+    metadata?: {
+        sentiment?: string;
+        confidence?: number;
+    };
 }
+```
 
 ### 3. Security Measures
 
@@ -239,7 +243,7 @@ confidence?: number;
 
 ### Roadmap
 
-mermaid
+```mermaid
 gantt
 title Project Roadmap
 dateFormat YYYY-MM-DD
@@ -249,25 +253,28 @@ section Phase 2
 Advanced AI :2024-04-01, 60d
 section Phase 3
 Integrations :2024-06-01, 90d
+```
 
 ## Development Guidelines 📝
 
 ### Code Style
 
-typescript
+```typescript
 // Example of component structure
 interface ChatbotProps {
-domainId: string;
-theme?: ThemeConfig;
-position?: Position;
+    domainId: string;
+    theme?: ThemeConfig;
+    position?: Position;
 }
+
 const Chatbot: React.FC<ChatbotProps> = ({
-domainId,
-theme = defaultTheme,
-position,
+    domainId,
+    theme = defaultTheme,
+    position,
 }) => {
-// Implementation
+    // Implementation
 };
+```
 
 ### Testing Strategy
 
@@ -290,13 +297,14 @@ position,
 
 ## Deployment Architecture 🌐
 
-mermaid
+```mermaid
 graph TD
-A[Client] --> B[CDN]
-B --> C[Next.js Frontend]
-C --> D[API Gateway]
-D --> E[Authentication Service]
-D --> F[Chat Service]
-D --> G[AI Service]
-F --> H[(Database)]
-G --> I[Vector Store]
+    A[Client] --> B[CDN]
+    B --> C[Next.js Frontend]
+    C --> D[API Gateway]
+    D --> E[Authentication Service]
+    D --> F[Chat Service]
+    D --> G[AI Service]
+    F --> H[(Database)]
+    G --> I[Vector Store]
+```
