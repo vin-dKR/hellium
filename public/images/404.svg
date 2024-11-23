@@ -1,0 +1,57 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    .blink {
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .number { fill: #4B5563; }
+    @media (prefers-color-scheme: dark) {
+      .number { fill: #E5E7EB; }
+      circle.bg { fill: #374151; fill-opacity: 0.3; }
+    }
+  </style>
+
+  <!-- Background Circle -->
+  <circle class="bg" cx="200" cy="200" r="180" fill="#F3F4F6" fill-opacity="0.5"/>
+  
+  <!-- Animated 404 Group -->
+  <g class="float">
+    <!-- "404" Text -->
+    <path class="number" d="M90 140V260H110V215H150V260H170V140H150V195H110V140H90Z"/>
+    <circle class="number" cx="200" cy="200" r="35"/>
+    <path class="number" d="M310 140V260H290V215H250V260H230V140H250V195H290V140H310Z"/>
+    
+    <!-- Face Elements -->
+    <g class="blink">
+      <circle class="number" cx="160" cy="180" r="8"/>
+      <circle class="number" cx="240" cy="180" r="8"/>
+    </g>
+    <path class="number" d="M160 240C160 240 180 220 200 220C220 220 240 240 240 240" 
+          stroke-width="8" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <g class="blink">
+    <circle cx="80" cy="100" r="5" fill="#6B7280"/>
+    <circle cx="320" cy="100" r="5" fill="#6B7280"/>
+    <circle cx="80" cy="300" r="5" fill="#6B7280"/>
+    <circle cx="320" cy="300" r="5" fill="#6B7280"/>
+  </g>
+  
+  <!-- Small Dots Pattern -->
+  <circle cx="50" cy="200" r="3" fill="#9CA3AF"/>
+  <circle cx="350" cy="200" r="3" fill="#9CA3AF"/>
+  <circle cx="200" cy="50" r="3" fill="#9CA3AF"/>
+  <circle cx="200" cy="350" r="3" fill="#9CA3AF"/>
+</svg>

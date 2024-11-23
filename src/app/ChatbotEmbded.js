@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const ChatbotEmbed = ({
   domainId,
-  baseUrl = process.env.NEXT_PUBLIC_CHATBOT_URL || "http://192.168.1.2:3000",
+  baseUrl = process.env.NEXT_PUBLIC_CHATBOT_URL || "http://localhost:3000",
   position = { bottom: "50px", right: "50px" }
 }) => {
   useEffect(() => {
