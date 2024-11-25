@@ -12,21 +12,42 @@
 
 ## Overview 🌟
 
-This project is a sophisticated AI chatbot platform that enables businesses to create, customize, and embed intelligent chatbots on their websites. The platform leverages advanced AI technologies to provide natural, context-aware conversations while maintaining a user-friendly interface for both administrators and end-users.
+A modern AI chatbot platform designed specifically for sales and customer engagement. The platform combines sales-trained AI models with customizable chatbots that businesses can easily embed into their websites.
+
+### Key Highlights
+- Sales-optimized AI responses
+- Real-time customer engagement
+- Easy website integration
+- Customizable chat interface
+- Analytics and performance tracking
 
 ### Mission Statement
+To empower businesses with AI-driven sales automation that converts visitors into customers while providing 24/7 intelligent customer support.
 
-To democratize AI-powered customer service by providing businesses with easy-to-implement, intelligent chatbot solutions that enhance customer engagement while reducing operational costs.
+### Core Benefits
+- **Sales Optimization**: Pre-trained on sales conversations and techniques
+- **Cost Reduction**: Automated customer engagement and lead qualification
+- **24/7 Availability**: Continuous customer support and lead capture
+- **Easy Integration**: Simple embed code for any website
+- **Data Insights**: Detailed analytics on customer interactions and conversions
 
 ## Key Features 🎯
 
 ### 1. Chatbot Creation & Management
 
-- **Visual Bot Builder**
-  - Drag-and-drop interface
-  - Customizable conversation flows
-  - Pre-built templates for common scenarios
-  - Real-time preview functionality
+- **AI Chat Configuration**
+  - Custom domain integration
+  - Chat window customization
+  - Brand theme personalization
+  - Multiple bot deployment
+  - Real-time chat preview
+
+- **Conversation Management**
+  - Sales-focused responses
+  - Context-aware interactions
+  - Automated lead qualification
+  - Smart response handling
+  - Chat history tracking
 
 ### 2. AI Integration
 
@@ -48,23 +69,22 @@ To democratize AI-powered customer service by providing businesses with easy-to-
 - **Behavior**
   - Working hours configuration
   - Fallback responses
-  - Human handoff triggers
-  - Custom welcome messages
+  - Auto-response timing
+  - Personalized greetings
 
 ### 4. Analytics & Insights
 
 - **Dashboard Metrics**
-  - Conversation analytics
-  - User satisfaction rates
-  - Response time tracking
-  - Usage patterns
-  - Conversion tracking
+  - Total conversations
+  - Active users tracking
+  - Message history logs
+  - Chat duration stats
+  - Bot performance metrics
 
 ### 5. Integration Features
 
 - **Easy Embedding**
   - Simple JavaScript snippet
-  - WordPress plugin
   - API access
   - Multiple website support
 
@@ -72,27 +92,33 @@ To democratize AI-powered customer service by providing businesses with easy-to-
 
 ### Frontend Stack
 
-- Next.js 13+ (App Router)
-- TypeScript
-- Tailwind CSS
+- Next.js 14.2.5 (App Router)
+- React 18
+- TypeScript 5
+- Tailwind CSS 3.4
 - Shadcn/ui Components
-- Clerk Authentication
-- Zustand State Management
+- Clerk Authentication 4.29
+- Framer Motion 11
+- React Hook Form 7.52
+- Zod Validation
+- Pusher.js for Real-time
 
 ### Backend Services
 
 - Node.js
-- PostgreSQL with Prisma ORM
-- Redis for Caching
-- WebSocket for Real-time Communication
-- AWS S3 for Media Storage
+- Prisma ORM 5.22
+- PostgreSQL
+- Pusher
+- OpenAI API 4.57
+- Stripe Integration
+- Nodemailer
 
-### AI Integration
+### Third-Party Services
 
-- OpenAI GPT Models
-- Custom Training Pipeline
-- Vector Database for Context
-- Embeddings for Semantic Search
+- Uploadcare for Media
+- Clerk for Authentication
+- Stripe for Payments
+- OpenAI for AI Processing
 
 ## User Journey 🚶‍♂️
 
@@ -113,7 +139,6 @@ graph LR
 
    - Domain verification
    - Basic configuration
-   - Theme selection
 
 2. **Knowledge Base**
 
@@ -128,9 +153,9 @@ graph LR
    - Performance optimization
 
 4. **Deployment**
-   - Embedding code generation
-   - Domain whitelisting
-   - Launch checklist
+   - JavaScript embed code
+   - Domain verification
+   - Basic configuration
 
 ## Implementation Details 💻
 
@@ -181,11 +206,6 @@ interface ChatMessage {
   });
   ```
 
-- **Data Protection**
-  - End-to-end encryption
-  - GDPR compliance
-  - Data retention policies
-
 ## Security & Performance 🛡️
 
 ### Security Features
@@ -215,7 +235,6 @@ interface ChatMessage {
    - Database indexing
    - Query optimization
    - Connection pooling
-   - Load balancing
 
 ## Future Enhancements 🚀
 
@@ -248,11 +267,13 @@ gantt
 title Project Roadmap
 dateFormat YYYY-MM-DD
 section Phase 1
-Core Features :2024-01-01, 90d
+Core Features(from Web Prodigies) :2024-08-15, 90d
 section Phase 2
-Advanced AI :2024-04-01, 60d
+Advanced AI :2024-09-04, 60d
 section Phase 3
-Integrations :2024-06-01, 90d
+Integrations :2024-09-18, 90d
+section Phase 4
+Finishing :2024-11-01
 ```
 
 ## Development Guidelines 📝
@@ -276,35 +297,22 @@ const Chatbot: React.FC<ChatbotProps> = ({
 };
 ```
 
-### Testing Strategy
-
-1. **Unit Tests**
-
-   - Component testing
-   - Service testing
-   - Utility function testing
-
-2. **Integration Tests**
-
-   - API endpoint testing
-   - Authentication flow
-   - Real-time communication
-
-3. **E2E Tests**
-   - User journeys
-   - Cross-browser testing
-   - Mobile responsiveness
-
 ## Deployment Architecture 🌐
 
 ```mermaid
 graph TD
     A[Client] --> B[CDN]
     B --> C[Next.js Frontend]
-    C --> D[API Gateway]
-    D --> E[Authentication Service]
+    C --> D[API Routes]
+    D --> E[Clerk Auth]
     D --> F[Chat Service]
-    D --> G[AI Service]
-    F --> H[(Database)]
-    G --> I[Vector Store]
+    D --> G[(Neon PostgreSQL)]
+    F <--> I[Pusher]
 ```
+
+Application is deployed on Vercel with:
+- Frontend hosted on Vercel's Edge Network
+- Database on Neon (PostgreSQL)
+- Authentication via Clerk
+- Real-time communication through Pusher
+- AI processing via OpenAI
