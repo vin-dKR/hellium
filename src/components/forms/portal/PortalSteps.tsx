@@ -1,6 +1,7 @@
 import React from 'react'
 import QuestionsForm from './QuestionForm'
 import BookAppointmentDate from './BookAppointmentDate'
+import PaymentCheckout from './ProductCheckout'
 
 
 const PortalSteps = ({
@@ -55,8 +56,13 @@ const PortalSteps = ({
     if (step == 2 && type == 'Payment') {
         return (
             <div>
-                {/* WIP */}
-                {/* Paymetn Checkout */}
+                <PaymentCheckout
+                    products={products}
+                    stripeId={stripeId}
+                    onBack={onBack}
+                    onNext={onNext}
+                    amount={amount}
+                />
             </div>
         )
     }
