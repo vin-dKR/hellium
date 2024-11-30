@@ -149,4 +149,6 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
         )
     }
 )
+
+BotWindow.displayName = 'BotWindow'
 export default BotWindow

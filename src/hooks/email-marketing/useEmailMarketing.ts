@@ -161,18 +161,14 @@ export const useAnswers = (id: string) => {
             if (answer) {
                 setAnswer(answer)
             }
-
-            useEffect(() => {
-                const fetchAnswers = async () => {
-                    await onGetCustomerAnswers()
-                }
-
-                fetchAnswers()
-            }, [])
         } catch (error) {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        onGetCustomerAnswers()
+    }, [])
 
     return {
         answers, loading
