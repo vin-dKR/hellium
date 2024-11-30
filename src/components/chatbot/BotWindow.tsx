@@ -20,7 +20,6 @@ import { cn } from '@/lib/utils'
 const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
     (
         {
-            errors,
             register,
             chats,
             onChat,
@@ -31,7 +30,6 @@ const BotWindow = forwardRef<HTMLDivElement, BotWindowProps>(
             setChat,
             textColor,
             theme,
-            help,
             className,
         },
         ref

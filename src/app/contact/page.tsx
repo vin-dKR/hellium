@@ -76,7 +76,7 @@ export default function ContactForm() {
                                 className="text-3xl font-bold text-brown-800 dark:text-white mb-2"
                                 {...fadeIn}
                             >
-                                Let's Talk Business
+                                Let&apos;s Talk Business
                             </motion.h1>
                             <motion.p
                                 className="text-brown-600 dark:text-gray-400"
@@ -159,7 +159,7 @@ export default function ContactForm() {
                                     Thank you for reaching out!
                                 </h3>
                                 <p className="text-gray-400">
-                                    We'll get back to you within 24 hours.
+                                    We&apos;ll get back to you within 24 hours.
                                 </p>
                             </motion.div>
                         )}

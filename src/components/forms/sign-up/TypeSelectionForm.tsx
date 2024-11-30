@@ -5,7 +5,7 @@ const TypeSelectionForm = ({ register, setUserType, userType }: TypeSelectionPro
     return (
         <>
             <h2 className='text-gravel md:text-4xl font-bold'>Create an Account</h2>
-            <p className='text-iridium md: text-sm'>Tell us about yourself! What you do? Let' tailor your
+            <p className='text-iridium md: text-sm'>Tell us about yourself! What you do? Let&apos;s tailor your
                 <br />experience so ti best suits you
             </p>
             <UserTypeCard

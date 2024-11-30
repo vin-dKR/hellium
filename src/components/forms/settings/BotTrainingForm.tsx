@@ -16,7 +16,7 @@ const BotTrainingForm = ({ id }: IdProps) => {
                     train your bot to act the way you want it to.
                 </p>
             </div>
-            <TabsMenu triggers={HELP_DESK_TABS_MENU}>
+            <TabsMenu triggers={HELP_DESK_TABS_MENU} className='dark:bg-brown'>
                 <TabsContent
                     value="help desk"
                     className="w-full"

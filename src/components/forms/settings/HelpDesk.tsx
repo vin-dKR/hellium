@@ -19,8 +19,8 @@ const HelpDesk = ({ id }: IdProps) => {
     const { register, errors, onSubmitQuestion, isQuestions, loading } = useHelpDesk(id)
 
     return (
-        <Card className="w-full grid grid-cols-1 lg:grid-cols-2">
-            <CardContent className="p-6 border-r-[1px]">
+        <Card className="w-full grid grid-cols-1 lg:grid-cols-2 dark:bg-brown border-orange">
+            <CardContent className="p-6 border-r-[1px] border-orange">
                 <CardTitle>Help Desk</CardTitle>    
                 <form
                     onSubmit={onSubmitQuestion} 

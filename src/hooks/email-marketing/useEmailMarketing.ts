@@ -163,7 +163,11 @@ export const useAnswers = (id: string) => {
             }
 
             useEffect(() => {
-                onGetCustomerAnswers()
+                const fetchAnswers = async () => {
+                    await onGetCustomerAnswers()
+                }
+
+                fetchAnswers()
             }, [])
         } catch (error) {
             console.log(error)
@@ -176,30 +180,30 @@ export const useAnswers = (id: string) => {
 }
 
 export const useEditEmail = (id: string) => {
-	const [loading, setLoading] = useState<boolean>(false)
-	const [template, setTemplate] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
+    const [template, setTemplate] = useState<string>('')
 
-	const onGetTemplate = async (id: string) => {
-		try{
-			setLoading(true)
-			const email = await onGetEmailTemplate(id)
+    const onGetTemplate = async (id: string) => {
+        try {
+            setLoading(true)
+            const email = await onGetEmailTemplate(id)
 
-			if (email) {
-				setTemplate(email)
-			}
-			setLoading(false)
-		} catch(err){
-			console.log(err)
-		}
-	}
+            if (email) {
+                setTemplate(email)
+            }
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
-	useEffect(() => {
-		onGetTemplate(id)
-	}, [])
-	
-	return {
-		loading, template
-	}
+    useEffect(() => {
+        onGetTemplate(id)
+    }, [])
+
+    return {
+        loading, template
+    }
 }
 
 

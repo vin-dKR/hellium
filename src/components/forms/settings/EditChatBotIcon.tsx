@@ -1,6 +1,5 @@
 import SectionLabel from '@/components/section-label/SectionLabel'
 import UploadButton from '@/components/upload-button/UploadBtn'
-import { BotIcon } from '@/icons/bot-icon'
 import Image from 'next/image'
 import React from 'react'
 
@@ -27,8 +26,13 @@ const EditChatBotIcon = ({ register, errors, chatBot }: EditChatBotIconProps) =>
                     />
                 </div>
             ) : (
-                <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center bg-grandis">
-                    <BotIcon />
+                <div className="rounded-full cursor-pointer shadow-md w-20 h-20 flex items-center justify-center ">
+                    <Image
+                        src="/images/Big Logo.svg"
+                        alt="bot-image"
+                        width={60}
+                        height={60}
+                    />
                 </div>
             )}
         </div>

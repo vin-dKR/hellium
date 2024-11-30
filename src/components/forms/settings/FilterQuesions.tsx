@@ -22,8 +22,8 @@ const FilterQuestions = ({ id }: Props) => {
     const { register, errors, onAddFilterQuestions, isQuestions, loading } = useFilterQuestions(id)
 
     return (
-        <Card className="w-full grid grid-cols-1 lg:grid-cols-2">
-            <CardContent className="p-6 border-r-[1px]">
+        <Card className="w-full grid grid-cols-1 lg:grid-cols-2 dark:bg-brown border-orange">
+            <CardContent className="p-6 border-r-[1px] border-orange">
                 <CardTitle>Bot Questions</CardTitle>
                 <form
                     onSubmit={onAddFilterQuestions}

@@ -47,7 +47,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                 <div className="flex flex-col gap-3 mt-5">
                     <div className="flex gap-4 items-center">
                         <h2 className="font-bold text-2xl">Chatbot Settings</h2>
-                        <div className="flex gap-1 bg-cream rounded-full px-3 py-1 text-xs items-center font-bold">
+                        <div className="flex gap-1 bg-cream rounded-full px-3 py-1 text-xs items-center font-bold dark:bg-brown">
                             <PremiumBadge />
                             Premium
                         </div>
@@ -73,6 +73,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                                 alt="bot-ui"
                                 width={530}
                                 height={769}
+                                unoptimized
                             />
                         </div>
                     </div>
@@ -87,7 +88,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
                         </Button>
                         <Button
                             type="submit"
-                            className="w-[100px] h-[50px]"
+                            className="w-[100px] h-[50px] dark:text-brown"
                         >
                             <Loader loading={loading}>Save</Loader>
                         </Button>
