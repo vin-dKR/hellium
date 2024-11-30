@@ -3,10 +3,11 @@ import { useEffect } from "react";
 
 const ChatbotEmbed = ({
   domainId,
-  baseUrl = process.env.NEXT_PUBLIC_CHATBOT_URL || "http://localhost:3000",
+  baseUrl = "https://hellium.vercel.app",
   position = { bottom: "50px", right: "50px" }
 }) => {
   useEffect(() => {
+    console.log('Current baseUrl:', baseUrl);
     const iframe = document.createElement("iframe");
 
     // Apply inline styles with configurable position
@@ -23,10 +24,17 @@ const ChatbotEmbed = ({
     document.body.appendChild(iframe);
 
     const handleMessage = (e) => {
-      // Validate origin using the baseUrl
-      if (!e.origin.startsWith(baseUrl)) return;
+      const allowedOrigins = [
+        baseUrl,
+        "http://localhost:3000"
+      ];
+      
+      if (!allowedOrigins.some(origin => e.origin.startsWith(origin))) {
+        console.warn('Received message from unauthorized origin:', e.origin);
+        return;
+      }
 
-      console.log("Received message:", e.data); // Debugging
+      console.log("Received message:", e.data); // for debugging
 
       let dimensions;
       try {

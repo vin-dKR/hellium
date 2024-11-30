@@ -47,7 +47,7 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 			const { error, paymentIntent } = await stripe.confirmPayment({
 				elements,
 				confirmParams: {
-					return_url: 'http://localhost:3000/settings',
+					return_url: 'https://hellium.vercel.app/settings',
 				},
 				redirect: 'if_required',
 			})
@@ -184,7 +184,7 @@ export const useCompletePayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') => 
 			const { error, paymentIntent } = await stripe.confirmPayment({
 				elements,
 				confirmParams: {
-					return_url: 'http://localhost:3000/settings'
+					return_url: 'https://hellium.vercel.app/settings'
 				},
 				redirect: 'if_required'
 			})
