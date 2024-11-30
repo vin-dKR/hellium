@@ -14,7 +14,7 @@ const BillingSettings = async () => {
   const planFeatures = pricingCards.find(
     (card) => card.title.toUpperCase() === plan?.toUpperCase()
   )?.features
-  console.log(plan)
+  // console.log(plan)
   if (!planFeatures) return
 
   return (

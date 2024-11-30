@@ -7,7 +7,7 @@ const ChatbotEmbed = ({
   position = { bottom: "50px", right: "50px" }
 }) => {
   useEffect(() => {
-    console.log('Current baseUrl:', baseUrl);
+    // console.log('Current baseUrl:', baseUrl);
     const iframe = document.createElement("iframe");
 
     // Apply inline styles with configurable position
@@ -26,7 +26,7 @@ const ChatbotEmbed = ({
     const handleMessage = (e) => {
       const allowedOrigins = [
         baseUrl,
-        "http://localhost:3000"
+        // "http://localhost:3000"
       ];
       
       if (!allowedOrigins.some(origin => e.origin.startsWith(origin))) {
@@ -34,7 +34,7 @@ const ChatbotEmbed = ({
         return;
       }
 
-      console.log("Received message:", e.data); // for debugging
+      // console.log("Received message:", e.data);
 
       let dimensions;
       try {

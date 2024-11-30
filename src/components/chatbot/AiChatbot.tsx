@@ -62,7 +62,6 @@ const AiChatbot = () => {
                         width={60}
                         height={60}
                         className='bg-transparent'
-                        style={{ width: 'auto', height: 'auto' }}
                         priority
                     />
                 )}
