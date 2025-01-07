@@ -35,7 +35,7 @@ const Footer = () => {
                             width={0}
                             height={0}
                         />
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-gray-600 dark:text-cream">
                             Making marketing effortless with AI-powered webbots for automated business sales.                        </p>
                     </div>
 
@@ -47,7 +47,7 @@ const Footer = () => {
                                 <li key={item}>
                                     <Link
                                         href={`/${item.toLowerCase()}`}
-                                        className="text-sm text-gray-600 hover:text-dark-org dark:text-gray-400 dark:hover:text-fade-org transition-colors"
+                                        className="text-sm text-gray-600 hover:text-dark-org dark:text-cream dark:hover:text-fade-org transition-colors"
                                     >
                                         {item}
                                     </Link>
@@ -64,7 +64,7 @@ const Footer = () => {
                                 <li key={item}>
                                     <Link
                                         href={`/${item.toLowerCase()}`}
-                                        className="text-sm text-gray-600 hover:text-dark-org dark:text-gray-400 dark:hover:text-fade-org transition-colors"
+                                        className="text-sm text-gray-600 hover:text-dark-org dark:text-cream dark:hover:text-fade-org transition-colors"
                                     >
                                         {item}
                                     </Link>
@@ -89,7 +89,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <social.icon className="w-5 h-5 text-gray-600 hover:text-dark-org dark:text-gray-400 dark:hover:text-fade-org" />
+                                    <social.icon className="w-5 h-5 text-gray-600 hover:text-dark-org dark:text-cream dark:hover:text-fade-org" />
                                 </Link>
                             ))}
                         </div>
@@ -97,21 +97,21 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+                <div className="mt-12 pt-8 border-t border-cream dark:border-orange">
                     <div className="flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-sm text-gray-600 dark:text-cream">
                             © {new Date().getFullYear()} Hellium AI. All rights reserved.
                         </p>
                         <div className="flex space-x-4 mt-4 md:mt-0">
                             <Link
                                 href="/privacy"
-                                className="text-sm text-gray-600 hover:text-dark-org dark:text-gray-400 dark:hover:text-fade-org"
+                                className="text-sm text-gray-600 hover:text-dark-org dark:text-cream dark:hover:text-fade-org"
                             >
                                 Privacy Policy
                             </Link>
                             <Link
                                 href="/terms"
-                                className="text-sm text-gray-600 hover:text-dark-org dark:text-gray-400 dark:hover:text-fade-org"
+                                className="text-sm text-gray-600 hover:text-dark-org dark:text-cream dark:hover:text-fade-org"
                             >
                                 Terms of Service
                             </Link>

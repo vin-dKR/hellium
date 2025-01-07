@@ -14,7 +14,7 @@ const Subscription = () => {
             />
       <div className='flex justify-center items-center flex-col gap-4'>
         <h2 className='text-3xl lg:text-6xl text-center'>Choose what fits you right</h2>
-        <p className='text-xl lg:text-3xl text-muted-foreground text-center max-w-lg'>
+        <p className='text-small lg:text-1xl text-gray-600 dark:text-cream text-center max-w-lg'>
           Our straightforward pricing plans are tailored to meet your needs. If
           {" you're"} not ready to commit you can get started for free.
         </p>

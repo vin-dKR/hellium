@@ -20,14 +20,23 @@ const MenuItem = ({ size, path, icon, label, current, onSignOut }: Props) => {
           className={cn(
             'flex items-center gap-2 px-1 py-2 rounded-lg my-1',
             !current
-              ? 'text-gray-500 fill-gray-500'
+              ? 'text-yellow-500 stroke-yellow-500'
               : current == path
                 ? 'bg-white font-bold text-black'
-                : 'text-gray-500',
+                : 'text-gray-500 fill-gray-500',
           )}
           href={path ? `/${path}` : '#'}
         >
-          {icon} {label}
+            <span
+                className={cn(
+                    current == path
+                    ? 'text-black dark:text-black'
+                    : 'text-gray-500'
+                )}
+            >
+                {icon}
+            </span>
+          {label}
         </Link>
       );
     case 'min':
