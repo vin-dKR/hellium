@@ -2,7 +2,7 @@ export const pricingCards = [
     {
       title: 'STANDARD',
       description: 'Perfect for trying out',
-      price: '₹0',
+      price: '₹10',
       duration: '',
       highlight: 'Key features',
       features: [' 1 domain ', '10 contacts', '10 Emails/month'],
@@ -11,7 +11,7 @@ export const pricingCards = [
     {
       title: 'ULTIMATE',
       description: 'The ultimate agency kit',
-      price: '₹10',
+      price: '₹500',
       duration: 'month',
       highlight: 'Key features',
       features: [' Unlimited domain ', '500 Contacts', '500 Emails'],

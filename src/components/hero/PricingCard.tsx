@@ -25,7 +25,7 @@ const PricingCard = ({ title, price, description, features }: PricingCardProps) 
             <h2 className="text-3xl text-darkorg font-bold">{title}</h2>
             <div className="price">
                 <span className="text-6xl">{price}</span>
-                <span>/ month</span>
+                <span>/month</span>
             </div>
             <p className="text-sm">{description}</p>
 
