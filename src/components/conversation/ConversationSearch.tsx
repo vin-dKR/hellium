@@ -3,10 +3,10 @@ import React from 'react'
 
 const ConversationSearch = ({ register, domains }: ConversationSearchProps) => {
     return (
-        <div className="flex flex-col py-3">
+        <div className="flex flex-col py-3 ">
             <select
                 {...register('domain')}
-                className="px-3 py-4 text-sm border-[1px] rounded-lg mr-5"
+                className="px-3 py-4 text-sm border-[1px] rounded-lg mr-5 dark:bg-brown"
             >
                 <option
                     disabled

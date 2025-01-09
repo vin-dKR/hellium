@@ -4,13 +4,16 @@ import Image from 'next/image';
 import React from 'react';
 import MenuItem from './MenuItems';
 import DomainMenu from './DomainMenu';
+import { useTheme } from 'next-themes';
 
 const MaxMenu = ({ current, domains, onExpand, onSignOut }: MaxMenuProps) => {
+    const { theme } = useTheme()
+    let isDark = theme === "dark"
   return (
     <div className='py-3 px-4 flex flex-col h-full z-[100]'>
       <div className='flex justify-between items-center'>
         <Image
-          src='/images/Logo.svg'
+          src={ isDark ?  '/images/Logo.svg' : '/images/Dark-logo.svg'}
           alt='LlOGO'
           sizes='100vw'
           className='animate-fade-in opacity-0 delay-300 fill-mode-forwards'

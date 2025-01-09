@@ -13,7 +13,7 @@ const DomainSetting = async ({ params }: DomainSettingProps) => {
   return (
     <>
       <InfoBar />
-      <div className="overflow-y-auto w-full chat-window flex-1 h-0">
+      <div className="overflow-y-auto w-full overflow-x-hidden chat-window flex-1">
         <SettingsForm
           plan={domain.subscription?.plan!}
           chatBot={domain.domains[0].chatBot}

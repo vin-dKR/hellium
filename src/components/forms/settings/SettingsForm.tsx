@@ -33,7 +33,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: SettingsFormProps) => {
 
     return (
         <>
-            <form onSubmit={onUpdateSettings} className='flex flex-col gap-8 pb-10 px-5'>
+            <form onSubmit={onUpdateSettings} className='flex flex-col gap-8 pb-10 px-1'>
                 <div className="flex flex-col gap-3">
                     <h2 className="font-bold text-2xl">Domain Settings</h2>
                     <Separator orientation="horizontal" />

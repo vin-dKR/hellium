@@ -11,14 +11,12 @@ import ConversationSearch from './ConversationSearch'
 import ChatCard from './ChatCard'
 import { Separator } from '../ui/separator'
 
-type GetActiveChatMessages = (id: string) => void;
-
 const ConversationMenu = ({ domains }: ConversationPageProps) => {
     const { register, chatRooms, loading, onGetActiveChatMessages } = useConversation()
 
     return (
-        <div className="py-3 px-0">
-            <TabsMenu triggers={TABS_MENU}>
+        <div className="py-3 pr-3">
+            <TabsMenu triggers={TABS_MENU} className='bg-gray-900 dark:bg-brown'>
                 <TabsContent value="unread">
                     <ConversationSearch
                         domains={domains}

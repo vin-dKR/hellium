@@ -21,7 +21,7 @@ const ProductTable = ({ products, id }: ProductTableProps) => {
                 </p>
             </div>
             <TabsMenu
-                className="w-full flex justify-start"
+                className="w-full flex justify-start dark:bg-brown"
                 triggers={[
                     { label: 'All products', },
                     { label: 'Live' },
@@ -39,7 +39,7 @@ const ProductTable = ({ products, id }: ProductTableProps) => {
                                         size={20}
                                         className="text-white"
                                     />
-                                    <p className="text-white">Add Product</p>
+                                    <p className="text-white hidden md:block">Add Product</p>
                                 </div>
                             )}
                         >

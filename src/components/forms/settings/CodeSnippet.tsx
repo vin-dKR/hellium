@@ -44,7 +44,7 @@ window.addEventListener("message", (e) => {
                 label="Code snippet"
                 message="Copy and paste this code snippet into the header tag of your website"
             />
-            <div className="bg-brown px-1 rounded-lg inline-block relative">
+            <div className="bg-brown px-1 rounded-lg inline-block relative w-full md:w-9/12">
                 <Copy
                     className="absolute top-5 right-5 text-gray-400 cursor-pointer"
                     onClick={() => {

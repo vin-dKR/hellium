@@ -60,7 +60,7 @@ const EmailMarketing = ({
             title='Create a new campaign'
             description='Add your customers and create a marketing campaign'
             trigger={
-              <Card className='flex gap-2 items-center px-3 cursor-pointer text-sm'>
+              <Card className='flex gap-2 items-center px-3 cursor-pointer text-sm dark:bg-brown'>
                 <Loader loading={false}>
                   <Plus />
                 </Loader>
@@ -85,7 +85,7 @@ const EmailMarketing = ({
               </Button>
             </form>
           </Modal>
-          <Card className='p-2'>
+          <Card className='p-2 dark:bg-brown'>
             <CardDescription className='font-bold'>
               {subscription?.credits} credits
             </CardDescription>
@@ -93,11 +93,11 @@ const EmailMarketing = ({
         </div>
         <div className='flex flex-col items-end mt-5 gap-3'>
           {campaign &&
-            campaign.map((camp, i) => (
+            campaign.map((camp) => (
               <Card
                 key={camp.id}
                 className={cn(
-                  'p-5 min-w-[600px] cursor-pointer',
+                  'p-2 md:p-5 md:min-w-[600px] cursor-pointer dark:bg-brown',
                   campaignId == camp.id ? 'bg-gray-50' : '',
                 )}
                 onClick={() => onSelectCampagin(camp.id)}
@@ -105,16 +105,16 @@ const EmailMarketing = ({
                 <Loader loading={processing}>
                   <CardContent className='p-0 flex flex-col items-center gap-3'>
                     <div className='flex w-full justify-between items-center'>
-                      <div className='flex gap-2 items-center'>
+                      <div className='flex gap-1 items-center pr-3'>
                         <CalIcon />
-                        <CardDescription>
+                        <CardDescription className='text-xs md:text-sm'>
                           Created {getMonthName(camp.createdAt.getMonth())}{' '}
                           {camp.createdAt.getDate()}th
                         </CardDescription>
                       </div>
-                      <div className='flex gap-2'>
+                      <div className='flex gap-1'>
                         <PersonIcon />
-                        <CardDescription>
+                        <CardDescription className='text-xs md:text-sm'>
                           {camp.customers.length} customers added
                         </CardDescription>
                       </div>
