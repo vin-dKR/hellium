@@ -14,9 +14,9 @@ const BentoWrapper = (props: Props) => {
                 position={{ top: '1600px', right: '-150px' }}
             />
             <div className='mb-20'>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center text-center'>
                     <h1 className="text-3xl lg:text-6xl">Better Sales Representative</h1>
-                    <h1 className="text-xl lg:text-3xl">Automation & Fast</h1>
+                    <h1 className="text-2xl mt-1 text-black/50 dark:text-white/60 text-center">Automation & Fast</h1>
                 </div>
             </div>
             <Bento />

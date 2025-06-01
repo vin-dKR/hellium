@@ -12,7 +12,7 @@ interface PricingCardProps {
 const PricingCard = ({ title, price, description, features }: PricingCardProps) => {
     return (
         <div
-            className="relative bg-gradient-to-t from-mistorg from-10% via-orange to-night to-96% pricing-card w-64 h-96 rounded-xl p-8 border border-t-black border-r-black border-l-black border-b-white dark:border-t-white dark:border-r-white dark:border-l-white dark:border-b-black"
+            className="relative bg-gradient-to-t from-white/20 to-white/20 dark:from-mistorg dark:to-night/30 pricing-card w-64 h-96 rounded-xl p-8 border border-black/10 dark:border-white/20"
         >
             <div className="absolute inset-0 -z-10 ">
                 <RadialBlur
@@ -33,7 +33,7 @@ const PricingCard = ({ title, price, description, features }: PricingCardProps) 
                 href={`/dashboard?plan=${title}`}
                 className="flex justify-center mt-8 border rounded-xl border-t-black border-b-white bg-gradient-to-b from-slate-50 from-0% via-fade-org to-dark-org py-2 hover:border-2"
             >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-gray-900 to-slate-400 text-shadow-lg rotate-[-2deg] inline-block">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-black via-gray-900 to-slate-800 text-shadow-lg rotate-[-2deg] inline-block">
                     Get Started
                 </span>
             </Link>

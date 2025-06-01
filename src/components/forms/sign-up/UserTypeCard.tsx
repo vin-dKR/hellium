@@ -16,14 +16,14 @@ const UserTypeCard = ({
   setUserType,
 }: UserTypeCardProps) => {
   return (
-    <Label htmlFor={value}>
+    <Label htmlFor={value} className=''>
       <Card
         className={cn(
           'w-full cursor-pointer',
           userType == value && 'border-orange',
         )}
       >
-        <CardContent className='flex justify-between p-2'>
+        <CardContent className='flex justify-between p-2 bg-brown rounded-md'>
           <div className='flex items-center gap-3'>
             <Card
               className={cn(
@@ -39,7 +39,7 @@ const UserTypeCard = ({
               />
             </Card>
             <div className=''>
-              <CardDescription className='text-iridium'>
+              <CardDescription className='text-gray-100'>
                 {title}
               </CardDescription>
               <CardDescription className='text-gray-400'>
